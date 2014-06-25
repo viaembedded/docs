@@ -27,6 +27,31 @@
       span.warn {
         color: red;
       }
+
+      /* Sticky footer styles */
+      html {
+          position: relative;
+          min-height: 100%;
+      }
+      body {
+          margin-bottom: 60px;
+      }
+      #footer {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 60px;
+          background-color: #f5f5f5;
+      }
+      .container {
+          width: auto;
+          max-width: 680px;
+          padding: 0 15px;
+      }
+      .container .text-muted {
+          margin: 20px 0;
+      }
+
     </style>
   </head>
   <body>
@@ -38,17 +63,52 @@
       </div>
 
       <h3 id="vab600">VAB-600 Springboard</h3>
-      <p>Documentation related to the <a href="http://www.viaspringboard.com">Springboard</a> ARM Cortex-A9 developer board.</p>
+      <p>Documentation related to the <a href="http://www.viaspringboard.com">Springboard</a> VIA ARM Cortex-A9 developer board.</p>
       <div class="row">
         <div class="col-md-6">Springboard User Manual <span class="warn">(work in progress)</span></div>
         <div class="col-md-6"><a href="springboard-user-manual/">HTML</a></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">Springboard Developer Guide</div>
+        <div class="col-md-6"><span class="warn">(coming)</span></div>
       </div>
       <div class="row">
         <div class="col-md-6">Springboard BSP u-boot parameters <span class="warn">(work in progress)</span></div>
         <div class="col-md-6"><a href="springboard-uboot-bsp/">HTML</a></div>
       </div>
 
+      <h3 id="vab800">VAB-800 </h3>
+      <p>Documentation related to the <a href="http://www.viaembedded.com/en/products/boards/1930/1/VAB-800_(Pico-ITX).html">VAB-800</a> Freescale ARM Cortex-A8 developer board.</p>
+      <div class="row">
+        <div class="col-md-6">VAB-800 Developer Guide</div>
+        <div class="col-md-6"><span class="warn">(coming)</span></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">VAB-800 User Manual</div>
+        <div class="col-md-6"><span class="warn">(coming)</span></div>
+      </div>
+
+      <h3 id="vab820">VAB-820 </h3>
+      <p>Documentation related to the <a href="http://www.viaembeddedstore.com/boards/arm-boards/via-vab-820.html">VAB-820</a> Freescale ARM Cortex-A9 developer board.</p>
+      <div class="row">
+        <div class="col-md-6">VAB-820 Developer Guide</div>
+        <div class="col-md-6"><span class="warn">(coming)</span></div>
+      </div>
+
+      <h3 id="vab1000">VAB-1000 </h3>
+      <p>Documentation related to the <a href="http://www.viaembedded.com/en/products/boards/2190/1/VAB-1000_(Pico-ITX).html">VAB-1000</a> Dual-Core VIA ARM Cortex-A9 developer board.</p>
+      <div class="row">
+        <div class="col-md-6">VAB-1000 User Manual</div>
+        <div class="col-md-6"><span class="warn">(coming)</span></div>
+      </div>
+
     </div> <!-- /container -->
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">Hosted on Github Pages | <a href="http://viaembeddedstore.com">VIA Embedded Store</a> | <a href="http://www.viaembedded.com/">VIA Embedded</a> | <a href="https://github.com/viaembedded/docs/">Check the Source</a></p>
+      </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
