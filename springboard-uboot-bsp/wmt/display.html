@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Display parameters &mdash; Springboard BSP uboot 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Springboard BSP uboot 0.1 documentation" href="../index.html" />
+    <link rel="up" title="WonderMedia modifications" href="index.html" />
+    <link rel="prev" title="WonderMedia modifications" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="WonderMedia modifications"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Springboard BSP uboot 0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">WonderMedia modifications</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="display-parameters">
+<span id="display"></span><h1>Display parameters<a class="headerlink" href="#display-parameters" title="Permalink to this headline">¶</a></h1>
+<dl class="envvar">
+<dt id="envvar-wmt.display.dual">
+<tt class="descname">wmt.display.dual</tt><a class="headerlink" href="#envvar-wmt.display.dual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Dual-display support, <tt class="docutils literal"><span class="pre">0</span></tt> is single display, <tt class="docutils literal"><span class="pre">1</span></tt> is dual display. Does not necessarily work with all possible display types (see types below).</p>
+<dl class="envvar">
+<dt id="envvar-wmt.display.logoaddr">
+<tt class="descname">wmt.display.logoaddr</tt><a class="headerlink" href="#envvar-wmt.display.logoaddr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Boot up logo loading address. Example: <tt class="docutils literal"><span class="pre">setenv</span> <span class="pre">wmt.display.logoaddr</span> <span class="pre">0x0</span></tt>.</p>
+<blockquote>
+<div><div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Figure logo address out.</p>
+</div>
+</div></blockquote>
+<dl class="envvar">
+<dt id="envvar-wmt.display.param">
+<tt class="descname">wmt.display.param</tt><a class="headerlink" href="#envvar-wmt.display.param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Display settings, for example <tt class="docutils literal"><span class="pre">setenv</span> <span class="pre">wmt.display.param</span> <span class="pre">4:6:1:1920:1080:60</span></tt>. The options follow as <tt class="docutils literal"><span class="pre">type:op1:op2:resx:resy:fps</span></tt>.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param type:</th><td class="field-body">Output type, acceptable values are listed below</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param op1:</th><td class="field-body">Option 1 (?)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param op2:</th><td class="field-body">Option 2 (?)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param resx:</th><td class="field-body">Horizontal number of pixels for the monitor</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param resy:</th><td class="field-body">Vertical number of pixels for the monitor</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param fps:</th><td class="field-body">Monitor update rate in Hz, eg. 60, or 75.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>The acceptable types are:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Types</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">0</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_SD_ANALOG</span></tt>, ?</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">1</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_SD_DIGITAL</span></tt>, ?</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_LCD</span></tt>, ?</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">3</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_DVI</span></tt>, DVI output</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">4</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_HDMI</span></tt>, HDMI output</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">5</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_DVO2HDMI</span></tt>, ?</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">6</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_LVDS</span></tt>, LVDS output</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">7</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_VGA</span></tt>, VGA output</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">8</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_BOOT</span></tt>, boot time, special case for boot logos</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">9</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_MODE_MAX</span></tt>, ?</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">10</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">VOUT_MODE_ALL</span></tt>, equal to <tt class="docutils literal"><span class="pre">VOUT_MODE_MAX</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="envvar">
+<dt id="envvar-wmt.display.pwm">
+<tt class="descname">wmt.display.pwm</tt><a class="headerlink" href="#envvar-wmt.display.pwm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Possibly LCD backlight setting.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">WonderMedia modifications</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/wmt/display.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="WonderMedia modifications"
+             >previous</a> |</li>
+        <li><a href="../index.html">Springboard BSP uboot 0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >WonderMedia modifications</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2014, VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
