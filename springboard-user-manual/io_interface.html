@@ -60,17 +60,135 @@ coastline.</p>
 </div>
 <div class="section" id="external-i-o-ports">
 <h2>3.1. External I/O Ports<a class="headerlink" href="#external-i-o-ports" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="figure-external-io">
+<img alt="External I/O ports" src="_images/external_io.svg" /><p class="caption">Figure 1: External I/O ports</p>
+</div>
+<p>Layout diagram description table of external rear I/O ports:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Item</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>CN12: DC-In jack</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>SD1: Micro SD card slot</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>USB2: Mini USB 2.0 port 2 (type AB port)</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>USB2: Mini USB 2.0 port 1 (type AB port)</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>HDMI1: Mini HDMI® port</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>LAN1: RJ-45 (Fast Ethernet) LAN port</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="dc-in-jack">
 <h3>3.1.1. DC-In Jack<a class="headerlink" href="#dc-in-jack" title="Permalink to this headline">¶</a></h3>
 <p>The mainboard comes with a coaxial power connector on the real I/O panel
 adjacent to the Micro SD slot. The power connector carriers +12VDC ~ +24VDC
 external power input. The specifications and pinout of the power connector
 are shown below.</p>
+<div class="figure align-center" id="figure-dc-in-jack">
+<img alt="DC-In jack diagram" src="_images/dc-in_jack.svg" /><p class="caption">Figure 2: DC-In jack diagram</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Physical Specifications</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Outer Diameter</td>
+<td>3.7 mm</td>
+</tr>
+<tr class="row-odd"><td>Inner Diameter</td>
+<td>1.3 mm</td>
+</tr>
+<tr class="row-even"><td>Barrel Depth</td>
+<td>8.25 mm</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Electrical Specifications</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Input Voltage</td>
+<td>+12V ~ +24V</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="micro-sd-card-slot">
 <h3>3.1.2. Micro SD Card Slot<a class="headerlink" href="#micro-sd-card-slot" title="Permalink to this headline">¶</a></h3>
 <p>The Micro SD card slot is located on the rear I/O panel, it offers expandable
 storage.</p>
+<div class="figure align-center" id="figure-sd-card">
+<img alt="Micro SD Card slot diagram" src="_images/sd_card.svg" /><p class="caption">Figure 3: Micro SD Card slot diagram</p>
+</div>
+<p>Micro SD Card slot pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>SD0DATA2</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>SD0DATA3</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>SD0CMD</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>VDD (3.3V)</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>SD0CLK</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>SD0DATA0</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>SD0DATA1</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>SD0_CD</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="mini-usb-2-0-port">
 <h3>3.1.3. Mini USB 2.0 Port<a class="headerlink" href="#mini-usb-2-0-port" title="Permalink to this headline">¶</a></h3>
@@ -79,6 +197,52 @@ Mini USB 2.0 interface port gives complete Plug and Play and hot swap
 capabilities for external devices and it complies with USB UHCI, rev. 2.0. Each
 Mini USB port uses the USB Type AB receptacle port connector. The pinout of
 the typical Mini USB port is shown below.</p>
+<div class="figure align-center" id="figure-mini-usb">
+<img alt="Mini USB port diagram" src="_images/mini_usb.svg" /><p class="caption">Figure 4: Mini USB port diagram</p>
+</div>
+<p>Mini USB 2.0 port pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="38%" />
+<col width="13%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>VCC (+5V)</td>
+<td>1</td>
+<td>VCC (+5V)</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>USBH1-</td>
+<td>2</td>
+<td>USBH2-</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>USBH1+</td>
+<td>3</td>
+<td>USBH2+</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>ID (GND)</td>
+<td>4</td>
+<td>ID (GND)</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>GND</td>
+<td>5</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="mini-hdmi-port">
 <h3>3.1.4. Mini HDMI® Port<a class="headerlink" href="#mini-hdmi-port" title="Permalink to this headline">¶</a></h3>
@@ -86,6 +250,77 @@ the typical Mini USB port is shown below.</p>
 connector as defined in the HDMI specification. The Mini HDMI port is for
 connecting to HDMI displays. The pinout of the Mini HDMI port is shown
 below.</p>
+<div class="figure align-center" id="figure-hdmi">
+<img alt="Mini HDMI® port diagram" src="_images/hdmi.svg" /><p class="caption">Figure 5: Mini HDMI® port diagram</p>
+</div>
+<p>Mini HDMI® port pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="36%" />
+<col width="12%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>GND</td>
+<td>2</td>
+<td>LCD1DO2+</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>LCD1DO2-</td>
+<td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>LCD1DO1+</td>
+<td>6</td>
+<td>LCD1DO1-</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>GND</td>
+<td>8</td>
+<td>LCD1DO0+</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>LCD1DO0-</td>
+<td>10</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>LCD1CLK+</td>
+<td>12</td>
+<td>LCD1CLK-</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>GND</td>
+<td>14</td>
+<td>HDMI_CECIN</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>DDCSCL</td>
+<td>16</td>
+<td>DDCSDA</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>✗</td>
+<td>18</td>
+<td>VCC_5V</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>HPD</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="rj-45-lan-port-fast-ethernet">
 <h3>3.1.5. RJ-45 LAN port (Fast Ethernet)<a class="headerlink" href="#rj-45-lan-port-fast-ethernet" title="Permalink to this headline">¶</a></h3>
@@ -93,6 +328,79 @@ below.</p>
 receptacle connector (commonly referred to as RJ-45). The Fast Ethernet ports
 are controlled by VIA VT6113 10/100 Base-TX PHY chip controller. The
 pinout of the Fast Ethernet port is shown below.</p>
+<div class="figure align-center" id="figure-fast-ethernet">
+<img alt="Fast Ethernet port diagram" src="_images/fast_ethernet.svg" /><p class="caption">Figure 6: Fast Ethernet port diagram</p>
+</div>
+<p>Fast Ethernet port pinout :</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>TD+</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>TD-</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>RD+</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>REGOUT</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>REGOUT</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>RD-</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<p>The RJ-45 port has two individual LED indicators located on the front side to
+show its Active/Link status and Speed status.</p>
+<p>Fast Ethernet LED color definition:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="43%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">Link LED
+(Left LED on RJ-45 connector)</th>
+<th class="head">Active LED
+(Right LED on RJ-45 connector)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Link Off</td>
+<td>Off</td>
+<td>Off</td>
+</tr>
+<tr class="row-odd"><td>Speed_10Mbit</td>
+<td>The LED is always On in dark color</td>
+<td>Flash in Yellow or Orange color</td>
+</tr>
+<tr class="row-even"><td>Speed_100Mbit</td>
+<td>The LED is always On in Red color</td>
+<td>Flash in Yellow or Orange color</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="onboard-connectors">
@@ -104,6 +412,29 @@ DC-In power cable. The DC-In power connector is an optional power
 connector in addition to the DC-In jack on the rear IO panel. This provides
 two methods for delivering +12VDC ~ +24VDC to the mainboard. The pinout of
 the DC-In connector is shown below.</p>
+<div class="figure align-center" id="figure-dc-in">
+<img alt="DC-In connector diagram" src="_images/dc-in.svg" /><p class="caption">Figure 7: DC-In connector diagram</p>
+</div>
+<p>DC-In connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+12VDC ~ +24VDC</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="sim-card-slot">
 <h3>3.2.2. SIM Card Slot<a class="headerlink" href="#sim-card-slot" title="Permalink to this headline">¶</a></h3>
@@ -113,6 +444,44 @@ requires a 3G module installed in the Mini Card expansion slot to enable the
 3G function, otherwise the SIM card slot is disabled. The SIM card slot is
 designed only for 3G module without built-in SIM card slot on it. The SIM
 card slot is labeled as &#8220;SIM1&#8221;. The pinout of the slot is shown below.</p>
+<div class="figure align-center" id="figure-sim-slot">
+<img alt="SIM card slot diagram" src="_images/sim_slot.svg" /><p class="caption">Figure 8: SIM card slot diagram</p>
+</div>
+<p>SIM card slot pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>USIM_VCC</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>USIM_RST</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>USIM_CLK</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>✗</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>USIM_VPPSIM</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>USIM_DATA</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="battery-charger-connector-optional">
 <h3>3.2.3. Battery Charger Connector (Optional)<a class="headerlink" href="#battery-charger-connector-optional" title="Permalink to this headline">¶</a></h3>
@@ -120,6 +489,38 @@ card slot is labeled as &#8220;SIM1&#8221;. The pinout of the slot is shown belo
 for connecting the external cable for charging a rechargeable battery. The
 battery charger connector is labeled as &#8220;CN3&#8221;. The connector pinout is shown
 below.</p>
+<div class="figure align-center" id="figure-battery-charger">
+<img alt="Battery Charger connector diagram" src="_images/battery_charger.svg" /><p class="caption">Figure 9: Battery Charger connector diagram</p>
+</div>
+<p>Battery charger pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Voltage detect</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>I2C0SCL</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>I2C0SDA</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Temperature Detect</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="rtc-battery-connector">
 <h3>3.2.4. RTC Battery Connector<a class="headerlink" href="#rtc-battery-connector" title="Permalink to this headline">¶</a></h3>
@@ -127,18 +528,137 @@ below.</p>
 connecting the external cable battery that provides power to the 32.768KHz
 crystal oscillator for Real Time Clock (RTC). The RTC battery connector is
 labeled as &#8220;BAT1&#8221;. The connector pinout is shown below.</p>
+<div class="figure align-center" id="figure-rtc-connector">
+<img alt="RTC Battery connector diagram" src="_images/rtc_connector.svg" /><p class="caption">Figure 10: RTC Battery connector diagram</p>
+</div>
+<p>RTC Battery connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+VBAT</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="front-panel-pin-header">
 <h3>3.2.5. Front Panel Pin Header<a class="headerlink" href="#front-panel-pin-header" title="Permalink to this headline">¶</a></h3>
 <p>The front panel pin header block consists of 6 pins. It provides access to the
 system power LED, power switch and shut down switch. The front panel pin
 header is labeled as &#8220;CN7&#8221;. The pinout of the pin header is shown below.</p>
+<div class="figure align-center" id="figure-front-panel">
+<img alt="Front Panel pin header diagram" src="_images/front_panel.svg" /><p class="caption">Figure 11: Front Panel pin header diagram</p>
+</div>
+<p>Front Panel pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="36%" />
+<col width="14%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>PWR_LED</td>
+<td>2</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>PWRBTN-</td>
+<td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>RESET1</td>
+<td>6</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the signal name for pin#5 is &#8220;RESET1&#8221;, its function is &#8220;shut down&#8221;.</p>
+</div>
 </div>
 <div class="section" id="gpio-and-i2c-pin-header">
 <h3>3.2.6. GPIO and I²C Pin Header<a class="headerlink" href="#gpio-and-i2c-pin-header" title="Permalink to this headline">¶</a></h3>
 <p>The GPIO and I²C combination pin header block labeled as &#8220;CN9&#8221; is used for
 connecting the I²C device, and eight General Purpose Input and Output. The
 pinout of the combination pin header is shown below.</p>
+<div class="figure align-center" id="figure-gpio-i2c">
+<img alt="GPIO and I²C pin header diagram" src="_images/gpio_i2c.svg" /><p class="caption">Figure 12: GPIO and I²C pin header diagram</p>
+</div>
+<p>GPIO and I²C pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="36%" />
+<col width="14%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>VCC33</td>
+<td>2</td>
+<td>VCC_5V</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>GND</td>
+<td>4</td>
+<td>VSUS33</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>GPI20_CH</td>
+<td>6</td>
+<td>GPIO24_CH</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>GPIO21</td>
+<td>8</td>
+<td>GPIO25</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>GPIO_22</td>
+<td>10</td>
+<td>GPIO_26</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>GPIO_23</td>
+<td>12</td>
+<td>GPIO_27</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>I2C0SDA</td>
+<td>14</td>
+<td>I2C0SCL</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="spi-flash-connector">
 <h3>3.2.7. SPI Flash Connector<a class="headerlink" href="#spi-flash-connector" title="Permalink to this headline">¶</a></h3>
@@ -146,33 +666,619 @@ pinout of the combination pin header is shown below.</p>
 BIOS programming fixture, the SPI (Serial Peripheral Interface) flash connector
 can update the SPI flash ROM. The connector is labeled as &#8220;SPI1&#8221;. The pinout
 of the connector is shown below.</p>
+<div class="figure align-center" id="figure-spi">
+<img alt="SPI Flash connector diagram" src="_images/spi.svg" /><p class="caption">Figure 13: SPI Flash connector diagram</p>
+</div>
+<p>SPI Flash connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>✗</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>SFCS1 (Reserved)</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>SFDO</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>SFDI</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>SFCLK</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>SFCS0-</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>VPROG_SP1 (3.3V)</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="usb-connector">
 <h3>3.2.8. USB Connector<a class="headerlink" href="#usb-connector" title="Permalink to this headline">¶</a></h3>
 <p>The mainboard includes one onboard USB connector designed for connecting
 the wireless LAN USB module. The connector is labeled as &#8220;CN11&#8221;. The
 pinout of the connector is shown below.</p>
+<div class="figure align-center" id="figure-usb">
+<img alt="USB connector diagram" src="_images/usb.svg" /><p class="caption">Figure 14: USB connector diagram</p>
+</div>
+<p>USB connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+5V</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>USBH3-</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>USBH3+</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>USB_WIFI_LED</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>GPIO_4</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="com-connector">
 <h3>3.2.9. COM Connector<a class="headerlink" href="#com-connector" title="Permalink to this headline">¶</a></h3>
+<p>There are two onboard COM connectors on the top side of the mainboard.
+The COM connectors labeled as &#8220;COM1&#8221; and &#8220;COM2&#8221; are used to attach
+additional COM port that supports Tx/Rx. The pinout of the COM connectors
+are shown below.</p>
+<div class="figure align-center" id="figure-com">
+<img alt="COM connector diagram" src="_images/com.svg" /><p class="caption">Figure 15: COM connector diagram</p>
+</div>
+<p>COM connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="31%" />
+<col width="19%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">COM1</th>
+<th class="head" colspan="2">COM2</th>
+</tr>
+<tr class="row-even"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>1</td>
+<td>TXD0</td>
+<td>1</td>
+<td>TXD2</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>RXD0</td>
+<td>2</td>
+<td>RXD2</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>GND</td>
+<td>3</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>RTS0</td>
+<td>4</td>
+<td>RTS2</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>CTS0</td>
+<td>5</td>
+<td>CTS2</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="front-audio-pin-header">
 <h3>3.2.10. Front Audio Pin Header<a class="headerlink" href="#front-audio-pin-header" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has a front audio pin header for connecting the Line-Out, Line-
+In and Mic-In jacks. The pin header is labeled as “CN8”. The pinout of the pin
+header is shown below.</p>
+<div class="figure align-center" id="figure-audio">
+<img alt="Front audio pin header diagram" src="_images/audio.svg" /><p class="caption">Figure 16: Front audio pin header diagram</p>
+</div>
+<p>Front audio pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="36%" />
+<col width="14%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>LINEIN_R</td>
+<td>2</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>LINEIN_L</td>
+<td>4</td>
+<td>MICIN1</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>LINEOUT_R</td>
+<td>6</td>
+<td>MICIN2</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>LINEOUT_L</td>
+<td>8</td>
+<td>HP_DET</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="mini-card-slot">
 <h3>3.2.11. Mini Card Slot<a class="headerlink" href="#mini-card-slot" title="Permalink to this headline">¶</a></h3>
+<p>The VAB-600 mainboard is equipped with a Mini card expansion slot labeled
+as &#8220;CN2&#8221;. The Mini card slot is used to attach the USB connectivity 3G module
+to provide 3G function. The pinout of the slot is shown below.</p>
+<div class="figure align-center" id="figure-mini-card">
+<img alt="Mini Card slot diagram" src="_images/mini_card.svg" /><p class="caption">Figure 17: Mini Card slot diagram</p>
+</div>
+<p>Mini Card slot pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="33%" />
+<col width="13%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>✗</td>
+<td>2</td>
+<td>VSUS33</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>✗</td>
+<td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>✗</td>
+<td>6</td>
+<td>+1.5V</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>✗</td>
+<td>8</td>
+<td>USIM_VCC</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>GND</td>
+<td>10</td>
+<td>USIM_DATA</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>✗</td>
+<td>12</td>
+<td>USIM_CLK</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>✗</td>
+<td>14</td>
+<td>USIM_RST</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>GND</td>
+<td>16</td>
+<td>USIM_VPP</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>✗</td>
+<td>18</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>✗</td>
+<td>20</td>
+<td>-W_DISABLE_1</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>GND</td>
+<td>22</td>
+<td>-PEX1_RST</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>✗</td>
+<td>24</td>
+<td>VSUS33</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>✗</td>
+<td>26</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>GND</td>
+<td>28</td>
+<td>+1.5V</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>GND</td>
+<td>30</td>
+<td>I2C0SCL</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>✗</td>
+<td>32</td>
+<td>I2C0SDA</td>
+</tr>
+<tr class="row-even"><td>33</td>
+<td>✗</td>
+<td>34</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>GND</td>
+<td>36</td>
+<td>USBHD_0-</td>
+</tr>
+<tr class="row-even"><td>37</td>
+<td>GND</td>
+<td>38</td>
+<td>USBHD_0+</td>
+</tr>
+<tr class="row-odd"><td>39</td>
+<td>VSUS33</td>
+<td>40</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>41</td>
+<td>VSUS33</td>
+<td>42</td>
+<td>LED_WWAN1-</td>
+</tr>
+<tr class="row-odd"><td>43</td>
+<td>GND</td>
+<td>44</td>
+<td>LED_WLAN1-</td>
+</tr>
+<tr class="row-even"><td>45</td>
+<td>✗</td>
+<td>46</td>
+<td>LED_WPAN1-</td>
+</tr>
+<tr class="row-odd"><td>47</td>
+<td>✗</td>
+<td>48</td>
+<td>+1.5V</td>
+</tr>
+<tr class="row-even"><td>49</td>
+<td>✗</td>
+<td>50</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>51</td>
+<td>✗</td>
+<td>52</td>
+<td>VSUS33</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="wire-resistive-touch-screen-connector">
 <h3>3.2.12. 4-Wire Resistive Touch Screen Connector<a class="headerlink" href="#wire-resistive-touch-screen-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard is equipped with a touch screen connector for connecting the
+4-wire resistive touch panel. The touch screen connector is labeled as &#8220;TS1&#8221;.
+The pinout of the connector is shown below.</p>
+<div class="figure align-center" id="figure-four-wire">
+<img alt="4-Wire Resistive Touch Screen connector diagram" src="_images/four-wire.svg" /><p class="caption">Figure 18: 4-Wire Resistive Touch Screen connector diagram</p>
+</div>
+<p>4-Wire Resistive Touch Screen connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>TPXP</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>TPYP</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>TPXM</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>TPYM</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="key-pad-connector">
 <h3>3.2.13. Key PAD Connector<a class="headerlink" href="#key-pad-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard is equipped with a Key PAD connector for connecting the
+keypad device. The connector is labeled as “KPAD1”. The pinout of the
+connector is shown below.</p>
+<div class="figure align-center" id="figure-key-pad">
+<img alt="Key PAD Connector diagram" src="_images/key_pad.svg" /><p class="caption">Figure 19: Key PAD Connector diagram</p>
+</div>
+<p>Key PAD connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>VCC33</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>KPADROW0</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>KPADROW1</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>KPADROW2</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>KPADROW3</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>KPADROW4</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="cir-connector">
 <h3>3.2.14. CIR Connector<a class="headerlink" href="#cir-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard provides a CIR (Consumer Infrared Receiver) connector on the
+top side of the board. The CIR connector is used to connect the infrared
+receiver module to enable infrared wireless interface. The pinout of the CIR
+connector is shown below.</p>
+<div class="figure align-center" id="figure-cir">
+<img alt="CIR connector diagram" src="_images/cir.svg" /><p class="caption">Figure 20: CIR connector diagram</p>
+</div>
+<p>CIR connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>VSUS33</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>CIR</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="dvo-connector">
 <h3>3.2.15. DVO Connector<a class="headerlink" href="#dvo-connector" title="Permalink to this headline">¶</a></h3>
+<p>The DVO (Digital Video Output) connector works as an interface for multidisplay
+devices. This connector allows the mainboad to connect an additional
+daughter card which is required for a certain display such as TTL or LVDS
+display. The DVO connector is labeled as “CN13”. The pinout of the
+connector is shown below.</p>
+<div class="figure align-center" id="figure-dvo">
+<img alt="DVO connector diagram" src="_images/dvo.svg" /><p class="caption">Figure 21: DVO connector diagram</p>
+</div>
+<p>DVO connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="41%" />
+<col width="9%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>VCC33</td>
+<td>26</td>
+<td>LD15</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>VCC33</td>
+<td>27</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>VCC33</td>
+<td>28</td>
+<td>LD16</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>5VIN</td>
+<td>29</td>
+<td>LD17</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>5VIN</td>
+<td>30</td>
+<td>LD18</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>5VIN</td>
+<td>31</td>
+<td>LD19</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>VIN (DC-In/Battery)</td>
+<td>32</td>
+<td>LD20</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>VIN (DC-In/Battery)</td>
+<td>33</td>
+<td>LD21</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>GND</td>
+<td>34</td>
+<td>LD22</td>
+</tr>
+<tr class="row-odd"><td>10</td>
+<td>LD00</td>
+<td>35</td>
+<td>LD23</td>
+</tr>
+<tr class="row-even"><td>11</td>
+<td>LD01</td>
+<td>36</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>12</td>
+<td>LD02</td>
+<td>37</td>
+<td>DVP1CLK+</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>LD03</td>
+<td>38</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>14</td>
+<td>LD04</td>
+<td>39</td>
+<td>DVPHS</td>
+</tr>
+<tr class="row-even"><td>15</td>
+<td>LD05</td>
+<td>40</td>
+<td>DVPVS</td>
+</tr>
+<tr class="row-odd"><td>16</td>
+<td>LD06</td>
+<td>41</td>
+<td>DVPDE</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>LD07</td>
+<td>42</td>
+<td>PWMOUT0</td>
+</tr>
+<tr class="row-odd"><td>18</td>
+<td>GND</td>
+<td>43</td>
+<td>TTL_RST</td>
+</tr>
+<tr class="row-even"><td>19</td>
+<td>LD08</td>
+<td>44</td>
+<td>I2C0SCL</td>
+</tr>
+<tr class="row-odd"><td>20</td>
+<td>LD09</td>
+<td>45</td>
+<td>I2C0SDA</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>LD10</td>
+<td>46</td>
+<td>DVO_CLK</td>
+</tr>
+<tr class="row-odd"><td>22</td>
+<td>LD11</td>
+<td>47</td>
+<td>DVO_DATA</td>
+</tr>
+<tr class="row-even"><td>23</td>
+<td>LD12</td>
+<td>48</td>
+<td>LVDSENBL</td>
+</tr>
+<tr class="row-odd"><td>24</td>
+<td>LD13</td>
+<td>49</td>
+<td>LVDSENVDD</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>LD14</td>
+<td>50</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please DO NOT plug/unplug a DVO flex cable to /from a DVO connector (CN13) when
+the system is powered-ON or running.</p>
+</div>
 </div>
 </div>
 </div>
