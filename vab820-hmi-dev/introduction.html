@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Introduction &mdash; VAB-820 HMI Development Guide 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VAB-820 HMI Development Guide 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to VAB-820 HMI Development Guide’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to VAB-820 HMI Development Guide’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<span id="id1"></span><h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of this document is to provide a practical introduction on
+developing software for the AMOS-820 (Bare board: VAB-820) on a Linux
+development host only.</p>
+<div class="section" id="overview">
+<h2>1.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The VIA AMOS-820 platform is an embedded system powered by ARM
+processor with Linux kernel 3.0.35 operating system by default. Major
+functions of the Linux include all system-requirement shell commands and
+drivers ready for AMOS-820 platform. AMOS-820’s Solution package does not
+offer a development environment. Users can develop it under an Ubuntu
+environment.</p>
+<p>There are three major boot components for Linux, the &#8220;<strong>u-boot.bin</strong>&#8221;, “<strong>uImage</strong>&#8221;
+and &#8220;<strong>Root File System</strong>&#8221;. The &#8220;u-boot.bin&#8221; is for initial peripheral hardware
+parameter. The &#8220;uImage&#8221; is the Linux kernel image, and the &#8220;Root File System&#8221;
+is for Linux O.S. The system will not boot successfully into a Linux
+environment if one of these files does not exist in the boot media (SPI ROM,
+SD storage card or onboard eMMC).</p>
+<p>This development guide will use VAB-820 as an example instead of AMOS-
+820 to describe relational building procedure.</p>
+</div>
+<div class="section" id="package-content">
+<h2>1.2. Package Content<a class="headerlink" href="#package-content" title="Permalink to this headline">¶</a></h2>
+<p>There are three folders in AMOS-820 Solution Pack.</p>
+<div class="figure align-center" id="figure-pack-content">
+<img alt="HMI Solution Pack content" src="_images/pack_content.png" />
+<p class="caption">Figure 1: VAB-820/AMOS-820 Solution Pack content</p>
+</div>
+<div class="section" id="bsp-folder-contents">
+<h3>1.2.1. BSP Folder Contents<a class="headerlink" href="#bsp-folder-contents" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>LTIB (Linux Target Image Builder): A tool that can be used to develop and deploy
+BSPs (Board Support Packages) for a number of embedded target platforms including
+PowerPC, ARM.</li>
+<li>PatchFiles: This folder provides u-boot/kernel patch files for VAB-820.</li>
+</ul>
+</div>
+<div class="section" id="evk-folder-contents">
+<h3>1.2.2. EVK Folder Contents<a class="headerlink" href="#evk-folder-contents" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>vab-820_demo_image.tar.bz2: Configure files when user would like to evaluate
+VAB-820 with Ubuntu root file system.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If a user needs the supporting files for all software mentioned in
+AMOS-820 HMI Solution Pack document, please contact our regional sales representative
+for assistance.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Introduction</a><ul>
+<li><a class="reference internal" href="#overview">1.1. Overview</a></li>
+<li><a class="reference internal" href="#package-content">1.2. Package Content</a><ul>
+<li><a class="reference internal" href="#bsp-folder-contents">1.2.1. BSP Folder Contents</a></li>
+<li><a class="reference internal" href="#evk-folder-contents">1.2.2. EVK Folder Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to VAB-820 HMI Development Guide&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/introduction.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to VAB-820 HMI Development Guide’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2013 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
