@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Springboard Android Evaluation Guide 1.01.03 documentation" href="index.html" />
+    <link rel="next" title="8. Appendix: Definitions" href="appendix.html" />
     <link rel="prev" title="6. Build and Install VIA Image" href="image.html" /> 
   </head>
   <body>
@@ -33,6 +34,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="appendix.html" title="8. Appendix: Definitions"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="image.html" title="6. Build and Install VIA Image"
              accesskey="P">previous</a> |</li>
@@ -61,7 +65,8 @@ import the <tt class="docutils literal"><span class="pre">smartetk.jar</span></t
 <h2>7.2. SDK Class Definitions<a class="headerlink" href="#sdk-class-definitions" title="Permalink to this headline">¶</a></h2>
 <p>All functions and values are placed in class named <tt class="docutils literal"><span class="pre">com.via.vepd.SmartETK</span></tt>.
 Import this package into Java code to use them.</p>
-<p>GPIO PIN definitions:</p>
+<div class="section" id="gpio-pin-definitions">
+<span id="gpio"></span><h3>7.2.1. GPIO PIN definitions<a class="headerlink" href="#gpio-pin-definitions" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="24%" />
@@ -97,6 +102,7 @@ Import this package into Java code to use them.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="function-return-values">
 <h2>7.3. Function Return Values<a class="headerlink" href="#function-return-values" title="Permalink to this headline">¶</a></h2>
@@ -188,6 +194,470 @@ When a function returns the <tt class="docutils literal"><span class="pre">E_HAR
 indicates that there is a hardware error.</p>
 </div>
 </div>
+<div class="section" id="api-list">
+<h2>7.4. API List<a class="headerlink" href="#api-list" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smartetk-init">
+<h3>7.4.1. SmartETK.Init<a class="headerlink" href="#smartetk-init" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="c.SmartETK.Init">
+static int <tt class="descname">SmartETK.Init</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">This function initializes the Smart ETK and loads the JNI.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.SupportGpio">
+static int <tt class="descname">SmartETK.SupportGpio</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.SupportGpio" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Check if current platform supports GPIO.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if support GPIO.</li>
+<li><tt class="docutils literal"><span class="pre">E_FUNC_NOT_SUPPORT</span></tt> if not support GPIO.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.SupportWdt">
+static int <tt class="descname">SmartETK.SupportWdt</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.SupportWdt" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Check if current platform supports watch dog timer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if support watch dog timer</li>
+<li><tt class="docutils literal"><span class="pre">E_FUNC_NOT_SUPPORT</span></tt> if not support watch dog timer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.SupportRtcWake">
+static int <tt class="descname">SmartETK.SupportRtcWake</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.SupportRtcWake" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Check if current platform supports RTC wake-up</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if support RTC wake-up</li>
+<li><tt class="docutils literal"><span class="pre">E_FUNC_NOT_SUPPORT</span></tt> if not support RTC wake-up</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Gpio_GetInfo">
+GpioInfo <tt class="descname">SmartETK.Gpio_GetInfo</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.Gpio_GetInfo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Gets the information of GPIO</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An array representing GPIO</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">SmartETK.GpioInfo</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Gpio_Enable">
+static int <tt class="descname">SmartETK.Gpio_Enable</tt><big>(</big>int<em>&nbsp;pinId</em>, boolean<em>&nbsp;enable</em><big>)</big><a class="headerlink" href="#c.SmartETK.Gpio_Enable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Enable specific GPIO pin.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pinId</strong> (<em>int</em>) &#8211; ID of GPIO pin. Refer to the <a class="reference internal" href="#gpio"><em>GPIO PIN definitions</em></a> section for pin definition</li>
+<li><strong>enable</strong> (<em>boolean</em>) &#8211; true for enable, false for disable</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Gpio_Set">
+public static int <tt class="descname">SmartETK.Gpio_Set</tt><big>(</big>int<em>&nbsp;pinId</em>, int<em>&nbsp;inOut</em>, int<em>&nbsp;upDown</em><big>)</big><a class="headerlink" href="#c.SmartETK.Gpio_Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Setup I/O configuration for specific GPIO pin</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pinId</strong> (<em>int</em>) &#8211; ID of GPIO pin. Refer to the <a class="reference internal" href="#gpio"><em>GPIO PIN definitions</em></a> section for pin definition</li>
+<li><strong>inOut</strong> (<em>int</em>) &#8211; <ul>
+<li><tt class="docutils literal"><span class="pre">SmartETK.GM_GPI</span></tt> for input</li>
+<li><tt class="docutils literal"><span class="pre">SmartETK.GM_GPO</span></tt> for output</li>
+</ul>
+</li>
+<li><strong>upDown</strong> (<em>int</em>) &#8211; <ul>
+<li><tt class="docutils literal"><span class="pre">SmartETK.GM_NO_PULL</span></tt> for disable internal pull</li>
+<li><tt class="docutils literal"><span class="pre">SmartETK.GM_PULL_UP</span></tt> for pull up,</li>
+<li><tt class="docutils literal"><span class="pre">SmartETK.GM_PULL_DOWN</span></tt> for pull down.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Gpio_Write">
+static int <tt class="descname">SmartETK.Gpio_Write</tt><big>(</big>int<em>&nbsp;pinId</em>, int<em>&nbsp;pinVal</em><big>)</big><a class="headerlink" href="#c.SmartETK.Gpio_Write" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Set GPIO output signal</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pinId</strong> (<em>int</em>) &#8211; ID of GPIO pin. Refer to the <a class="reference internal" href="#gpio"><em>GPIO PIN definitions</em></a> section for pin definition</li>
+<li><strong>pinVal</strong> (<em>int</em>) &#8211; GPIO signal, 0 for logic low, 1 for logic high</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Gpio_Read">
+static int <tt class="descname">SmartETK.Gpio_Read</tt><big>(</big>int<em>&nbsp;pinId</em>, int<em>&nbsp;pinVal[]</em><big>)</big><a class="headerlink" href="#c.SmartETK.Gpio_Read" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Get GPIO input signal.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pinId</strong> (<em>int</em>) &#8211; ID of GPIO pin. Refer to the <a class="reference internal" href="#gpio"><em>GPIO PIN definitions</em></a> section for pin definition</li>
+<li><strong>pinVal</strong> (<em>int[]</em>) &#8211; A single-element array returns GPIO signal. 0 for logic low, 1
+for logic high. Caller should allocate array space manually</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Wdt_SetTimer">
+static int <tt class="descname">SmartETK.Wdt_SetTimer</tt><big>(</big>int<em>&nbsp;sec</em><big>)</big><a class="headerlink" href="#c.SmartETK.Wdt_SetTimer" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Set watch dog timer to specific time in second. The time should not
+exceed the number defined by a constant <tt class="docutils literal"><span class="pre">SmartETK.WDT_MAX_SEC</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sec</strong> (<em>int</em>) &#8211; time in second to reset</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Wdt_Refresh">
+static int <tt class="descname">SmartETK.Wdt_Refresh</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.Wdt_Refresh" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Escription:</th><td class="field-body">Refresh the timer to the time set in Wdt_SetTimer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Wdt_Start">
+static int <tt class="descname">SmartETK.Wdt_Start</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.Wdt_Start" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Start watch dog timer. If application does not call <cite>Wdt_Refresh</cite> in time
+set in <cite>Wdt_SetTimer</cite>, system will be reset</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Wdt_Stop">
+static int <tt class="descname">SmartETK.Wdt_Stop</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.Wdt_Stop" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Stop watch dog timer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Rtc_WakeupEnable">
+static int <tt class="descname">SmartETK.Rtc_WakeupEnable</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.Rtc_WakeupEnable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Enable RTC wake-up</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Rtc_WakeupDisable">
+static int <tt class="descname">SmartETK.Rtc_WakeupDisable</tt><big>(</big><big>)</big><a class="headerlink" href="#c.SmartETK.Rtc_WakeupDisable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Disable RTC wake-up</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.SmartETK.Rtc_SetWakeupTime">
+static int <tt class="descname">SmartETK.Rtc_SetWakeupTime</tt><big>(</big>int<em>&nbsp;mode</em>, int<em>&nbsp;yr</em>, int<em>&nbsp;mm</em>, int<em>&nbsp;dd</em>, int<em>&nbsp;hr</em>, int<em>&nbsp;min</em>, int<em>&nbsp;sec</em><big>)</big><a class="headerlink" href="#c.SmartETK.Rtc_SetWakeupTime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Set time to wake up by RTC</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mode</strong> (<em>int</em>) &#8211; <ul>
+<li><tt class="docutils literal"><span class="pre">SmartETK.RWM_HHMM</span></tt>: wake up when hour and minute match</li>
+<li><tt class="docutils literal"><span class="pre">SmartETK.RWM_MONTH</span></tt>: wake up when month day, hour and minute match</li>
+<li><tt class="docutils literal"><span class="pre">SmartETK.RWM_WEEK</span></tt>: wake up when week day, hour and minute match</li>
+</ul>
+</li>
+<li><strong>yr</strong> (<em>int</em>) &#8211; Year to wake up</li>
+<li><strong>mm</strong> (<em>int</em>) &#8211; Month to wake up</li>
+<li><strong>dd</strong> (<em>int</em>) &#8211; Day to wake up</li>
+<li><strong>hr</strong> (<em>int</em>) &#8211; Hour to wake up</li>
+<li><strong>min</strong> (<em>int</em>) &#8211; Minute to wake up</li>
+<li><strong>sec</strong> (<em>int</em>) &#8211; Second to wake up</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">S_OK</span></tt> if the function succeeds</li>
+<li><tt class="docutils literal"><span class="pre">E_FAIL</span></tt> if the function fails</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.Uart_GetConfig">
+native public static UartConfig <tt class="descname">Uart_GetConfig</tt><big>(</big>FileDescriptor<em>&nbsp;fd</em><big>)</big><a class="headerlink" href="#c.Uart_GetConfig" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Return terminal configuration of specific FileDescriptor</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fd</strong> (<em>FileDescriptor</em>) &#8211; the opened file, must be a device file (under /dev)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">UartConfig</span></tt> if the function succeeds, see the <a class="reference internal" href="#uart"><em>UART Parameters</em></a> section for detail</li>
+<li><tt class="docutils literal"><span class="pre">null</span></tt> if the function fails</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="c.Uart_SetConfig">
+native public static int <tt class="descname">Uart_SetConfig</tt><big>(</big>FileDescriptor<em>&nbsp;fd</em>, UartConfig<em>&nbsp;cfg</em><big>)</big><a class="headerlink" href="#c.Uart_SetConfig" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Set terminal configuration of specific FileDescriptor</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fd</strong> (<em>FileDescriptor</em>) &#8211; the opened file, must be a device file (under /dev)</li>
+<li><strong>cfg</strong> (<em>UartConfig</em>) &#8211; Terminal configuration, see the <a class="reference internal" href="#uart"><em>UART Parameters</em></a> section for detail</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li>0 if the function succeeds</li>
+<li>1 if the function fails</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="uart-parameters">
+<span id="uart"></span><h2>7.5. UART Parameters<a class="headerlink" href="#uart-parameters" title="Permalink to this headline">¶</a></h2>
+<p>SmartETK defines UART (Universal Asynchronous Receiver/Transmitter)
+related values into another class`` com.via.UartConfig`` for configuration.
+Instead of one-time setup for other devices, UART is transferring data
+continually. Developers may blocked read, selected read, or buffered read
+from UART. In order to provide developers all types of transmissions, the
+APIs should be based on Java class <tt class="docutils literal"><span class="pre">java.io.FileDescriptor</span></tt>.</p>
+<p>To get FileDescriptor, the developers have to open the device file manually
+(e.g. /dev/ttyS1 or /dev/ttyUSB0) with Java class <tt class="docutils literal"><span class="pre">java.io.File</span></tt>. Then select a
+suitable Java transmission helper class (e.g. <tt class="docutils literal"><span class="pre">java.io.FileOutputStream</span></tt>).
+To setup UART parameters with <tt class="docutils literal"><span class="pre">FileDescriptor</span></tt> and class <tt class="docutils literal"><span class="pre">UartConfig</span></tt> which
+are provided by VIA. Please check SDK sample code for details.</p>
+<p>Parameters in UartConfig are the same as the values in Linux Kernel.
+Developers who are familiar with terminal programming in C may apply the
+same macro to port existing applications to Java with UartConfig. See
+Linux Programmer&#8217;s Manual for details. To read the manual, enter <tt class="docutils literal"><span class="pre">man</span>
+<span class="pre">tcsetattr</span></tt> in Ubuntu terminal.</p>
+<p>Currently, four connection options (in struct termios) and two speed options
+for Linux are available.</p>
+<p>The four connection options are: <tt class="docutils literal"><span class="pre">c_cflag</span></tt>, <tt class="docutils literal"><span class="pre">c_iflag</span></tt>, <tt class="docutils literal"><span class="pre">c_oflag</span></tt>, <tt class="docutils literal"><span class="pre">c_lflag</span></tt></p>
+<p>The two speed options are: <tt class="docutils literal"><span class="pre">ispeed</span></tt>, <tt class="docutils literal"><span class="pre">ospeed</span></tt></p>
+<p>Four options will be applied with tcsetattr in Linux C library. <tt class="docutils literal"><span class="pre">c_cc[VMIN]</span></tt> is
+set to 1 and <tt class="docutils literal"><span class="pre">c_cc[VTIME]</span></tt> is set to 0. ispeed and ospeed in UartConfig will
+be applied to struct termios with cfsetispeed and cfsetospeed in Linux C
+library.</p>
+<p>All options have to be set before applying them. It is recommended to get
+current configurations of FileDescriptor into UartConfig via
+<tt class="docutils literal"><span class="pre">SmartETK.Uart_GetConfig</span></tt> instead of allocating one manually.</p>
+<p>All types of file transmissions in Java are available since we shared existing
+FileDescriptor class. After FileDescriptor is configured, developers can
+access UART as a normal file.</p>
+</div>
 </div>
 
 
@@ -200,7 +670,10 @@ indicates that there is a hardware error.</p>
   <ul>
 <li><a class="reference internal" href="#">7. Smart ETK</a><ul>
 <li><a class="reference internal" href="#develop-environment">7.1. Develop Environment</a></li>
-<li><a class="reference internal" href="#sdk-class-definitions">7.2. SDK Class Definitions</a></li>
+<li><a class="reference internal" href="#sdk-class-definitions">7.2. SDK Class Definitions</a><ul>
+<li><a class="reference internal" href="#gpio-pin-definitions">7.2.1. GPIO PIN definitions</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#function-return-values">7.3. Function Return Values</a><ul>
 <li><a class="reference internal" href="#smartetk-s-ok">7.3.1. SmartETK.S_OK</a></li>
 <li><a class="reference internal" href="#smartetk-e-fail">7.3.2. SmartETK.E_FAIL</a></li>
@@ -212,6 +685,11 @@ indicates that there is a hardware error.</p>
 <li><a class="reference internal" href="#smartetk-e-hardware-error">7.3.8. SmartETK.E_HARDWARE_ERROR</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#api-list">7.4. API List</a><ul>
+<li><a class="reference internal" href="#smartetk-init">7.4.1. SmartETK.Init</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uart-parameters">7.5. UART Parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -219,6 +697,9 @@ indicates that there is a hardware error.</p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="image.html"
                         title="previous chapter">6. Build and Install VIA Image</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="appendix.html"
+                        title="next chapter">8. Appendix: Definitions</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/smartetk.txt"
@@ -247,6 +728,9 @@ indicates that there is a hardware error.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="appendix.html" title="8. Appendix: Definitions"
+             >next</a> |</li>
         <li class="right" >
           <a href="image.html" title="6. Build and Install VIA Image"
              >previous</a> |</li>
