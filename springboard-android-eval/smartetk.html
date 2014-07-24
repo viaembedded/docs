@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>7. Smart ETK &mdash; Springboard Android Evaluation Guide 1.01.03 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.01.03',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Springboard Android Evaluation Guide 1.01.03 documentation" href="index.html" />
+    <link rel="prev" title="6. Build and Install VIA Image" href="image.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="image.html" title="6. Build and Install VIA Image"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Springboard Android Evaluation Guide 1.01.03 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="smart-etk">
+<span id="smartetk"></span><h1>7. Smart ETK<a class="headerlink" href="#smart-etk" title="Permalink to this headline">¶</a></h1>
+<p>VAB-600 is designed with enhanced features including Watch Dog, RTC
+Power On, Programmable GPIO, and Serial Ports.</p>
+<div class="section" id="develop-environment">
+<h2>7.1. Develop Environment<a class="headerlink" href="#develop-environment" title="Permalink to this headline">¶</a></h2>
+<p>Eclipse is Android application integrated development environment (IDE)
+by official recommendation. It requires to import the specific reference Java
+Archive file to develop VAB-600 enhance features.</p>
+<p>Open Eclipse IDE and create an Android project. In project properties,
+import the <tt class="docutils literal"><span class="pre">smartetk.jar</span></tt> by clicking &#8220;<strong>Add External JARs...</strong>&#8221; into your project.</p>
+</div>
+<div class="section" id="sdk-class-definitions">
+<h2>7.2. SDK Class Definitions<a class="headerlink" href="#sdk-class-definitions" title="Permalink to this headline">¶</a></h2>
+<p>All functions and values are placed in class named <tt class="docutils literal"><span class="pre">com.via.vepd.SmartETK</span></tt>.
+Import this package into Java code to use them.</p>
+<p>GPIO PIN definitions:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>ID</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr class="row-even"><td>GPIO</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="function-return-values">
+<h2>7.3. Function Return Values<a class="headerlink" href="#function-return-values" title="Permalink to this headline">¶</a></h2>
+<p>Other than the Boolean TRUE and FALSE return values, there are eight
+other types of return values found throughout the Smart ETK SDK API.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="70%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Error code</th>
+<th class="head">Constant</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>S_OK</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>E_FAIL</td>
+<td>-1000</td>
+</tr>
+<tr class="row-even"><td>E_BOARD_NOT_SUPPORT</td>
+<td>-1001</td>
+</tr>
+<tr class="row-odd"><td>E_ALREADY_INITIALIZED</td>
+<td>-1002</td>
+</tr>
+<tr class="row-even"><td>E_INVALID_ARG</td>
+<td>-1003</td>
+</tr>
+<tr class="row-odd"><td>E_OUT_OF_MEMORY</td>
+<td>-1004</td>
+</tr>
+<tr class="row-even"><td>E_FUNC_NOT_SUPPORT</td>
+<td>-1005</td>
+</tr>
+<tr class="row-odd"><td>E_HARDWARE_ERROR</td>
+<td>-1006</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="smartetk-s-ok">
+<h3>7.3.1. SmartETK.S_OK<a class="headerlink" href="#smartetk-s-ok" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">S_OK</span></tt> return value has the constant value 0. When a function
+returns the <tt class="docutils literal"><span class="pre">S_OK</span></tt> value, it indicates that the function has successfully
+completed.</p>
+</div>
+<div class="section" id="smartetk-e-fail">
+<h3>7.3.2. SmartETK.E_FAIL<a class="headerlink" href="#smartetk-e-fail" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">E_FAIL</span></tt> return value has the constant value -1000. When a
+function returns the <tt class="docutils literal"><span class="pre">E_FAIL</span></tt> value, it indicates that the function has
+failed to complete.</p>
+</div>
+<div class="section" id="smartetk-e-board-not-support">
+<h3>7.3.3. SmartETK.E_BOARD_NOT_SUPPORT<a class="headerlink" href="#smartetk-e-board-not-support" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">E_BOARD_NOT_SUPPORT</span></tt> return value has the constant value -1001.
+When a function returns the <tt class="docutils literal"><span class="pre">E_BOARD_NOT_SUPPORT</span></tt> value,
+it indicates that the mainboard is not supported.</p>
+</div>
+<div class="section" id="smartetk-e-already-initialized">
+<h3>7.3.4. SmartETK.E_ALREADY_INITIALIZED<a class="headerlink" href="#smartetk-e-already-initialized" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">E_ALREADY_INITIALIZED</span></tt> return value has the constant value -1002.
+When a function returns the <tt class="docutils literal"><span class="pre">E_ALREADY_INITIALIZED</span></tt> value, it
+indicates that libbssjni.so has already been loaded.</p>
+</div>
+<div class="section" id="smartetk-e-invalid-arg">
+<h3>7.3.5. SmartETK.E_INVALID_ARG<a class="headerlink" href="#smartetk-e-invalid-arg" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">E_INVALID_ARG</span></tt> return value has the constant value -1003.
+When a function returns the <tt class="docutils literal"><span class="pre">E_INVALID_ARG</span></tt> value, it indicates that
+the arguments are invalid.</p>
+</div>
+<div class="section" id="smartetk-e-out-of-memory">
+<h3>7.3.6. SmartETK.E_OUT_OF_MEMORY<a class="headerlink" href="#smartetk-e-out-of-memory" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">E_OUT_OF_MEMORY</span></tt> return value has the constant value -1004.
+When a function returns the <tt class="docutils literal"><span class="pre">E_OUT_OF_MEMORY</span></tt> value, it indicates
+that there is insufficient memory.</p>
+</div>
+<div class="section" id="smartetk-e-func-not-support">
+<h3>7.3.7. SmartETK.E_FUNC_NOT_SUPPORT<a class="headerlink" href="#smartetk-e-func-not-support" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">E_FUNC_NOT_SUPPORT</span></tt> return value has the constant value -1005.
+When a function returns the <tt class="docutils literal"><span class="pre">E_FUNC_NOT_SUPPORT</span></tt> value, it
+indicates that the function is not supported on this board.</p>
+</div>
+<div class="section" id="smartetk-e-hardware-error">
+<h3>7.3.8. SmartETK.E_HARDWARE_ERROR<a class="headerlink" href="#smartetk-e-hardware-error" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">E_HARDWARE_ERROR</span></tt> return value has the constant value -1006.
+When a function returns the <tt class="docutils literal"><span class="pre">E_HARDWARE_ERROR</span></tt> value, it
+indicates that there is a hardware error.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Smart ETK</a><ul>
+<li><a class="reference internal" href="#develop-environment">7.1. Develop Environment</a></li>
+<li><a class="reference internal" href="#sdk-class-definitions">7.2. SDK Class Definitions</a></li>
+<li><a class="reference internal" href="#function-return-values">7.3. Function Return Values</a><ul>
+<li><a class="reference internal" href="#smartetk-s-ok">7.3.1. SmartETK.S_OK</a></li>
+<li><a class="reference internal" href="#smartetk-e-fail">7.3.2. SmartETK.E_FAIL</a></li>
+<li><a class="reference internal" href="#smartetk-e-board-not-support">7.3.3. SmartETK.E_BOARD_NOT_SUPPORT</a></li>
+<li><a class="reference internal" href="#smartetk-e-already-initialized">7.3.4. SmartETK.E_ALREADY_INITIALIZED</a></li>
+<li><a class="reference internal" href="#smartetk-e-invalid-arg">7.3.5. SmartETK.E_INVALID_ARG</a></li>
+<li><a class="reference internal" href="#smartetk-e-out-of-memory">7.3.6. SmartETK.E_OUT_OF_MEMORY</a></li>
+<li><a class="reference internal" href="#smartetk-e-func-not-support">7.3.7. SmartETK.E_FUNC_NOT_SUPPORT</a></li>
+<li><a class="reference internal" href="#smartetk-e-hardware-error">7.3.8. SmartETK.E_HARDWARE_ERROR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="image.html"
+                        title="previous chapter">6. Build and Install VIA Image</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/smartetk.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="image.html" title="6. Build and Install VIA Image"
+             >previous</a> |</li>
+        <li><a href="index.html">Springboard Android Evaluation Guide 1.01.03 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2014, VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

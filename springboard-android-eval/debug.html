@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Springboard Android Evaluation Guide 1.01.03 documentation" href="index.html" />
+    <link rel="next" title="5. Setting Up Environment" href="environment.html" />
     <link rel="prev" title="3. Functionality" href="functionality.html" /> 
   </head>
   <body>
@@ -33,6 +34,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="environment.html" title="5. Setting Up Environment"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="functionality.html" title="3. Functionality"
              accesskey="P">previous</a> |</li>
@@ -47,6 +51,106 @@
             
   <div class="section" id="debug-message">
 <span id="debug"></span><h1>4. Debug Message<a class="headerlink" href="#debug-message" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="u-boot-parameters">
+<h2>4.1. U-Boot Parameters<a class="headerlink" href="#u-boot-parameters" title="Permalink to this headline">¶</a></h2>
+<p>There is default parameters file in the firmware installer:</p>
+<blockquote>
+<div>$(SD card)/bspinst/bspinst.cfg</div></blockquote>
+<p>The <tt class="docutils literal"><span class="pre">bspinst.cfg</span></tt> file structure has four segments.</p>
+<ul class="simple">
+<li><strong>Scenario</strong>: board model and boot method</li>
+<li><strong>Common</strong>: general setting</li>
+<li><strong>Target (board models)</strong>: specific setting for each target</li>
+<li><strong>Routine</strong>: parameters of boot method</li>
+</ul>
+</div>
+<div class="section" id="u-boot-environment">
+<h2>4.2. U-Boot Environment<a class="headerlink" href="#u-boot-environment" title="Permalink to this headline">¶</a></h2>
+<p>VAB-600 android platform can stop booting to enter u-boot environment.
+The u-boot will initiate hardware at earlier stage by those parameters.</p>
+<p>Connect to the debug port using terminal application on PC site.</p>
+<div class="figure align-center" id="figure-rs232">
+<img alt="Debug connection schematic" src="_images/rs232.svg" /><p class="caption">Figure 1: Debug connection</p>
+</div>
+<div class="figure align-center" id="figure-rs232-cable">
+<img alt="Springboard with RS232 debug cable" src="_images/rs232_cable.png" />
+<p class="caption">Figure 2: Springboard with RS232 debug cable</p>
+</div>
+<p>The serial connection settings:</p>
+<div class="highlight-python"><div class="highlight"><pre>Comm speed: 115200
+Comm parity: None
+Comm data: 8
+Comm stopbits:1
+</pre></div>
+</div>
+<div class="section" id="enter-u-boot">
+<h3>4.2.1. Enter u-boot<a class="headerlink" href="#enter-u-boot" title="Permalink to this headline">¶</a></h3>
+<p>The u-boot will wait 3 seconds to stop booting after power on by pressing
+any key. When booting is stopped, the prompt sign <tt class="docutils literal"><span class="pre">WMT</span> <span class="pre">#</span></tt> will be shown
+on terminal screen.</p>
+<p>U-Boot is like a tiny operation system that has its own commands. Here it
+describes some important commands and parameters.</p>
+</div>
+</div>
+<div class="section" id="u-boot-parameters-example">
+<h2>4.3. U-Boot Parameters Example<a class="headerlink" href="#u-boot-parameters-example" title="Permalink to this headline">¶</a></h2>
+<p>Print online help:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">WMT</span> <span class="c"># help</span>
+</pre></div>
+</div>
+<p>Change display mode and resolution:</p>
+<ul>
+<li><p class="first">LVDS output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">WMT</span> <span class="c"># setenv wmt.display.param 2:0:24:800:480:60</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">HDMI output</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">WMT</span> <span class="c"># setenv wmt.display.param 4:6:1:1280:720:60</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Save changed parameters:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">WMT</span> <span class="c"># saveenv</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="setup-adb">
+<h2>4.4. Setup ADB<a class="headerlink" href="#setup-adb" title="Permalink to this headline">¶</a></h2>
+<p>The ADB is the debug tool for Android application development.</p>
+<ul>
+<li><p class="first">PC and VAB-600 must be in the same network domain</p>
+</li>
+<li><dl class="first docutils">
+<dt>Connect PC to VAB-600</dt>
+<dd><ul class="first last simple">
+<li>PC site: <tt class="docutils literal"><span class="pre">$</span> <span class="pre">./adb</span> <span class="pre">tcp</span></tt></li>
+<li>PC site: <tt class="docutils literal"><span class="pre">$</span> <span class="pre">./adb</span> <span class="pre">connect</span> <span class="pre">[VAB-600</span> <span class="pre">IP]</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Install application</dt>
+<dd><ul class="first last simple">
+<li>PC site: <tt class="docutils literal"><span class="pre">$</span> <span class="pre">./adb</span> <span class="pre">install</span> <span class="pre">[name].apk</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Test Shell</dt>
+<dd><ul class="first last simple">
+<li>PC site: <tt class="docutils literal"><span class="pre">$</span> <span class="pre">./adb</span> <span class="pre">shell</span> <span class="pre">ls</span></tt></li>
+<li>PC site: <tt class="docutils literal"><span class="pre">$</span> <span class="pre">./adb</span> <span class="pre">shell</span> <span class="pre">ls</span> <span class="pre">-l</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -55,9 +159,26 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Debug Message</a><ul>
+<li><a class="reference internal" href="#u-boot-parameters">4.1. U-Boot Parameters</a></li>
+<li><a class="reference internal" href="#u-boot-environment">4.2. U-Boot Environment</a><ul>
+<li><a class="reference internal" href="#enter-u-boot">4.2.1. Enter u-boot</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#u-boot-parameters-example">4.3. U-Boot Parameters Example</a></li>
+<li><a class="reference internal" href="#setup-adb">4.4. Setup ADB</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="functionality.html"
                         title="previous chapter">3. Functionality</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="environment.html"
+                        title="next chapter">5. Setting Up Environment</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/debug.txt"
@@ -86,6 +207,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="environment.html" title="5. Setting Up Environment"
+             >next</a> |</li>
         <li class="right" >
           <a href="functionality.html" title="3. Functionality"
              >previous</a> |</li>

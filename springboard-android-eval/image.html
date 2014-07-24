@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Introduction &mdash; Springboard Android Evaluation Guide 1.01.03 documentation</title>
+    <title>6. Build and Install VIA Image &mdash; Springboard Android Evaluation Guide 1.01.03 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Springboard Android Evaluation Guide 1.01.03 documentation" href="index.html" />
-    <link rel="next" title="2. Making System Booting Media" href="booting.html" />
-    <link rel="prev" title="VIA VAB-600 Springboard Android Evaluation Guide" href="index.html" /> 
+    <link rel="next" title="7. Smart ETK" href="smartetk.html" />
+    <link rel="prev" title="5. Setting Up Environment" href="environment.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="booting.html" title="2. Making System Booting Media"
+          <a href="smartetk.html" title="7. Smart ETK"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="VIA VAB-600 Springboard Android Evaluation Guide"
+          <a href="environment.html" title="5. Setting Up Environment"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Springboard Android Evaluation Guide 1.01.03 documentation</a> &raquo;</li> 
       </ul>
@@ -49,23 +49,26 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="introduction">
-<span id="id1"></span><h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>1.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This Evaluation Guide provides a practical introduction for the VIA
-AndroidTM VAB-600 platform. The documentation mainly helps the user to
-understand the VAB-600 platform and it provides qualified Android
-firmware image for system product.</p>
+  <div class="section" id="build-and-install-via-image">
+<span id="image"></span><h1>6. Build and Install VIA Image<a class="headerlink" href="#build-and-install-via-image" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="build-kernel">
+<h2>6.1. Build Kernel<a class="headerlink" href="#build-kernel" title="Permalink to this headline">¶</a></h2>
+<p>The Android file system works based on Linux kernel:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd &lt;&lt; Work _DIR&gt;&gt;/kernel_3.0.8
+$ make Android_defconfig
+$ make clean
+$ make
+</pre></div>
 </div>
-<div class="section" id="package-content">
-<h2>1.2. Package Content<a class="headerlink" href="#package-content" title="Permalink to this headline">¶</a></h2>
-<p>This evaluation package includes two parts:</p>
-<ul class="simple">
-<li><strong>EVK</strong>: Includes the Android evaluation image and the tools.</li>
-<li><strong>Documents</strong>: Includes the evaluation guide (this document) and any other
-documents required for evaluation.</li>
-</ul>
+</div>
+<div class="section" id="build-u-boot">
+<h2>6.2. Build U-Boot<a class="headerlink" href="#build-u-boot" title="Permalink to this headline">¶</a></h2>
+<p>The u-boot will initiate basic hardware and load kernel into memory:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd &lt;&lt;Uboot_DIR&gt;&gt;/uboot.130522
+$ make wmt_config
+$ make
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -77,22 +80,22 @@ documents required for evaluation.</li>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1. Introduction</a><ul>
-<li><a class="reference internal" href="#overview">1.1. Overview</a></li>
-<li><a class="reference internal" href="#package-content">1.2. Package Content</a></li>
+<li><a class="reference internal" href="#">6. Build and Install VIA Image</a><ul>
+<li><a class="reference internal" href="#build-kernel">6.1. Build Kernel</a></li>
+<li><a class="reference internal" href="#build-u-boot">6.2. Build U-Boot</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">VIA VAB-600 Springboard Android Evaluation Guide</a></p>
+  <p class="topless"><a href="environment.html"
+                        title="previous chapter">5. Setting Up Environment</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="booting.html"
-                        title="next chapter">2. Making System Booting Media</a></p>
+  <p class="topless"><a href="smartetk.html"
+                        title="next chapter">7. Smart ETK</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/introduction.txt"
+    <li><a href="_sources/image.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -119,10 +122,10 @@ documents required for evaluation.</li>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="booting.html" title="2. Making System Booting Media"
+          <a href="smartetk.html" title="7. Smart ETK"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="VIA VAB-600 Springboard Android Evaluation Guide"
+          <a href="environment.html" title="5. Setting Up Environment"
              >previous</a> |</li>
         <li><a href="index.html">Springboard Android Evaluation Guide 1.01.03 documentation</a> &raquo;</li> 
       </ul>

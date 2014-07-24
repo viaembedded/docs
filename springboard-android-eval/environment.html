@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Introduction &mdash; Springboard Android Evaluation Guide 1.01.03 documentation</title>
+    <title>5. Setting Up Environment &mdash; Springboard Android Evaluation Guide 1.01.03 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Springboard Android Evaluation Guide 1.01.03 documentation" href="index.html" />
-    <link rel="next" title="2. Making System Booting Media" href="booting.html" />
-    <link rel="prev" title="VIA VAB-600 Springboard Android Evaluation Guide" href="index.html" /> 
+    <link rel="next" title="6. Build and Install VIA Image" href="image.html" />
+    <link rel="prev" title="4. Debug Message" href="debug.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="booting.html" title="2. Making System Booting Media"
+          <a href="image.html" title="6. Build and Install VIA Image"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="VIA VAB-600 Springboard Android Evaluation Guide"
+          <a href="debug.html" title="4. Debug Message"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Springboard Android Evaluation Guide 1.01.03 documentation</a> &raquo;</li> 
       </ul>
@@ -49,23 +49,44 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="introduction">
-<span id="id1"></span><h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>1.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This Evaluation Guide provides a practical introduction for the VIA
-AndroidTM VAB-600 platform. The documentation mainly helps the user to
-understand the VAB-600 platform and it provides qualified Android
-firmware image for system product.</p>
+  <div class="section" id="setting-up-environment">
+<span id="environment"></span><h1>5. Setting Up Environment<a class="headerlink" href="#setting-up-environment" title="Permalink to this headline">¶</a></h1>
+<p>The Android build system does not compile kernel on-fly. It only contains a
+prebuilt kernel binary which will be added to the target image. This
+approach may be good enough for the arm emulator target, but not suitable
+for VAB-600 platforms. The VAB-600 platforms have various hardware
+features. The kernel binary and its modules may need to be adjusted at
+compile time or runtime.</p>
+<p>This section will describe the process of how to setup build environment for
+Linux kernel source and Android Framework source. That is the ability to
+build kernel and modules by a predefined or customized configuration
+during the building process.</p>
+<div class="section" id="setting-development-environment">
+<h2>5.1. Setting Development Environment<a class="headerlink" href="#setting-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>Operating System: Ubuntu 12.04 LTE.</p>
+<p>Install tool chain.</p>
+<ol class="arabic simple">
+<li>Unpack arm_201103_gcc4.5.2.tgz to &lt;TOOLPATH&gt;</li>
+<li>Add path &#8220;&lt;TOOLPATH&gt;/arm_201103_gcc4.5.2/mybin&#8221; in environment setting</li>
+</ol>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre>~$ mkdir tools
+~$ tar -zxf arm_201103_gcc4.5.2.tgz -C tools
+~$ vi .bashrc
+add: export PATH=/home/xxx/tools/arm_201103_gcc4.5.2/mybin:$PATH
+save and exit
+reboot system
+</pre></div>
 </div>
-<div class="section" id="package-content">
-<h2>1.2. Package Content<a class="headerlink" href="#package-content" title="Permalink to this headline">¶</a></h2>
-<p>This evaluation package includes two parts:</p>
-<ul class="simple">
-<li><strong>EVK</strong>: Includes the Android evaluation image and the tools.</li>
-<li><strong>Documents</strong>: Includes the evaluation guide (this document) and any other
-documents required for evaluation.</li>
-</ul>
+</div>
+<div class="section" id="prepare-the-source-tree">
+<h2>5.2. Prepare the Source Tree<a class="headerlink" href="#prepare-the-source-tree" title="Permalink to this headline">¶</a></h2>
+<p>The Android BSP is packed with tgz file. Unpack sources to each directory.</p>
+<p>Unpack VAB-600 Android BSP source:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ tar -zxf kernel_3.0.8.tar.gz -C &lt;&lt;Work_DIR&gt;&gt;
+$ tar -zxf uboot.130522.tar.gz -C &lt;&lt; Work _DIR&gt;&gt;
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -77,22 +98,22 @@ documents required for evaluation.</li>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1. Introduction</a><ul>
-<li><a class="reference internal" href="#overview">1.1. Overview</a></li>
-<li><a class="reference internal" href="#package-content">1.2. Package Content</a></li>
+<li><a class="reference internal" href="#">5. Setting Up Environment</a><ul>
+<li><a class="reference internal" href="#setting-development-environment">5.1. Setting Development Environment</a></li>
+<li><a class="reference internal" href="#prepare-the-source-tree">5.2. Prepare the Source Tree</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">VIA VAB-600 Springboard Android Evaluation Guide</a></p>
+  <p class="topless"><a href="debug.html"
+                        title="previous chapter">4. Debug Message</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="booting.html"
-                        title="next chapter">2. Making System Booting Media</a></p>
+  <p class="topless"><a href="image.html"
+                        title="next chapter">6. Build and Install VIA Image</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/introduction.txt"
+    <li><a href="_sources/environment.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -119,10 +140,10 @@ documents required for evaluation.</li>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="booting.html" title="2. Making System Booting Media"
+          <a href="image.html" title="6. Build and Install VIA Image"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="VIA VAB-600 Springboard Android Evaluation Guide"
+          <a href="debug.html" title="4. Debug Message"
              >previous</a> |</li>
         <li><a href="index.html">Springboard Android Evaluation Guide 1.01.03 documentation</a> &raquo;</li> 
       </ul>
