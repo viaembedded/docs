@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Setup Building Environment &mdash; VAB-820 HMI Development Guide 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VAB-820 HMI Development Guide 1.0 documentation" href="index.html" />
+    <link rel="next" title="3. Building through LTIB" href="ltib.html" />
+    <link rel="prev" title="1. Introduction" href="introduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ltib.html" title="3. Building through LTIB"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="1. Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="setup-building-environment">
+<span id="buildenv"></span><h1>2. Setup Building Environment<a class="headerlink" href="#setup-building-environment" title="Permalink to this headline">¶</a></h1>
+<p>This chapter will guide you through setting up your developing environment.
+All instructions in this guide are for Ubuntu 10.04 (32Bit). Please install the
+Ubuntu to your PC/NB in advance.</p>
+<div class="section" id="configure-ubuntu">
+<h2>2.1. Configure Ubuntu<a class="headerlink" href="#configure-ubuntu" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="change-default-editor-optional">
+<h3>2.1.1. Change Default Editor (optional)<a class="headerlink" href="#change-default-editor-optional" title="Permalink to this headline">¶</a></h3>
+<p>The default editor is <tt class="docutils literal"><span class="pre">nano</span></tt>. To set <tt class="docutils literal"><span class="pre">vi</span></tt>, or another as the default editor use:</p>
+<div class="highlight-bash"><div class="highlight"><pre>user@ubuntu:~<span class="nv">$ </span>sudo update-alternatives --config editor
+There are 3 choices <span class="k">for </span>the alternative editor <span class="o">(</span>providing /usr/bin/editor<span class="o">)</span>.
+
+  Selection    Path               Priority   Status
+------------------------------------------------------------
+* 0            /bin/nano           40        auto mode
+  1            /bin/ed            -100       manual mode
+  2            /bin/nano           40        manual mode
+  3            /usr/bin/vim.tiny   10        manual mode
+
+Press enter to keep the current choice<span class="o">[</span>*<span class="o">]</span>, or <span class="nb">type </span>selection number: 3
+update-alternatives: using /usr/bin/vim.tiny to provide /usr/bin/editor
+<span class="o">(</span>editor<span class="o">)</span> in manual mode.
+</pre></div>
+</div>
+</div>
+<div class="section" id="sudoers">
+<h3>2.1.2. Sudoers<a class="headerlink" href="#sudoers" title="Permalink to this headline">¶</a></h3>
+<p>The sudoers file must be updated to allow the login account to run the rpm
+commands as root. The login for this example is <tt class="docutils literal"><span class="pre">user</span></tt>. Edit the sudoer’s file
+using the <tt class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">visudo</span></tt> and add the line after the comment <tt class="docutils literal"><span class="pre">#</span> <span class="pre">User</span> <span class="pre">alias</span>
+<span class="pre">specification</span></tt> as shown below. The first word <tt class="docutils literal"><span class="pre">%user</span></tt> will be the login name
+you are using. Save the changes when it is done:</p>
+<div class="highlight-bash"><div class="highlight"><pre>user@ubuntu:~<span class="nv">$ </span>sudo visudo
+...
+...
+<span class="c"># User alias specification</span>
+%user <span class="nv">ALL</span> <span class="o">=</span> NOPASSWD: /usr/bin/rpm, /opt/freescale/ltib/usr/bin/rpm
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-the-host-packages">
+<h3>2.1.3. Install the Host Packages<a class="headerlink" href="#install-the-host-packages" title="Permalink to this headline">¶</a></h3>
+<p>The following packages are installed to support a LTIB development
+environment and presented in a bash script that can be cut and pasted into
+your environment and execute:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install gettext libgtk2.0-dev rpm bison m4 libfreetype6-dev <span class="se">\</span>
+  libdbus-glib-1-dev liborbit2-dev intltool <span class="se">\</span>
+  ccache ncurses-dev zlib1g zlib1g-dev gcc g++ libtool <span class="se">\</span>
+  uuid-dev liblzo2-dev <span class="se">\</span>
+  tcl dpkg <span class="se">\</span>
+  texinfo texlive
+
+<span class="c"># The following recommended for Linux development.</span>
+<span class="c"># They are not required by LTIB.</span>
+
+sudo apt-get install gparted openssh-server <span class="se">\</span>
+  nfs-common nfs-kernel-server lintian <span class="se">\</span>
+  git-core git-doc git-email git-gui gitk <span class="se">\</span>
+  diffstat indent tofrodos fakeroot doxygen ubootmkimage <span class="se">\</span>
+  sendmail mailutils meld atftpd sharutils <span class="se">\</span>
+  manpages-dev manpages-posix manpages-posix-dev linuxdoc <span class="se">\</span>
+  vnc4server xvnc4viewer
+</pre></div>
+</div>
+</div>
+<div class="section" id="change-the-default-shell">
+<h3>2.1.4. Change the Default Shell<a class="headerlink" href="#change-the-default-shell" title="Permalink to this headline">¶</a></h3>
+<p>The Ubuntu default shell is dash. To change the default shell to bash, select
+<tt class="docutils literal"><span class="pre">&lt;No&gt;</span></tt> and exit. This will remove the dash and use bash:</p>
+<div class="highlight-bash"><div class="highlight"><pre>user@ubuntu: <span class="nv">$ </span>sudo dpkg-reconfigure dash
+</pre></div>
+</div>
+<p>Here are the results before and after the reconfiguration:</p>
+<div class="highlight-bash"><div class="highlight"><pre>user@ubuntu:~<span class="nv">$ </span>ls -l /bin/sh
+lrwxrwxrwx 1 root root 4 2013-05-16 10:32 /bin/sh -&gt; dash
+user@ubuntu:~<span class="nv">$ </span>sudo dpkg-reconfigure dash
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for </span>user:
+Removing <span class="s1">&#39;diversion of /bin/sh to /bin/sh.distrib by dash&#39;</span>
+Adding <span class="s1">&#39;diversion of /bin/sh to /bin/sh.distrib by bash&#39;</span>
+Removing <span class="s1">&#39;diversion of /usr/share/man/man1/sh.1.gz to</span>
+<span class="s1">/usr/share/man/man1/sh.distrib.1.gz by dash&#39;</span>
+Adding <span class="s1">&#39;diversion of /usr/share/man/man1/sh.1.gz to</span>
+<span class="s1">/usr/share/man/man1/sh.distrib.1.gz by bash&#39;</span>
+user@ubuntu:~<span class="nv">$ </span>ls -l /bin/sh
+lrwxrwxrwx 1 root root 4 2013-05-16 10:32 /bin/sh -&gt; bash
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-ccache-optional">
+<h3>2.1.5. Configure Ccache (optional)<a class="headerlink" href="#configure-ccache-optional" title="Permalink to this headline">¶</a></h3>
+<p>LTIB uses ccache to speed up the compilation. The cache that LTIB uses exists
+as a .ccache directory in each user&#8217;s home directory. The path for this example
+is &#8220;/home/user/.ccache&#8221;. This directory can grow to be quite large if no upper
+limit is set.</p>
+<p>The followings are the ccache commands to limit the size to 50 MB. The size
+may change as you see fit, clean the ccache and show the settings:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>1<span class="o">]</span> user@ubuntu:~<span class="nv">$ </span>ccache -M 50M
+Set cache size limit to 50.0 Mbytes
+<span class="o">[</span>2<span class="o">]</span> user@ubuntu:~<span class="nv">$ </span>ccache -c
+Cleaned cache
+<span class="o">[</span>3<span class="o">]</span> user@ubuntu:~<span class="nv">$ </span>ccache -s
+cache directory                      /home/user/.ccache
+cache hit <span class="o">(</span>direct<span class="o">)</span>                      0
+cache hit <span class="o">(</span>preprocessed<span class="o">)</span>                0
+cache miss                              0
+files in cache                          0
+cache size                              0 Kbytes
+max cache size                       50.0 Mbytes
+</pre></div>
+</div>
+</div>
+<div class="section" id="change-permissions-on-opt">
+<h3>2.1.6. Change Permissions on /opt<a class="headerlink" href="#change-permissions-on-opt" title="Permalink to this headline">¶</a></h3>
+<p>The LTIB installation process creates the directory “/opt/freescale”. By default
+the “/opt” directory has root privileges which are changed to allow a regular
+user to access:</p>
+<div class="highlight-bash"><div class="highlight"><pre>user@ubuntu:~/<span class="nv">$ </span>ls -ld /opt
+drwxr-xr-x 2 root root 4096 2013-05-16 10:47 /opt
+user@ubuntu:~/<span class="nv">$ </span>sudo chmod 777 /opt
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for </span>user:
+user@ubuntu:~/<span class="nv">$ </span>ls -ld /opt
+drwxrwxrwx 2 root root 4096 2013-05-16 10:47 /opt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="install-ltib">
+<h2>2.2. Install LTIB<a class="headerlink" href="#install-ltib" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>LTIB</strong> (Linux Target Image Builder) is a tool that can be used to develop
+and deploy BSPs (Board Support Packages) for a number of embedded target
+platforms including PowerPC, ARM.</p>
+<p>The AMOS-820 Solution Pack is developed based on Freescale released
+i.MX6x BSP <tt class="docutils literal"><span class="pre">L3.0.35_4.1.0_130816_source.tar.gz</span></tt>. Users can get it from
+Freescale official web site.</p>
+<div class="section" id="extracting-bundle-and-installing-ltib">
+<h3>2.2.1. Extracting Bundle and Installing LTIB<a class="headerlink" href="#extracting-bundle-and-installing-ltib" title="Permalink to this headline">¶</a></h3>
+<p>This section describes the steps to extract the content from the source bundle
+and to install LTIB.</p>
+<div class="section" id="download-i-mx6-linux-source-bundle">
+<h4>2.2.1.1. Download i.MX6 Linux Source Bundle<a class="headerlink" href="#download-i-mx6-linux-source-bundle" title="Permalink to this headline">¶</a></h4>
+<p>The Linux source bundle can be downloaded from the <a class="reference external" href="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=i.MX6Q&amp;fpsp=1&amp;tab=Design_Tools_Tab">Freescale software directory</a>.</p>
+<p>The Run-time Software section in Software &amp; Tools tab is shown in <a class="pageref" href="#figure-ltib">Figure  1</a>.</p>
+<div class="figure align-center" id="figure-ltib">
+<img alt="Source Code download link" src="_images/ltib.png" />
+<p class="caption">Figure 1: Source Code download link</p>
+</div>
+<p>Using Firefox, the default save location is in the Downloads folder that
+contains the file: <tt class="docutils literal"><span class="pre">L3.0.35_4.1.0_130816_source.tar.gz</span></tt>.</p>
+</div>
+<div class="section" id="user-install">
+<h4>2.2.1.2. User install<a class="headerlink" href="#user-install" title="Permalink to this headline">¶</a></h4>
+<p>All LTIB installation and execution should be done by a regular user instead of
+a root account.</p>
+<p>To accommodate running LTIB as a regular user and allow this process to
+perform privileged commands requiring root permissions that the sudoer’s file
+is modified (see section 2.1.2), and the permissions on the /opt directory are
+changed (see section 2.1.6).</p>
+</div>
+<div class="section" id="extract-content">
+<h4>2.2.1.3. Extract content<a class="headerlink" href="#extract-content" title="Permalink to this headline">¶</a></h4>
+<p>We assume that the file <tt class="docutils literal"><span class="pre">L3.0.35_4.1.0_130816_source.tar.gz</span></tt> is already in the
+<tt class="docutils literal"><span class="pre">/home/user/imx6/</span></tt> folder:</p>
+<div class="highlight-bash"><div class="highlight"><pre>user@ubuntu:~/imx6/$ ls -l
+total 1047352
+-rwxr-xr-x 1 user user 896737878 2013-04-09 16:37
+L3.0.35_4.1.0_130816_source.tar.gz
+
+user@ubuntu:~/imx6$ tar -zxf L3.0.35_4.1.0_130816_source.tar.gz
+user@ubuntu:~/imx6$ cd L3.0.35_4.1.0_130816_source/
+user@ubuntu:~/imx6/L3.0.35_4.1.0_130816_source$ ls
+EULA install ltib.tar.gz package_manifest.txt pkgs redboot_201003.zip tftp.zip
+
+user@ubuntu:~/imx6/L3.0.35_4.1.0_130816_source$ ./install
+
+You are about to install the LTIB (GNU/Linux Target Image Builder)
+Before installing LTIB, you must read and accept the EULA (End User
+License Agreement) which will be presented next.
+
+Do you want to continue ? Y|n
+Y
+- - - - - - - - - - - - -
+I have read and accept the EULA (yes|no):
+yes
+The LTIB files are extracted from a tar file which includes the
+prefix ltib. After installation you will find LTIB in:
+/home/user/imx6/L3.0.35_4.1.0_130816_source/ltib
+Where do you want to install LTIB ?
+(/home/user/imx6/L3.0.35_4.1.0_130816_source)
+/home/user/imx6/
+- - - - - - - - - - - - -
+Copying packages to ../ltib/pkgs
+Installation complete, your ltib installation has been placed in
+/home/user/imx6/ltib, to complete the installation:
+
+cd /home/user/imx6/ltib
+./ltib
+
+user@ubuntu:~/imx6/L3.0.35_4.1.0_130816_source$
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Setup Building Environment</a><ul>
+<li><a class="reference internal" href="#configure-ubuntu">2.1. Configure Ubuntu</a><ul>
+<li><a class="reference internal" href="#change-default-editor-optional">2.1.1. Change Default Editor (optional)</a></li>
+<li><a class="reference internal" href="#sudoers">2.1.2. Sudoers</a></li>
+<li><a class="reference internal" href="#install-the-host-packages">2.1.3. Install the Host Packages</a></li>
+<li><a class="reference internal" href="#change-the-default-shell">2.1.4. Change the Default Shell</a></li>
+<li><a class="reference internal" href="#configure-ccache-optional">2.1.5. Configure Ccache (optional)</a></li>
+<li><a class="reference internal" href="#change-permissions-on-opt">2.1.6. Change Permissions on /opt</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-ltib">2.2. Install LTIB</a><ul>
+<li><a class="reference internal" href="#extracting-bundle-and-installing-ltib">2.2.1. Extracting Bundle and Installing LTIB</a><ul>
+<li><a class="reference internal" href="#download-i-mx6-linux-source-bundle">2.2.1.1. Download i.MX6 Linux Source Bundle</a></li>
+<li><a class="reference internal" href="#user-install">2.2.1.2. User install</a></li>
+<li><a class="reference internal" href="#extract-content">2.2.1.3. Extract content</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">1. Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ltib.html"
+                        title="next chapter">3. Building through LTIB</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/buildenv.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ltib.html" title="3. Building through LTIB"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="1. Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2013 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

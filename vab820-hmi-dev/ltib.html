@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Building through LTIB &mdash; VAB-820 HMI Development Guide 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VAB-820 HMI Development Guide 1.0 documentation" href="index.html" />
+    <link rel="prev" title="2. Setup Building Environment" href="buildenv.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="buildenv.html" title="2. Setup Building Environment"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="building-through-ltib">
+<span id="ltib"></span><h1>3. Building through LTIB<a class="headerlink" href="#building-through-ltib" title="Permalink to this headline">¶</a></h1>
+<p>Once the building environment has been configured as described in Chapter 2,
+the environment and host are now ready to run the LTIB. This chapter will
+guide through building the BSP via LTIB.</p>
+<div class="section" id="getting-imx6x-based-board-packages">
+<h2>3.1. Getting iMX6x Based Board Packages<a class="headerlink" href="#getting-imx6x-based-board-packages" title="Permalink to this headline">¶</a></h2>
+<p>To get iMX6 based board packages through LTIB when you first use the LTIB.
+Those packages include iMX6 hardware definitions, drivers and many more:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/imx6/ltib$ ./ltib –c
+</pre></div>
+</div>
+<p>Depending on the performance of user’s computer, this process will take time
+to run. It may take several minutes to an hour. Once the LTIB environment is
+configured, a menu will be available for selecting configurations.</p>
+<p>The first menu is shown in <a class="pageref" href="#figure-ltib-platform">Fuigure  1</a>. Use the arrow keys to move the cursor
+between <strong>&lt;Select&gt;</strong> and <strong>&lt;Exit&gt;</strong>.</p>
+<p>Choose <strong>&lt;Select&gt;</strong> then press enter key to open the selected item.</p>
+<div class="figure align-center" id="figure-ltib-platform">
+<img alt="Target Image Builder Platform Selection" src="_images/ltib_platform.png" />
+<p class="caption">Figure 1: Target Image Builder Platform Selection</p>
+</div>
+<p>In <a class="pageref" href="#figure-ltib-selection">Figure  2</a>, it shows that <strong>&lt;Yes&gt;</strong> has been selected. Press enter key to save.</p>
+<div class="figure align-center" id="figure-ltib-selection">
+<img alt="Save Platform Image Selection" src="_images/ltib_selection.png" />
+<p class="caption">Figure 2: Save Platform Image Selection</p>
+</div>
+<p>The next menu is shown in <a class="pageref" href="#figure-imx-platforms">Figure  3</a> and provides the target platform to be
+selected. Using the cursor arrow down key, move the cursor over the
+<strong>Selection (imx25_3stack)</strong> and press enter. The submenu of the selected
+platform is shown in <a class="pageref" href="#figure-imx6q-platform">Figure  4</a>.</p>
+<div class="figure align-center" id="figure-imx-platforms">
+<img alt="i.MX Development Platforms" src="_images/imx_platforms.png" />
+<p class="caption">Figure 3: i.MX Development Platforms</p>
+</div>
+<p>In submenu selection, select the <strong>imx6q</strong> platform by moving the cursor over
+the imx6q as shown in <a class="pageref" href="#figure-imx6q-platform">Figure  4</a>, then press enter key.</p>
+<div class="figure align-center" id="figure-imx6q-platform">
+<img alt="imx6q Platform Selection" src="_images/imx6q_platform.png" />
+<p class="caption">Figure 4: imx6q Platform Selection</p>
+</div>
+<p>Move the cursor to <strong>&lt;Exit&gt;</strong> then press enter key. The save screen is presented
+as shown in <a class="pageref" href="#figure-platform-save">Figure  5</a>. Select <strong>&lt;Yes&gt;</strong> and press enter key to go to the option.</p>
+<div class="figure align-center" id="figure-platform-save">
+<img alt="Platform Save" src="_images/platform_save.png" />
+<p class="caption">Figure 5: Platform Save</p>
+</div>
+<p>The imx6q Based Boards menu is now presented as shown in <a class="pageref" href="#figure-boards-selection">Figure  6</a>. The u-
+Boot board selection must be changed to mx6q_sabrelite. Move the cursor
+over <strong>board (mx6q_arm2)</strong> and press enter key.</p>
+<div class="figure align-center" id="figure-boards-selection">
+<img alt="iMX6q Based Boards" src="_images/boards_selection.png" />
+<p class="caption">Figure 6: iMX6q Based Boards</p>
+</div>
+<p>Then choose the <strong>mx6q_sabrelite</strong> as shown in <a class="pageref" href="#figure-sabrelite">Figure  7</a>.</p>
+<div class="figure align-center" id="figure-sabrelite">
+<img alt="iMX6q sabrelite" src="_images/sabrelite.png" />
+<p class="caption">Figure 7: iMX6q_sabrelite</p>
+</div>
+<p>Move the cursor over <strong>&lt;Exit&gt;</strong> and press enter key.
+In <a class="pageref" href="#figure-save-config">Figure  8</a>, it shows that <strong>&lt;Yes&gt;</strong> has been selected. Press enter key to save
+the configuration.</p>
+<div class="figure align-center" id="figure-save-config">
+<img alt="Save the configuration" src="_images/save_config.png" />
+<p class="caption">Figure 8: Save the configuration</p>
+</div>
+<p>The sudoer’s password is asked for the current user. Enter the password to
+begin the building process. The building process will take 1.5 hours to
+complete.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Building through LTIB</a><ul>
+<li><a class="reference internal" href="#getting-imx6x-based-board-packages">3.1. Getting iMX6x Based Board Packages</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="buildenv.html"
+                        title="previous chapter">2. Setup Building Environment</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/ltib.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="buildenv.html" title="2. Setup Building Environment"
+             >previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2013 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
