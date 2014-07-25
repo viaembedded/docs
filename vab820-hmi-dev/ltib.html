@@ -60,7 +60,7 @@ Those packages include iMX6 hardware definitions, drivers and many more:</p>
 <p>Depending on the performance of user’s computer, this process will take time
 to run. It may take several minutes to an hour. Once the LTIB environment is
 configured, a menu will be available for selecting configurations.</p>
-<p>The first menu is shown in <a class="pageref" href="#figure-ltib-platform">Fuigure  1</a>. Use the arrow keys to move the cursor
+<p>The first menu is shown in <a class="pageref" href="#figure-ltib-platform">Figure  1</a>. Use the arrow keys to move the cursor
 between <strong>&lt;Select&gt;</strong> and <strong>&lt;Exit&gt;</strong>.</p>
 <p>Choose <strong>&lt;Select&gt;</strong> then press enter key to open the selected item.</p>
 <div class="figure align-center" id="figure-ltib-platform">
@@ -115,6 +115,194 @@ the configuration.</p>
 begin the building process. The building process will take 1.5 hours to
 complete.</p>
 </div>
+<div class="section" id="building-the-vab-820-solution-pack">
+<h2>3.2. Building the VAB-820 Solution Pack<a class="headerlink" href="#building-the-vab-820-solution-pack" title="Permalink to this headline">¶</a></h2>
+<p>Once the iMX6 basic packages have been obtained in your building platform
+as described in section 3.1, this section will guide you through adding or
+replacing the modification source files as well as building Solution Pack in
+order to make u-boot, kernel workable on VAB-820.</p>
+<div class="section" id="add-vab-820-patches-to-ltib">
+<h3>3.2.1. Add VAB-820 patches to LTIB<a class="headerlink" href="#add-vab-820-patches-to-ltib" title="Permalink to this headline">¶</a></h3>
+<p>Since there are several H/W definitions that are different from original iMX6
+source files. User has to add VAB-820 patches in the path below, in order to
+enable the VAB-820 I/O functions. The LTIB path for this example is
+<tt class="docutils literal"><span class="pre">/home/user/imx6/ltib</span></tt>, and the kernel source folder is <tt class="docutils literal"><span class="pre">rpm/BUILD/linux/</span></tt>
+under the LTIB path. You can find two patch files <tt class="docutils literal"><span class="pre">vab820-uboot.patch</span></tt> and
+<tt class="docutils literal"><span class="pre">vab820-kernel.patch</span></tt> at <tt class="docutils literal"><span class="pre">BSP/PatchFiles/</span></tt> folders.</p>
+<p><strong>Step 1</strong></p>
+<p>Open Terminal utility.</p>
+<p><strong>Step 2</strong></p>
+<p>Copy <tt class="docutils literal"><span class="pre">BSP/PatchFiles/vab820-kernel.patch</span></tt> to <tt class="docutils literal"><span class="pre">ltib/rpm/BUILD/linux/</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ cd BSP/PatchFiles/
+user@ubuntu:~/BSP/PatchFiles$ cp vab820-kernel.patch ~/imx6/ltib/rpm/BUILD/linux/
+</pre></div>
+</div>
+<p><strong>Step 3</strong></p>
+<p>Apply the <tt class="docutils literal"><span class="pre">vab820-kernel.patch</span></tt> to kernel source code.</p>
+<p><a class="reference external" href="mailto:user&#37;&#52;&#48;ubuntu">user<span>&#64;</span>ubuntu</a>:~/$ cd /home/user/imx6/ltib/rpm/BUILD/linux/
+<a class="reference external" href="mailto:user&#37;&#52;&#48;ubuntu">user<span>&#64;</span>ubuntu</a>:~/imx6/ltib/rpm/BUILD/linux$ patch -p1 &lt; vab820-kernel.patch</p>
+<p><strong>Step 4</strong></p>
+<p>Since LTIB will automatically remove all source files from <tt class="docutils literal"><span class="pre">ltib/rpm/BUILD/</span></tt>
+when it finishes building, except the <tt class="docutils literal"><span class="pre">linux/</span></tt> folder. You need to extract uboot
+package manually if you want to modify u-boot files. Run the following
+command to extract u-boot:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ cd /home/user/imx6/ltib/
+user@ubuntu:~/imx6/ltib$ ./ltib -m prep -p u-boot
+user@ubuntu:~/imx6/ltib$ ls rpm/BUILD/
+linux linux-3.0.35 u-boot-2009.08
+</pre></div>
+</div>
+<p>Then you will find <tt class="docutils literal"><span class="pre">u-boot-2009.08/</span></tt> folder under <tt class="docutils literal"><span class="pre">ltib/rpm/BUILD/</span></tt>.</p>
+<p><strong>Step 5</strong></p>
+<p>Copy <tt class="docutils literal"><span class="pre">BSP/PatchFiles/vab820-uboot.patch</span></tt> to <tt class="docutils literal"><span class="pre">ltib/rpm/BUILD/u-boot-2009.08/</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ cd BSP/PatchFiles/
+user@ubuntu:~/BSP/PatchFiles$ cp vab820-uboot.patch ~/imx6/ltib/rpm/BUILD/u-boot-2009.08/
+</pre></div>
+</div>
+<p><strong>Step 6</strong></p>
+<p>Apply the <tt class="docutils literal"><span class="pre">vab820-uboot.patch</span></tt> to u-boot source code:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ cd /home/user/imx6/ltib/rpm/BUILD/u-boot-2009.08/
+user@ubuntu:~/imx6/ltib/rpm/BUILD/u-boot-2009.08 $ patch -p1 &lt; vab820-uboot.patch
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-ltib-to-build">
+<h3>3.2.2. Run LTIB to build<a class="headerlink" href="#run-ltib-to-build" title="Permalink to this headline">¶</a></h3>
+<p>The following steps will guide you through building image after
+adding/replacing the VAB-820 modification files.</p>
+<p><strong>Step 1</strong></p>
+<p>Run LTIB:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ cd /home/user/imx6/ltib/
+user@ubuntu:~/imx6/ltib$ ./ltib -c
+</pre></div>
+</div>
+<p><strong>Step 2</strong></p>
+<p>LTIB menu will be shown on the screen.</p>
+<div class="figure align-center" id="figure-ltib-menu">
+<img alt="iMX6 Based Boards" src="_images/ltib-menu.png" />
+<p class="caption">Figure 9: iMX6 Based Boards</p>
+</div>
+<p><strong>Step 3</strong></p>
+<p>Select <strong>Configure the kernel</strong>.</p>
+<div class="figure align-center" id="figure-ltib-kernel-config">
+<img alt="Configure the kernel" src="_images/ltib-kernel-config.png" />
+<p class="caption">Figure 10: Configure the kernel</p>
+</div>
+<p><strong>Step 4</strong>
+Move the cursor over <strong>&lt;Exit&gt;</strong> and press enter key.</p>
+<p><strong>Step 5</strong></p>
+<p>Select <strong>&lt;Yes&gt;</strong> to save the configuration.</p>
+<div class="figure align-center" id="figure-ltib-save-kernel-config">
+<img alt="Save the configuration" src="_images/ltib-save-kernel-config.png" />
+<p class="caption">Figure 11: Save the configuration</p>
+</div>
+<p><strong>Step 6</strong></p>
+<p>Then the kernel configuration menu will be shown on the screen.
+Figure 14. Kernel configuration menu</p>
+<p><strong>Step 7</strong></p>
+<p>It is recommended to select at least the following options:</p>
+<div class="highlight-python"><div class="highlight"><pre>File systems -&gt; [*] FUSE (Filesystem in Userspace) support
+File systems -&gt; DOS/FAT/NT Filesystems -&gt; &lt;*&gt; NTFS file system support
+                                          &lt;*&gt; NTFS write support
+
+System type --&gt; Freescale MXC implementations --&gt; [*]PCI Express support
+
+/* support VNT9485 MiniPCIe module */
+Networking support -&gt; Wireless -&gt; &lt;*&gt; Generic IEEE 802.11 Networking Stack
+Device Drivers -&gt; Network device support -&gt; Wireless LAN -&gt; Atheros Wireless Cards -&gt; &lt;M&gt; Atheros 802.11n wireless cards support
+                                                                                      [*] Atheros ath9k PCI/PCIe bus support
+
+/* support 3G module */
+Bus support -&gt; &lt;*&gt; PCCard (PCMCIA/CardBus) support
+Device Drivers -&gt; USB support -&gt; &lt;*&gt; USB Serial Converter support -&gt; [*] USB Generic Serial Driver
+                                                                     &lt;*&gt; USB driver for GSM and CDMA modems
+Device Drivers -&gt; Network device support -&gt; &lt;*&gt; PPP (point-topoint protocol) support -&gt; [*] PPP multilink support
+                                                                                        &lt;*&gt; PPP support for async serial ports
+                                                                                        &lt;*&gt; PPP support for sync tty ports
+                                                                                        &lt;*&gt; PPP Deflate compression
+                                                                                        &lt;*&gt; PPP BSD-Compress compression
+</pre></div>
+</div>
+<p>These options in the kernel configuration are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">CONFIG_FUSE_FS</span></tt> (FUSE (Filesystem in Userspace) support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_NTFS_FS</span></tt> (NTFS file system support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_NTFS_RW</span></tt> (NTFS write support)</li>
+<li>? (PCI Express support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_MAC80211</span></tt> (Generic IEEE 802.11 Networking Stack)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_ATH9K</span></tt> (Atheros 802.11n wireless cards support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_ATH9K_PCI</span></tt> (Atheros ath9k PCI/PCIe bus support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_PCCARD</span></tt> (PCCard (PCMCIA/CardBus) support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_USB_SERIAL</span></tt> (USB Serial Converter support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_USB_SERIAL_GENERIC</span></tt> (USB Generic Serial Driver)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_USB_SERIAL_OPTION</span></tt> (USB driver for GSM and CDMA modems)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_PPP</span></tt> (PPP (point-topoint protocol) support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_PPP_MULTILINK</span></tt> (PPP multilink support)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_PPP_ASYNC</span></tt> (PPP support for async serial ports)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_PPP_SYNC_TTY</span></tt> (PPP support for sync tty ports)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_PPP_DEFLATE</span></tt> (PPP Deflate compression)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_PPP_BSDCOMP</span></tt> (PPP BSD-Compress compression)</li>
+</ul>
+<p><strong>Step 8</strong></p>
+<p>It is recommended to remove the following options:</p>
+<div class="highlight-python"><div class="highlight"><pre>Device Drivers --&gt; Input device support --&gt; [*] Keyboards --&gt; [ ] GPIO Buttons
+CPU Power Management --&gt; CPU Frequency scaling --&gt; [ ] CPU Frequency scaling
+</pre></div>
+</div>
+<ul class="simple">
+<li>? (GPIO Buttons)</li>
+<li><tt class="docutils literal"><span class="pre">CONFIG_CPU_FREQ</span></tt> (CPU Frequency scaling)</li>
+</ul>
+<p><strong>Step 9</strong></p>
+<p>Move the cursor over <strong>&lt;Exit&gt;</strong> and press enter key.</p>
+<p><strong>Step 10</strong>
+Select <strong>&lt;Yes&gt;</strong> to save new kernel configuration</p>
+<div class="figure align-center" id="figure-ltib-save-kernel-config2">
+<img alt="Save the configuration" src="_images/ltib-save-kernel-config2.png" />
+<p class="caption">Figure 12: Save the configuration</p>
+</div>
+<p>The sudoer’s password is asked for the current user. Enter the password to
+begin the building process. The building process will take 1.5 hours to
+complete.</p>
+<p>If the building process is successful, you can see the message on the screen.</p>
+<div class="figure align-center" id="figure-ltib-succesful-build">
+<img alt="Build successful" src="_images/ltib-successful-build.png" />
+<p class="caption">Figure 13: Build successful</p>
+</div>
+<p>There is u-boot.bin, uImage and root file system generated by LTIB. The
+location for this example can be found in the directory
+“/home/user/imx6/ltib/rootfs/” as shown in the following table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="31%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Binary</th>
+<th class="head">Path</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>u-boot.bin</td>
+<td>~/imx6/ltib/rootfs/boot</td>
+<td>U-Boot boot loader</td>
+</tr>
+<tr class="row-odd"><td>uImage</td>
+<td>~/imx6/ltib/rootfs/boot</td>
+<td>Kernel</td>
+</tr>
+<tr class="row-even"><td>rootfs</td>
+<td>~/imx6/ltib/rootfs</td>
+<td>Root file system: A folder which includes
+drivers, library, instruction, and configure
+files. All you have done in LTIB will be put here.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 
@@ -127,6 +315,11 @@ complete.</p>
   <ul>
 <li><a class="reference internal" href="#">3. Building through LTIB</a><ul>
 <li><a class="reference internal" href="#getting-imx6x-based-board-packages">3.1. Getting iMX6x Based Board Packages</a></li>
+<li><a class="reference internal" href="#building-the-vab-820-solution-pack">3.2. Building the VAB-820 Solution Pack</a><ul>
+<li><a class="reference internal" href="#add-vab-820-patches-to-ltib">3.2.1. Add VAB-820 patches to LTIB</a></li>
+<li><a class="reference internal" href="#run-ltib-to-build">3.2.2. Run LTIB to build</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
