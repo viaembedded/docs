@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. Appendix B. Touch Panel Calibration &mdash; VAB-820 HMI Development Guide 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VAB-820 HMI Development Guide 1.0 documentation" href="index.html" />
+    <link rel="prev" title="5. Appendix A. Making Ubuntu Demo Image" href="ubuntudemo.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ubuntudemo.html" title="5. Appendix A. Making Ubuntu Demo Image"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="appendix-b-touch-panel-calibration">
+<span id="touchpanel"></span><h1>6. Appendix B. Touch Panel Calibration<a class="headerlink" href="#appendix-b-touch-panel-calibration" title="Permalink to this headline">¶</a></h1>
+<p>The Touch panel type for this example is TP220C01 V0(AUO G220SVN01.0)</p>
+<p><strong>Step 1</strong></p>
+<p>Download Linux Driver package from the <a class="reference external" href="http://home.eeti.com.tw/drivers.html">EETI official web site</a>.</p>
+<p>Click &#8220;Yes, go to Touch Driver Download page&#8221; to get driver package.</p>
+<div class="figure align-center" id="figure-touch-download">
+<img alt="Touchscreen driver start" src="_images/touch_download.png" />
+<p class="caption">Figure 1: Touchscreen driver start</p>
+</div>
+<p><strong>Step 2</strong></p>
+<p>Click &#8220;Linux&#8221; then down <strong>ARM/MIPS “eGTouch_v2.5.3120.L-ma</strong>. The
+<tt class="docutils literal"><span class="pre">eGTouch_v2.5.3120.L-ma.zip</span></tt> will be downloaded to user’s local storage.</p>
+<div class="figure align-center" id="figure-touch-download2">
+<img alt="Touchscreen driver download" src="_images/touch_download2.png" />
+</div>
+<div class="figure align-center" id="figure-touch-download3">
+<img alt="Touchscreen driver download" src="_images/touch_download3.png" />
+</div>
+<p><strong>Step 3</strong></p>
+<p>Unzip <tt class="docutils literal"><span class="pre">eGTouch_v2.5.3120.L-ma.zip</span></tt>. A folder <tt class="docutils literal"><span class="pre">eGTouch_v2.5.3120.L-ma</span></tt> will
+be created:</p>
+<div class="highlight-python"><div class="highlight"><pre>$unzip eGTouch_v2.5.3120.L-ma.zip
+</pre></div>
+</div>
+<p><strong>Step 4</strong></p>
+<p>Before running install setup script, please plug-in the controller first. Then you
+could execute.</p>
+<p>Execute script file <tt class="docutils literal"><span class="pre">setup.sh</span></tt> to install driver automatically:</p>
+<div class="highlight-python"><div class="highlight"><pre>$sudo sh setup.sh
+</pre></div>
+</div>
+<p>If you want to remove remove the eGTouch driver later:</p>
+<div class="highlight-python"><div class="highlight"><pre>$sudo sh setup.sh uninstall
+</pre></div>
+</div>
+<p>For more detailed information, user can refer to the guide
+<tt class="docutils literal"><span class="pre">EETI_eGTouch_Linux_Programming_Guide_v2.5f.pdf</span></tt> under
+<tt class="docutils literal"><span class="pre">eGTouch_v2.5.3120.L-ma\Guide\</span></tt></p>
+<p><strong>Step 5</strong></p>
+<p>Execute eCalib to process calibration procedure.</p>
+<p>Please execute tools under root permissions:</p>
+<div class="highlight-python"><div class="highlight"><pre>$sudo eCalib
+</pre></div>
+</div>
+<p>eCalib: The tool eCalib is a calibration tool with command line. Please type
+<tt class="docutils literal"><span class="pre">eCalib</span> <span class="pre">-h</span></tt> to see the usage content.</p>
+<p>User can select 4 or 9 point to calibrate.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ubuntudemo.html"
+                        title="previous chapter">5. Appendix A. Making Ubuntu Demo Image</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/touchpanel.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ubuntudemo.html" title="5. Appendix A. Making Ubuntu Demo Image"
+             >previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2013 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

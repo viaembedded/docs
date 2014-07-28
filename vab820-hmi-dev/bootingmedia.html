@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4. Making Linux System Booting Media &mdash; VAB-820 HMI Development Guide 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VAB-820 HMI Development Guide 1.0 documentation" href="index.html" />
+    <link rel="next" title="5. Appendix A. Making Ubuntu Demo Image" href="ubuntudemo.html" />
+    <link rel="prev" title="3. Building through LTIB" href="ltib.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ubuntudemo.html" title="5. Appendix A. Making Ubuntu Demo Image"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ltib.html" title="3. Building through LTIB"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="making-linux-system-booting-media">
+<span id="bootingmedia"></span><h1>4. Making Linux System Booting Media<a class="headerlink" href="#making-linux-system-booting-media" title="Permalink to this headline">¶</a></h1>
+<p>VAB-820 supports two booting ways. One is from Micro SD storage card and
+the other is SPI ROM. This section will guide you through making the Linux
+system boot media for VAB-820.</p>
+<div class="section" id="making-a-linux-system-micro-sd-storage-card">
+<h2>4.1. Making a Linux System Micro SD Storage Card<a class="headerlink" href="#making-a-linux-system-micro-sd-storage-card" title="Permalink to this headline">¶</a></h2>
+<p>When you get u-boot.bin, uImage and root file system from LTIB, you can refer
+to the following sections to make it booting.</p>
+<div class="section" id="requirements">
+<h3>4.1.1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Your computer</li>
+<li>Micro SD storage card. Recommended size is 8GB or at least 4GB Class 4.</li>
+<li>SD card reader.</li>
+</ul>
+</div>
+<div class="section" id="partition-micro-sd-storage-card">
+<h3>4.1.2. Partition Micro SD storage card<a class="headerlink" href="#partition-micro-sd-storage-card" title="Permalink to this headline">¶</a></h3>
+<p>The Micro SD storage card can be identified and auto mounted once inserted
+to the computer. You can check Micro SD card code name by <tt class="docutils literal"><span class="pre">df</span> <span class="pre">-h</span></tt>, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ df –h
+...
+Filesystem       Size      Used     Avail    Use%    Mounted on
+/dev/sdb1        7.2G      531M     6.3G     8%      /media/usb
+</pre></div>
+</div>
+<p>However, there are some instances that the Micro SD storage card could not
+identify or auto mount after inserting to the computer. In that case, you can try
+the other way to identify the Micro SD card:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ dmesg | grep -i removable
+[105.502517] sd 9:0:0:0 [sdb] Attached SCSI removable disk
+</pre></div>
+</div>
+<p>The Micro SD storage card code name for this example is identified as sdb.
+Umount Micro SD storage card before you partition it:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo umount /dev/sdb1
+</pre></div>
+</div>
+<p>The following steps describe how to partition the Micro SD storage card:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo fdisk /dev/sdb
+Type the following parameters (each followed by &lt;ENTER&gt;):
+u            [switch the unit to sectors instead of cylinders]
+d            [repeat this until no partition is reported by the &#39;p&#39; command]
+n            [create a new partition]
+p            [create a primary partition]
+1            [the first partition]
+16384        [the starting at the offset sector for this example is #16384,
+             the size is 8MB, which leaves enough space for the kernel,
+             the boot loader and its configuration data. User had to
+             create the starting depend on the space for kernel, boot
+             loader]
+&lt;enter&gt;      [using the default value will create a partition that spans
+             to the last sector of the medium]
+w            [write the partition table]
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Users have to create the partitions which leave enough space for the kernel, the boot loader and its
+configuration data made by users themselves.</p>
+</div>
+<p>Here, a new partition has been created on Micro SD storage. You have to
+apply the new partition table immediately, in order to format it:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo partprobe
+</pre></div>
+</div>
+<p>The file system format for this example is <strong>ext3</strong>, you can type the command to
+format the partition:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo mkfs.ext3 /dev/sdb1
+</pre></div>
+</div>
+</div>
+<div class="section" id="copy-images-to-micro-sd-storage-card">
+<h3>4.1.3. Copy images to Micro SD storage card<a class="headerlink" href="#copy-images-to-micro-sd-storage-card" title="Permalink to this headline">¶</a></h3>
+<p><strong>Step 1</strong></p>
+<p>Copy u-boot <tt class="docutils literal"><span class="pre">u-boot.bin</span></tt> to Micro SD storage card:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/imx6/ltib/rootfs/boot$ sudo dd if=u-boot.bin of=/dev/sdb bs=512 seek=2 skip=2
+</pre></div>
+</div>
+<p>The previous u-boot parameters will be stored in SPI ROM, which is identified
+as <tt class="docutils literal"><span class="pre">/dev/mtdblock0</span></tt>. If you want to clear the u-boot parameters to default,
+use the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo dd if=/dev/zero of=/dev/mtdblock0 bs=512 seek=1536 count=16
+</pre></div>
+</div>
+<p><strong>Step 2</strong></p>
+<p>Copy root file system to Micro SD storage card.</p>
+<p>You can build your own root file system from LTIB.</p>
+<p>The root file system for this example is located at <tt class="docutils literal"><span class="pre">/home/user/imx6/ltib/rootfs</span></tt>.
+A folder includes driver modules, Linux instructions and configurations which depend
+on user’s selection in LTIB. User can make it as a compression file (e.g. tar.gz or tar.bz2)
+or just copy all the files from <tt class="docutils literal"><span class="pre">/home/user/imx6/ltib/rootfs</span></tt> into Micro SD storage card:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/imx6/ltib/rootfs$ sudo tar -cjf rootfs.tar.bz2 *
+</pre></div>
+</div>
+<p>Mount SD card as a folder and decompress the <tt class="docutils literal"><span class="pre">rootfs.tar.bz2</span></tt> that you made
+to Micro SD storage card:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo mkdir /mnt/mountpoint
+user@ubuntu:~/$ sudo mount /dev/sdb1 /mnt/mountpoint
+user@ubuntu:~/$ cd /mnt/mountpoint
+user@ubuntu:/mnt/mountpoint$ sudo tar jxvf rootfs.tar.bz2 ./
+</pre></div>
+</div>
+<p><strong>Step 3</strong></p>
+<p>Copy the kernel <tt class="docutils literal"><span class="pre">uImage</span></tt> to Micro SD storage card. The uImage file should be
+renamed as <tt class="docutils literal"><span class="pre">uImage.vab820</span></tt> according to u-boot’s setting:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/imx6/ltib/rootfs/boot$ sudo cp uImage /mnt/mountpoint/boot/uImage.vab820
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-u-boot-parameters-for-micro-sd-card">
+<h3>4.1.4. Setup u-boot parameters for Micro SD card<a class="headerlink" href="#setup-u-boot-parameters-for-micro-sd-card" title="Permalink to this headline">¶</a></h3>
+<p>Setup the u-boot parameter at the first time we boot from Micro SD card. Set
+the J11 jumper setting to make it boot from Micro SD.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="65%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">J11 : Boot Selectpins</th>
+<th class="head">1-2</th>
+<th class="head">3-4</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SPI</td>
+<td>Open</td>
+<td>Short</td>
+</tr>
+<tr class="row-odd"><td>Micro-SD</td>
+<td>Short</td>
+<td>Open</td>
+</tr>
+</tbody>
+</table>
+<p>Connect the VAB-820 and host PC through J5 (COM2) of VAB-820. Run
+<tt class="docutils literal"><span class="pre">putty</span></tt> or another software terminal on host PC to receive the booting message.
+Power on the VAB-820 and press any key to stop the booting process as shown in <a class="pageref" href="#figure-boot-process">Figure  1</a>.</p>
+<div class="figure align-center" id="figure-boot-process">
+<img alt="SD u-boot parameter" src="_images/boot_process.png" />
+<p class="caption">Figure 1: SD u-boot parameter</p>
+</div>
+<p>To check the parameter in u-boot:</p>
+<div class="highlight-python"><div class="highlight"><pre>VAB-820 U-Boot &gt; pri
+bootcmd=run bootcmd_mmc
+...
+</pre></div>
+</div>
+<p>The default parameter shows that it loads kernel from eMMC (<tt class="docutils literal"><span class="pre">bootcmd=run</span> <span class="pre">bootcmd_mmc</span></tt>).
+You have to set the parameters like the example below.</p>
+<p>Then the VAB will load kernel from Micro SD card:</p>
+<div class="highlight-python"><div class="highlight"><pre>VAB-820 U-Boot &gt; setenv bootcmd &#39;run bootcmd_sd&#39;
+VAB-820 U-Boot &gt; saveenv
+VAB-820 U-Boot &gt; boot
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="making-a-linux-system-emmc">
+<h2>4.2. Making a Linux System eMMC<a class="headerlink" href="#making-a-linux-system-emmc" title="Permalink to this headline">¶</a></h2>
+<p>VAB-820 does not support booting from eMMC by default. If you want to
+make a Linux system on eMMC, there is only one choice to put u-boot on SPI
+ROM, and put kernel and rootfs on eMMC.</p>
+<div class="section" id="id1">
+<h3>4.2.1. Requirements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>A Linux System Micro SD storage card made in <a class="reference internal" href="#bootingmedia"><em>Making Linux System Booting Media</em></a> or <a class="reference internal" href="ubuntudemo.html#ubuntudemo"><em>Appendix A. Making Ubuntu Demo Image</em></a>.</li>
+<li>A mass storage includes: <tt class="docutils literal"><span class="pre">u-boot.bin</span></tt>, <tt class="docutils literal"><span class="pre">uImage</span></tt> and <tt class="docutils literal"><span class="pre">rootfs.tar.bz2</span></tt>.</li>
+</ul>
+<p>You can put those files in a USB pen or SD storage card.
+To copy images to SPI ROM and eMMC, you must first boot from Micro SD
+card on VAB-820.</p>
+</div>
+<div class="section" id="burn-u-boot-bin-into-spi-rom">
+<h3>4.2.2. Burn u-boot.bin into SPI ROM<a class="headerlink" href="#burn-u-boot-bin-into-spi-rom" title="Permalink to this headline">¶</a></h3>
+<p>Run <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">/dev</span></tt> to check the SPI ROM device, which is identified as
+<tt class="docutils literal"><span class="pre">/dev/mtdblock0</span></tt>.</p>
+<div class="figure align-center" id="figure-blockdevice">
+<img alt="Example block device listing" src="_images/blockdevice.png" />
+<p class="caption">Figure 2: Example block device listing with <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">/dev/</span></tt></p>
+</div>
+<p>Run the following command to burn <tt class="docutils literal"><span class="pre">u-boot.bin</span></tt> into SPI ROM:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo dd if=u-boot.bin of=/dev/mtdblock0 bs=512 seek=2 skip=2
+</pre></div>
+</div>
+<p>The previous u-boot parameters will be stored in SPI ROM. If you want to
+clear the u-boot parameters to default, use the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo dd if=/dev/zero of=/dev/mtdblock0 bs=512 seek=1536 count=16
+</pre></div>
+</div>
+</div>
+<div class="section" id="partition-emmc">
+<h3>4.2.3. Partition eMMC<a class="headerlink" href="#partition-emmc" title="Permalink to this headline">¶</a></h3>
+<p>eMMC can be identified when booting into VAB-820 from Micro SD card:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ ls -l | grep -i mmcblk
+...
+</pre></div>
+</div>
+<p>Sometimes the eMMC will auto mount if it is the first time of using it. Umount
+the eMMC before partition it. The eMMC code name for this example is
+identified as <strong>mmcblk0</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo umount /dev/mmcblk0*
+</pre></div>
+</div>
+<p>The following steps on how to partition the eMMC:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo fdisk /dev/mmcblk0
+Type the following parameters (each followed by &lt;ENTER&gt;):
+u            [switch the unit to sectors instead of cylinders]
+d            [repeat this until no partition is reported by the &#39;p&#39; command]
+n            [create a new partition]
+p            [create a primary partition]
+1            [the first partition]
+16384        [the starting at the offset sector for this example is #16384,
+             the size is 8MB, which leaves enough space for the kernel,
+             the boot loader and its configuration data. User had to
+             create the starting depend on the space for kernel, boot
+             loader]
+&lt;enter&gt;      [using the default value will create a partition that spans
+             to the last sector of the medium]
+w            [write the partition table]
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Users have to create the partitions which leave enough space for the kernel, the boot loader and its
+configuration data made by users themselves.</p>
+</div>
+<p>Here is an example; a new partition has been created on eMMC. You have to
+apply the new partition table immediately, in order to format it:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo partprobe
+</pre></div>
+</div>
+<p>Make sure to umount the eMMC before doing the steps below.</p>
+<p>You can type the command to format the partitions:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo mkfs.ext3 /dev/mmcblk0p1
+</pre></div>
+</div>
+</div>
+<div class="section" id="copy-images-to-emmc">
+<h3>4.2.4. Copy images to eMMC<a class="headerlink" href="#copy-images-to-emmc" title="Permalink to this headline">¶</a></h3>
+<p>User can put uImage/root file system to USB pen or Micro SD card. The
+storage for this example is an USB pen, and assumes the mount point is
+<tt class="docutils literal"><span class="pre">/media/usbpen</span></tt>.</p>
+<p><strong>Step 1</strong></p>
+<p>Copy root file system to eMMC.</p>
+<p>The root file system for this example is generated by LTIB. The location is
+<tt class="docutils literal"><span class="pre">/home/user/imx6/ltib/rootfs</span></tt>. A folder includes driver modules, Linux
+instructions and configurations which depend on user’s selection in LTIB.
+User can make it as a compression file (e.g. tar.gz or tar.bz2). The
+compression file for this example is <tt class="docutils literal"><span class="pre">rootfs.tar.bz2</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/imx6/ltib/rootfs$ sudo tar -cjf rootfs.tar.bz2 *
+</pre></div>
+</div>
+<p>The compression file path for this example is <tt class="docutils literal"><span class="pre">/media/usbpen/</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:~/$ sudo mount /dev/mmcblk0p1 /mnt/mountpoint
+user@ubuntu:~/$ cd /mnt/mountpoint
+user@ubuntu:/mnt/mountpoint$ sudo tar jxvf /media/usbpen/rootfs.tar.bz2 ./
+...
+user@ubuntu:/mnt/mountpoint$ sudo sync &amp;&amp; sync
+user@ubuntu:/mnt/mountpoint$ cd ~
+</pre></div>
+</div>
+<p><strong>Step 2</strong></p>
+<p>Copy kernel <tt class="docutils literal"><span class="pre">uImage</span></tt> to eMMC.</p>
+<p>The image path for this example is <tt class="docutils literal"><span class="pre">/media/usbpen/</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@ubuntu:/media/usbpen /$ sudo cp uImage /mnt/mountpoint/boot/uImage.vab820
+user@ubuntu:/media/usbpen/$ sudo umount /mnt/mountpoint
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">AMOS-820 HMI Solution Pack won’t provide Ubuntu root file system for evaluation actively. Users
+can get an Ubuntu demo image from Freescale official web site and follow up Freescale’s policy to
+evaluate. For more details, refer to <a class="reference internal" href="ubuntudemo.html#ubuntudemo"><em>Appendix A. Making Ubuntu Demo Image</em></a>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For the details on how to make a compression root file system for evaluation, refer to <a class="reference internal" href="ubuntudemo.html#ubuntudemo"><em>Appendix A. Making Ubuntu Demo Image</em></a>.</p>
+</div>
+</div>
+<div class="section" id="setup-u-boot-parameters-for-spi-rom">
+<h3>4.2.5. Setup u-boot parameters for SPI ROM<a class="headerlink" href="#setup-u-boot-parameters-for-spi-rom" title="Permalink to this headline">¶</a></h3>
+<p>Setup the u-boot parameter at the first time we boot from SPI ROM. Set the
+J11 jumper setting to make it boot from SPI ROM.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="65%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">J11 : Boot Selectpins</th>
+<th class="head">1-2</th>
+<th class="head">3-4</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SPI</td>
+<td>Open</td>
+<td>Short</td>
+</tr>
+<tr class="row-odd"><td>Micro-SD</td>
+<td>Short</td>
+<td>Open</td>
+</tr>
+</tbody>
+</table>
+<p>Connect the VAB-820 and host PC through J5 (COM2) of VAB-820. Run
+<tt class="docutils literal"><span class="pre">putty</span></tt> or another terminal emulator program on host PC to receive the booting message.
+Power on the VAB-820 and press any key to stop the booting process as shown in <a class="pageref" href="#figure-boot-process2">Figure  3</a>.</p>
+<div class="figure align-center" id="figure-boot-process2">
+<img alt="SPI u-boot parameter" src="_images/boot_process2.png" />
+<p class="caption">Figure 3: SPI u-boot parameter</p>
+</div>
+<p>To check the parameter in u-boot:</p>
+<div class="highlight-python"><div class="highlight"><pre>VAB-820 U-Boot &gt; pri
+bootcmd=run bootcmd_mmc
+...
+</pre></div>
+</div>
+<p>The default parameter is <tt class="docutils literal"><span class="pre">bootcmd=run</span> <span class="pre">bootcmd_mmc</span></tt>, which is to load
+kernel from eMMC. If it is not set like this, you have to set the parameters as
+the example shown below. Then the VAB will load kernel from eMMC:</p>
+<div class="highlight-python"><div class="highlight"><pre>VAB-820 U-Boot &gt; setenv bootcmd &#39;run bootcmd_mmc&#39;
+VAB-820 U-Boot &gt; saveenv
+VAB-820 U-Boot &gt; boot
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Making Linux System Booting Media</a><ul>
+<li><a class="reference internal" href="#making-a-linux-system-micro-sd-storage-card">4.1. Making a Linux System Micro SD Storage Card</a><ul>
+<li><a class="reference internal" href="#requirements">4.1.1. Requirements</a></li>
+<li><a class="reference internal" href="#partition-micro-sd-storage-card">4.1.2. Partition Micro SD storage card</a></li>
+<li><a class="reference internal" href="#copy-images-to-micro-sd-storage-card">4.1.3. Copy images to Micro SD storage card</a></li>
+<li><a class="reference internal" href="#setup-u-boot-parameters-for-micro-sd-card">4.1.4. Setup u-boot parameters for Micro SD card</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-a-linux-system-emmc">4.2. Making a Linux System eMMC</a><ul>
+<li><a class="reference internal" href="#id1">4.2.1. Requirements</a></li>
+<li><a class="reference internal" href="#burn-u-boot-bin-into-spi-rom">4.2.2. Burn u-boot.bin into SPI ROM</a></li>
+<li><a class="reference internal" href="#partition-emmc">4.2.3. Partition eMMC</a></li>
+<li><a class="reference internal" href="#copy-images-to-emmc">4.2.4. Copy images to eMMC</a></li>
+<li><a class="reference internal" href="#setup-u-boot-parameters-for-spi-rom">4.2.5. Setup u-boot parameters for SPI ROM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ltib.html"
+                        title="previous chapter">3. Building through LTIB</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ubuntudemo.html"
+                        title="next chapter">5. Appendix A. Making Ubuntu Demo Image</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/bootingmedia.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ubuntudemo.html" title="5. Appendix A. Making Ubuntu Demo Image"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ltib.html" title="3. Building through LTIB"
+             >previous</a> |</li>
+        <li><a href="index.html">VAB-820 HMI Development Guide 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2013 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
