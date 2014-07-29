@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Setup Environment &mdash; VAB-600 Springboard Linux Development Guide 1.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VAB-600 Springboard Linux Development Guide 1.4 documentation" href="index.html" />
+    <link rel="next" title="3. Building BSP" href="bsp.html" />
+    <link rel="prev" title="1. Introduction" href="introduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="bsp.html" title="3. Building BSP"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="1. Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="setup-environment">
+<span id="setupenv"></span><h1>2. Setup Environment<a class="headerlink" href="#setup-environment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="system-requirement">
+<h2>2.1. System requirement<a class="headerlink" href="#system-requirement" title="Permalink to this headline">¶</a></h2>
+<p><strong>Host PC</strong></p>
+<p>SD Card reader: SDHC compliant</p>
+<p>Operation System: Ubuntu 10.04 x64 version</p>
+<p><strong>Target board</strong></p>
+<p>VAB-600 platform (with 4G EMMC)</p>
+<p>SD Card: 4GB SDHC (at least). VAB-600 now supports up to class 6 SDHC.</p>
+</div>
+<div class="section" id="setup-cross-compiling-environment">
+<h2>2.2. Setup cross-compiling environment<a class="headerlink" href="#setup-cross-compiling-environment" title="Permalink to this headline">¶</a></h2>
+<p>In the following command examples <tt class="docutils literal"><span class="pre">#</span></tt> denotes the system shell prompt,
+do not include that in the commands given.</p>
+<p><strong>Get root permission</strong></p>
+<p>If you are not login as a root, use <tt class="docutils literal"><span class="pre">su</span></tt> command to get the root permission.</p>
+<p><strong>Setup the Tool Chain</strong></p>
+<p>Please reference 4.2.1 to connect to network. Then perform the packages
+update:</p>
+<div class="highlight-python"><div class="highlight"><pre>apt-get update
+</pre></div>
+</div>
+<p>Install the build essential packages:</p>
+<div class="highlight-python"><div class="highlight"><pre>apt-get install git-core gnupg flex bison gperf build-essential \
+        zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
+        x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev \
+        libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown \
+        libxml2-utils xsltproc
+</pre></div>
+</div>
+<p>Install the uboot mkimage tool:</p>
+<div class="highlight-python"><div class="highlight"><pre>apt-get install uboot-mkimage
+</pre></div>
+</div>
+<p>Confirm if the GNU C library version is 2.11 or newer:</p>
+<div class="highlight-python"><div class="highlight"><pre># ldd -version
+ldd (Ubuntu EGLIBC 2.1.11-0ubuntu7.11) 2.11.1
+Copyright (C) 2009 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Written by Roland McGrath and Ulrich Drepper.
+</pre></div>
+</div>
+<p>Unzip the Tool Chain to <tt class="docutils literal"><span class="pre">/usr/local/arm/</span></tt> (If your system doesn’t exist this
+folder previously, you must create manually with <tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">/usr/local/arm</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre>tar -zxvf arm_201103_gcc4.5.2.tgz -C /usr/local/arm/
+</pre></div>
+</div>
+<p>As <a class="pageref" href="#figure-toolchain">Figure  1</a> shows, the cross compiler is located at <tt class="docutils literal"><span class="pre">/usr/local/arm/arm_201103_gcc4.5.2/</span></tt>.</p>
+<div class="figure align-center" id="figure-toolchain">
+<img alt="The Toolchain for VAB-600" src="_images/toolchain.png" />
+<p class="caption">Figure 1: The Toolchain for VAB-600</p>
+</div>
+<p>Export the Tool Chain to system PATH:</p>
+<div class="highlight-python"><div class="highlight"><pre>export PATH=/usr/local/arm/arm_201103_gcc4.5.2/mybin/:$PATH
+</pre></div>
+</div>
+<p>Next, alias the Tool Chain for best floats calculation:</p>
+<div class="highlight-python"><div class="highlight"><pre>alias arm_1103_le-as=&#39;arm_1103_le-as -mcpu=cortex-a9 -mfpu=neon -mfloatabi=softfp&#39;
+alias arm_1103_le-c++=&#39;arm_1103_le-c++ -mcpu=cortex-a9 -mfpu=neon -mfloatabi=softfp&#39;
+alias arm_1103_le-cpp=&#39;arm_1103_le-cpp -mcpu=cortex-a9 -mfpu=neon -mfloatabi=softfp&#39;
+alias arm_1103_le-g++=&#39;arm_1103_le-g++ -mcpu=cortex-a9 -mfpu=neon -mfloatabi=softfp&#39;
+alias arm_1103_le-gcc=&#39;arm_1103_le-gcc -mcpu=cortex-a9 -mfpu=neon -mfloatabi=softfp&#39;
+alias arm_1103_le-gcc-4.5.2=&#39;arm_1103_le-gcc-4.5.2 -mcpu=cortex-a9 -mfpu=neon -mfloat-abi=softfp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Setup Environment</a><ul>
+<li><a class="reference internal" href="#system-requirement">2.1. System requirement</a></li>
+<li><a class="reference internal" href="#setup-cross-compiling-environment">2.2. Setup cross-compiling environment</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">1. Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="bsp.html"
+                        title="next chapter">3. Building BSP</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/setupenv.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="bsp.html" title="3. Building BSP"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="1. Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2013 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

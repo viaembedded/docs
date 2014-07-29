@@ -1,0 +1,841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. Functionality &mdash; VAB-600 Springboard Linux Development Guide 1.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VAB-600 Springboard Linux Development Guide 1.4 documentation" href="index.html" />
+    <link rel="next" title="6. Debug Message" href="debug.html" />
+    <link rel="prev" title="4. Making System Booting Media" href="bootmedia.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="debug.html" title="6. Debug Message"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bootmedia.html" title="4. Making System Booting Media"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="functionality">
+<span id="id1"></span><h1>5. Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="light-lvds-panel-tp070c01">
+<span id="lvds"></span><h2>5.1. Light LVDS panel (TP070C01)<a class="headerlink" href="#light-lvds-panel-tp070c01" title="Permalink to this headline">¶</a></h2>
+<p><strong>Connection</strong></p>
+<p>Connect the LVDS panel to VAB-600 via VAB-600-D card.</p>
+<p><strong>U-Boot</strong></p>
+<p>Connect VAB-600 and host PC through COM port. Update uboot
+parameters as below:</p>
+<div class="highlight-python"><div class="highlight"><pre>setenv wmt.display.param 2:0:24:800:480:60
+setenv bootargs-common console=ttyS0,115200n8 console=tty0 init=/init
+saveenv
+reset
+</pre></div>
+</div>
+<p>800:480 is the LVDS panel resolution. Please replace it with the LVDS panel
+resolution that you use.</p>
+<p><strong>Xorg</strong></p>
+<p>Edit <tt class="docutils literal"><span class="pre">/etc/X11/xorg.conf</span></tt> in Debian to support LVDS panel display. Delete
+<tt class="docutils literal"><span class="pre">#</span></tt> to select the annotated timing for LVDS panel:</p>
+<div class="highlight-python"><div class="highlight"><pre># Modeline &quot;1440x900&quot; 106.50 1440 1528 1672 1904 900 903 909 934 -hsync +vsync
+# Modeline &quot;1920x1080&quot; 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync
+Modeline &quot;800x480&quot; 33.5 800 964 974 1063 480 490 500 523
+</pre></div>
+</div>
+<p>So does the display resolution for LVDS panel:</p>
+<div class="highlight-python"><div class="highlight"><pre>Section &quot;Screen&quot;
+  Identifier    &quot;Mali Screen&quot;
+  Device        &quot;Mali FBDEV&quot;
+  Monitor       &quot;Mali Monitor&quot;
+  DefaultDepth  16
+  SubSection &quot;Display&quot;
+    Depth 16
+    # Modes &quot;1024x768&quot; &quot;800x600&quot;
+    Modes &quot;800x480&quot;
+  EndSubSection
+EndSection
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Notice that to light LVDS panel, you have to modify both U-Boot and
+Xorg, lack of any step of them may probably cause the failure to display the
+LVDS panel.</p>
+</div>
+</div>
+<div class="section" id="light-ttl-panel-lw700at9901">
+<span id="ttl"></span><h2>5.2. Light TTL panel (LW700AT9901)<a class="headerlink" href="#light-ttl-panel-lw700at9901" title="Permalink to this headline">¶</a></h2>
+<p><strong>Connection</strong></p>
+<p>Connect the TTL panel to VAB-600 via VAB-600-C card.</p>
+<p><strong>U-Boot</strong></p>
+<p>Connect VAB-600 and host PC through COM port. Update uboot
+parameters as below:</p>
+<div class="highlight-python"><div class="highlight"><pre>setenv wmt.display.param 2:1:24:800:480:60
+setenv bootargs-common console=ttyS0,115200n8 console=tty0 init=/init
+saveenv
+reset
+</pre></div>
+</div>
+<p>800:480 is TTL panel resolution. Please replace it with the TTL panel
+resolution that you use.</p>
+<p><strong>Xorg</strong></p>
+<p>Edit <tt class="docutils literal"><span class="pre">/etc/X11/xorg.conf</span></tt> in Debian to support TTL panel display. Delete
+<tt class="docutils literal"><span class="pre">#</span></tt> to select the annotated timing for TTL panel:</p>
+<div class="highlight-python"><div class="highlight"><pre># Modeline &quot;1440x900&quot; 106.50 1440 1528 1672 1904 900 903 909 934 -hsync +vsync
+# Modeline &quot;1920x1080&quot; 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync
+Modeline &quot;800x480&quot; 33.5 800 964 974 1063 480 490 500 523
+</pre></div>
+</div>
+<p>So does the display resolution for TTL panel:</p>
+<div class="highlight-python"><div class="highlight"><pre>Section &quot;Screen&quot;
+  Identifier    &quot;Mali Screen&quot;
+  Device        &quot;Mali FBDEV&quot;
+  Monitor       &quot;Mali Monitor&quot;
+  DefaultDepth  16
+  SubSection &quot;Display&quot;
+    Depth 16
+    # Modes &quot;1024x768&quot; &quot;800x600&quot;
+    Modes &quot;800x480&quot;
+  EndSubSection
+EndSection
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Notice that to light TTL panel, you have to modify both U-Boot and Xorg,
+lack of any step of them may probably cause failure to display the TTL
+panel.</p>
+</div>
+</div>
+<div class="section" id="light-dual-channel-lvds-panel-auog220svn01-0">
+<h2>5.3. Light Dual Channel LVDS panel (AUOG220SVN01.0)<a class="headerlink" href="#light-dual-channel-lvds-panel-auog220svn01-0" title="Permalink to this headline">¶</a></h2>
+<p><strong>Connection</strong></p>
+<p>Connect the dual channel LVDS panel to VAB-600 via VAB-600-D card.</p>
+<p><strong>U-Boot</strong></p>
+<p>Connect VAB-600 and host PC through COM port. Update uboot
+parameters as below:</p>
+<div class="highlight-python"><div class="highlight"><pre>setenv wmt.display.param 2:0:24:1680:1050:60
+setenv bootargs-common console=ttyS0,115200n8 console=tty0 init=/init
+saveenv
+reset
+</pre></div>
+</div>
+<p>1680:1050 is dual channel LVDS panel resolution. Please replace it with
+the dual channel LVDS panel resolution that you use.</p>
+<p><strong>Xorg</strong></p>
+<p>Edit <tt class="docutils literal"><span class="pre">/etc/X11/xorg.conf</span></tt> in Debian to support dual channel LVDS panel
+display. Delete <tt class="docutils literal"><span class="pre">#</span></tt> to select the annotated timing for dual channel LVDS
+panel:</p>
+<div class="highlight-python"><div class="highlight"><pre># Modeline &quot;1920x1080_75&quot; 220.75 1920 2064 2264 2608 1080 1083 1088 1130 -hsync +vsync
+Modeline &quot;1680x1050&quot; 146.25 1680 1784 1960 2240 1050 1053 1059 1089 -hsync +vsync
+# Modeline &quot;640x480&quot; 23.75 640 664 720 800 480 483 487 500 -hsync+vsync
+</pre></div>
+</div>
+<p>So does the display resolution for dual channel LVDS panel:</p>
+<div class="highlight-python"><div class="highlight"><pre>Section &quot;Screen&quot;
+  Identifier   &quot;Mali Screen&quot;
+  Device       &quot;Mali FBDEV&quot;
+  Monitor      &quot;Mali Monitor&quot;
+  DefaultDepth 16
+  SubSection &quot;Display&quot;
+    Depth 16
+    # Modes &quot;1024x768&quot; &quot;800x600&quot;
+    Modes &quot;1680x1050&quot;
+  EndSubSection
+EndSection
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Notice that to light dual channel LVDS panel, you have to modify both UBoot
+and Xorg, lack of any step of them may probably cause failure to
+display the TTL panel.</p>
+</div>
+</div>
+<div class="section" id="light-hdmi-monitor">
+<h2>5.4. Light HDMI monitor<a class="headerlink" href="#light-hdmi-monitor" title="Permalink to this headline">¶</a></h2>
+<p><strong>U-Boot</strong></p>
+<p>Connect VAB-600 and host PC through COM port. Update uboot
+parameters as below:</p>
+<div class="highlight-python"><div class="highlight"><pre>setenv wmt.display.param 4:6:1:1920:1080:60
+setenv bootargs-common console=ttyS0,115200n8 console=tty0 init=/init
+saveenv
+reset
+</pre></div>
+</div>
+<p>1920:1080 is HDMI monitor resolution. Actually it will detect EDID
+information automatically and choose the maximum resolution, therefore
+the setting influences U-Boot logo resolution only.</p>
+<p><strong>Xorg</strong></p>
+<p>Edit <tt class="docutils literal"><span class="pre">/etc/X11/xorg.conf`</span> <span class="pre">in</span> <span class="pre">Debian</span> <span class="pre">to</span> <span class="pre">support</span> <span class="pre">HDMI</span> <span class="pre">monitor</span> <span class="pre">display.</span> <span class="pre">Add</span>
+<span class="pre">``#</span></tt> to annotate the timing for LDS panel:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Modeline &quot;1440x900&quot; 106.50 1440 1528 1672 1904 900 903 909 934 -hsync +vsync</span>
+<span class="c"># Modeline &quot;1920x1080&quot; 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync</span>
+<span class="c"># Modeline &quot;800x480&quot; 33.5 800 964 974 1063 480 490 500 523</span>
+</pre></div>
+</div>
+<p>So does the display resolution for HDMI:</p>
+<div class="highlight-python"><div class="highlight"><pre>Section &quot;Screen&quot;
+  Identifier   &quot;Mali Screen&quot;
+  Device       &quot;Mali FBDEV&quot;
+  Monitor      &quot;Mali Monitor&quot;
+  DefaultDepth 16
+  SubSection   &quot;Display&quot;
+    Depth 16
+    # Modes &quot;1024x768&quot; &quot;800x600&quot;
+    # Modes &quot;800x480&quot;
+  EndSubSection
+EndSection
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Notice that to light HDMI monitor normally, you have to modify both UBoot
+and Xorg, lack of any step of them may probably cause the failure to
+display the HDMI monitor</p>
+</div>
+</div>
+<div class="section" id="switch-hdmi-mode-by-xrandr-tool">
+<h2>5.5. Switch HDMI mode by xrandr tool<a class="headerlink" href="#switch-hdmi-mode-by-xrandr-tool" title="Permalink to this headline">¶</a></h2>
+<p>In order to switch Mode, we use xrandr command to switch the resolution
+and refresh rate of the monitor.</p>
+<p>For example, to list all the supporting modes, we usually run <tt class="docutils literal"><span class="pre">xrandr</span> <span class="pre">-q</span></tt> or
+<tt class="docutils literal"><span class="pre">xrandr</span> <span class="pre">--verbose</span></tt>.</p>
+<div class="figure align-center" id="figure-xrandr">
+<img alt="Example xrandr output" src="_images/xrandr.png" />
+<p class="caption">Figure 1: Example xradr output</p>
+</div>
+<p>To switch resolution and refresh rate, such as &#8220;<a class="reference external" href="mailto:800x600&#37;&#52;&#48;75">800x600<span>&#64;</span>75</a>&#8221;, we usually
+run:</p>
+<div class="highlight-python"><div class="highlight"><pre>xrandr --output DVI-I --mode 800x600 --rate 75
+</pre></div>
+</div>
+<p>The option <tt class="docutils literal"><span class="pre">--output</span> <span class="pre">DVI-I</span></tt> must be added and does not need to be changed
+for every resolution change xrandr command.</p>
+<p>Currently, we only support the display modes that are listed in the following
+table. <tt class="docutils literal"><span class="pre">xrandr</span> <span class="pre">-q</span></tt> command shows the combination/subset of the mode
+your display device support (from EDID) and the mode in the following
+table. Please do not set <tt class="docutils literal"><span class="pre">--mode</span></tt> outside of the result of <tt class="docutils literal"><span class="pre">xrandr</span> <span class="pre">-q</span></tt>, the <tt class="docutils literal"><span class="pre">--</span>
+<span class="pre">rate</span></tt> can only be followed by 60 or 75. If you can see refresh rate 59.9, just
+set it 60.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="24%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Resolution</th>
+<th class="head">Color Depth</th>
+<th class="head">60Hz Refresh</th>
+<th class="head">75Hz Refresh</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>640x480</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td>800x480</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>800x600</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td>1024x768</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td>1280x720</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>1280x768</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>1280x1024</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-odd"><td>1360x768</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>1400x1050</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>1440x900</td>
+<td>16/32bit</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr class="row-even"><td>1680x1050</td>
+<td>16bit</td>
+<td>✓</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>1920x1080</td>
+<td>16bit</td>
+<td>✓</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="change-color-depth-bpp">
+<h2>5.6. Change Color Depth/bpp.<a class="headerlink" href="#change-color-depth-bpp" title="Permalink to this headline">¶</a></h2>
+<p>Please open <tt class="docutils literal"><span class="pre">/etc/X11/xorg.conf</span></tt> and change DefaultDepth to 16 or 24 to
+change the Color Depth. You must restart the x-window, so the change can
+take effect.</p>
+<div class="figure align-center" id="figure-colordepth">
+<img alt="Color depth setting" src="_images/colordepth.png" />
+<p class="caption">Figure 2: Color depth setting</p>
+</div>
+</div>
+<div class="section" id="multimedia-local-playback">
+<h2>5.7. Multimedia local playback<a class="headerlink" href="#multimedia-local-playback" title="Permalink to this headline">¶</a></h2>
+<p>Currently we support MPEG1, MPEG2, MPEG4 (except MSMPEGv1/v2),
+WMV9/VC1, H264 HW acceleration. Play local multimedia files by the
+following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>gst-launch-0.10 playbin uri=file:/&lt;path-and-file-name&gt;
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-python"><div class="highlight"><pre>totem &lt;path-and-file-name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="audio-adjustment">
+<h2>5.8. Audio adjustment<a class="headerlink" href="#audio-adjustment" title="Permalink to this headline">¶</a></h2>
+<p>To modify the settings of audio, open a terminal and modulate alsamixer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">alsamixer</span>
+</pre></div>
+</div>
+<p>The following figure shows a fine-tuned result of alsamixer.</p>
+<div class="figure align-center" id="figure-alsamixer">
+<img alt="Alsamixer screenshot" src="_images/alsamixer1.png" />
+<p class="caption">Figure 3: Alsamixer screenshot</p>
+</div>
+<p>Click ← (left) or → (right) to choose the item to be modified. Press <tt class="docutils literal"><span class="pre">M</span></tt> to turn
+on or turn off an option (mute), and click ↓ (down) or ↑ (up) to subtract or add the
+value.</p>
+<p>To enable PCM audio volume control, <tt class="docutils literal"><span class="pre">asound.conf</span></tt> must be reloaded.</p>
+<p>To achieve this goal, install the necessary packages first:</p>
+<div class="highlight-python"><div class="highlight"><pre>apt-get install alsa-utils
+</pre></div>
+</div>
+<p>Then operate the playing action to initialize the configurations in
+<tt class="docutils literal"><span class="pre">asound.conf</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>speaker-test –Dsoftvolume –c2 -twav
+</pre></div>
+</div>
+<p>After it outputs the test music for several seconds, use <tt class="docutils literal"><span class="pre">CTRL+C</span></tt> to stop the
+examination. Next step is to open alsamixer again, check whether PCM
+audio volume control appears or not.</p>
+<div class="figure align-center" id="figure-alsamixer2">
+<img alt="Alsamixer check" src="_images/alsamixer2.png" />
+<p class="caption">Figure 4: Alsamixer check</p>
+</div>
+<p>The name of PCM audio volume control is <tt class="docutils literal"><span class="pre">PCM</span></tt>. Change its value to
+observe if the volume alters.</p>
+</div>
+<div class="section" id="gpio-control">
+<h2>5.9. GPIO control<a class="headerlink" href="#gpio-control" title="Permalink to this headline">¶</a></h2>
+<p>This section describes how to operate GPIO function. Please use
+<tt class="docutils literal"><span class="pre">devmem2</span></tt> utility to access GPIO, which was pre-installed in the file system
+image. If you need to change kernel configurations, please refer to
+<tt class="docutils literal"><span class="pre">VAB-600_Linux_defconfig</span></tt> in <tt class="docutils literal"><span class="pre">/BSP/Kernel_Source_Codes/</span></tt> to ensure the GPIO
+function.</p>
+<div class="section" id="gpio-hardware-design">
+<h3>5.9.1. GPIO hardware design<a class="headerlink" href="#gpio-hardware-design" title="Permalink to this headline">¶</a></h3>
+<p>The GPIO function was provided by CN9 &#8220;GPIO / SMBus Interface Pin Header&#8221;.
+They are mapped to GPIO20 ~ GPIO27. The corresponding pins in VAB-600 are
+listed in the following figures.</p>
+<div class="figure align-center" id="figure-gpio1">
+<img alt="GPIO header" src="_images/gpio1.png" />
+<p class="caption">Figure 5: GPIO header</p>
+</div>
+<div class="figure align-center" id="figure-gpio2">
+<img alt="GPIO pinout" src="_images/gpio2.png" />
+<p class="caption">Figure 6: GPIO pinout</p>
+</div>
+<div class="figure align-center" id="figure-gpio3">
+<img alt="GPIO circuit view" src="_images/gpio3.png" />
+<p class="caption">Figure 7: GPIO circuit view</p>
+</div>
+<p>You can connect your own device to the pins and operate it via the relative
+GPIO settings. To manage the particular GPIO, the homologous register
+values have to be changed.</p>
+</div>
+<div class="section" id="devmem2-utility">
+<h3>5.9.2. devmem2 utility<a class="headerlink" href="#devmem2-utility" title="Permalink to this headline">¶</a></h3>
+<p>This utility can also be installed in Linux official distribution.
+Use devmem2 utility to read/write GPIO registers:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">devmem2</span> <span class="p">[</span><span class="n">address</span><span class="p">]</span> <span class="p">[</span><span class="nb">type</span><span class="p">]</span> <span class="p">[</span><span class="n">data</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<div class="highlight-python"><div class="highlight"><pre>address : physical address of the register
+type : data type to be read/written, [b]yte, [h]alfword or [w]ord
+data : data to be written to the register
+</pre></div>
+</div>
+<div class="section" id="devmem2-utility-read-and-write">
+<h4>5.9.2.1. devmem2 utility read and write<a class="headerlink" href="#devmem2-utility-read-and-write" title="Permalink to this headline">¶</a></h4>
+<p>For example, if you want to read the register 0xd8110030 in byte format,
+you must type the command below:</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd8110030 b
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-devmem-read">
+<img alt="devmem2 read operation" src="_images/devmem_read.png" />
+<p class="caption">Figure 8: devmem2 read operation</p>
+</div>
+<p>Same for the writing operation, write 0xff value to the register 0xd81100b0
+in byte format with the coming order:</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd81100b0 b 0xff
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-devmem-write">
+<img alt="devmem2 write operation" src="_images/devmem_write.png" />
+<p class="caption">Figure 9: devmem2 write operation</p>
+</div>
+<p>For detailed descriptions of GPIO register values, please refer to <a class="reference internal" href="qa.html#qa"><em>Appendix A. Q&amp;A</em></a>.</p>
+</div>
+</div>
+<div class="section" id="test-gpio-input-and-output">
+<h3>5.9.3. Test GPIO input and output<a class="headerlink" href="#test-gpio-input-and-output" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="test-gpio-connection">
+<h4>5.9.3.1. Test GPIO connection<a class="headerlink" href="#test-gpio-connection" title="Permalink to this headline">¶</a></h4>
+<p>In this test, GPIO 20-23 are connected to GPIO 24-27. Once the state of
+GPIO 20–23 are changed, GPIO 24–27 also turn to be the same situation,
+and vice versa. In other words, this phenomenon means that the influence
+you do to one part may change another side.</p>
+<div class="figure align-center" id="figure-gpio-test">
+<img alt="GPIO testing" src="_images/gpio_test.png" />
+<p class="caption">Figure 10: GPIO testing</p>
+</div>
+<p>Besides, before everything starts, you had batter clean the relative
+registers:</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd81100b0 b 0x0
+devmem2 0xd81100b1 b 0x0
+devmem2 0xd81100f0 b 0x0
+devmem2 0xd81100f1 b 0x0
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-gpio-20-23-to-change-gpio-24-27">
+<h4>5.9.3.2. Set GPIO 20-23 to change GPIO 24-27<a class="headerlink" href="#set-gpio-20-23-to-change-gpio-24-27" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">The first step is to examine the value of GPIO 24-27 input data register
+value (read GPIO 24-27 input registers):</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd8110031 b
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-gpio-out1">
+<img alt="GPIO test output" src="_images/gpio_out1.png" />
+</div>
+<p>Obviously, the value should be 0x0.</p>
+</li>
+<li><p class="first">To begin the experiment, set the value of GPIO 20-23 output enable
+registers to be high state (write GPIO 20-23 output enable registers):</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd81100b0 b 0xf0
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-gpio-out2">
+<img alt="GPIO test output" src="_images/gpio_out2.png" />
+</div>
+</li>
+<li><p class="first">Then set the value of GPIO 20-23 output data registers also to be high
+state (write GPIO 20-23 output data registers):</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd81100f0 b 0xf0
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-gpio-out3">
+<img alt="GPIO test output" src="_images/gpio_out3.png" />
+</div>
+<p>Now GPIO 20-23 should output the high state, which changes the low state
+of GPIO 24-27 to be high state.</p>
+</li>
+<li><p class="first">Examine the value of GPIO 24-27 input data register value (Read GPIO 24-27 input Registers):</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd8110031 b
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-gpio-out4">
+<img alt="GPIO test output" src="_images/gpio_out4.png" />
+</div>
+<p>The value should be 0xF because of the influence of GPIO 20-23.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="set-gpio-24-27-to-change-gpio-20-23">
+<h4>5.9.3.3. Set GPIO 24-27 to change GPIO 20-23<a class="headerlink" href="#set-gpio-24-27-to-change-gpio-20-23" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">The first step is to examine the value of GPIO 20-23 input data register
+value (read GPIO 20-23 input registers):</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd8110030 b
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-gpio-out5">
+<img alt="GPIO test output" src="_images/gpio_out5.png" />
+</div>
+<p>Obviously, the value should be 0x0.</p>
+</li>
+<li><p class="first">To begin the experiment, set the value of GPIO 24-27 output enable
+registers to be high state (write GPIO 24-27 output enable registers):</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd81100b1 b 0x0f
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-gpio-out6">
+<img alt="GPIO test output" src="_images/gpio_out6.png" />
+</div>
+</li>
+<li><p class="first">Then set the value of GPIO 24-27 output data registers also to be high
+state (write GPIO 24-27 output data registers):</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd81100f1 b 0x0f
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-gpio-out7">
+<img alt="GPIO test output" src="_images/gpio_out7.png" />
+</div>
+<p>Now GPIO 24-27 should output the high state, which changes the low state
+of GPIO 20-23 to be high state.</p>
+</li>
+<li><p class="first">Examine the value of GPIO 20-23 input data register value (read GPIO 20-23 input
+registers):</p>
+<div class="highlight-python"><div class="highlight"><pre>devmem2 0xd811003b b
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-gpio-out8">
+<img alt="GPIO test output" src="_images/gpio_out8.png" />
+</div>
+<p>The value should be 0xF because of the influence of GPIO 24-27.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="external-rtc-control">
+<h2>5.10. External RTC control<a class="headerlink" href="#external-rtc-control" title="Permalink to this headline">¶</a></h2>
+<p>This section describes how to operate external RTC function. Please use
+i2c-tools utility to access external RTC, which was pre-installed in the file
+system image. If you need to change kernel configurations, please refer to
+<tt class="docutils literal"><span class="pre">VAB-600_Linux_defconfig</span></tt> in <tt class="docutils literal"><span class="pre">BSP/Kernel_Source_Codes/</span></tt> to ensure the
+external RTC function.</p>
+<div class="section" id="external-rtc-hardware-design">
+<h3>5.10.1. External RTC hardware design<a class="headerlink" href="#external-rtc-hardware-design" title="Permalink to this headline">¶</a></h3>
+<p>The external RTC IDT1337G was controlled by VAB-600 via I2C0 bus. The
+slave address of IDT1337G is 0x68 and it supports 16 timekeeper registers.
+The IDT1337G supports auto power-on control by using alarm2 and INTB
+pin.</p>
+</div>
+<div class="section" id="display-external-rtc-timekeeper-registers">
+<h3>5.10.2. Display external RTC timekeeper registers<a class="headerlink" href="#display-external-rtc-timekeeper-registers" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="figure-rtc1">
+<img alt="Dumping the RTC register values" src="_images/rtc1.png" />
+<p class="caption">Figure 19: Dumping the RTC register values</p>
+</div>
+</div>
+<div class="section" id="set-date-and-time-to-external-rtc">
+<h3>5.10.3. Set date and time to external RTC<a class="headerlink" href="#set-date-and-time-to-external-rtc" title="Permalink to this headline">¶</a></h3>
+<p>The following commands list all the possibilities to set
+the external RTC:</p>
+<div class="highlight-python"><div class="highlight"><pre>i2cset -f -y 0 0x68 0x0 0x$(date +&quot;%S&quot;) // seconds
+i2cset -f -y 0 0x68 0x1 0x$(date +&quot;%M&quot;) // minutes
+i2cset -f -y 0 0x68 0x2 0x$(date +&quot;%-k&quot;) // hours
+i2cset -f -y 0 0x68 0x3 0x$(date +&quot;%u&quot;) // day of week
+i2cset -f -y 0 0x68 0x4 0x$(date +&quot;%d&quot;) // date of month
+i2cset -f -y 0 0x68 0x5 0x$(date +&quot;%m&quot;) // month
+i2cset -f -y 0 0x68 0x6 0x$(date +&quot;%g&quot;) // year
+i2cset -f -y 0 0x68 0xb 0x0 // alarm2 minutes
+i2cset -f -y 0 0x68 0xc 0x0 // alarm2 hours
+i2cset -f -y 0 0x68 0xd 0x0 // alarm2 day or date
+i2cset -f -y 0 0x68 0xe 0x4 // disable alarm
+i2cset -f -y 0 0x68 0xf 0x0 // clear alarm status
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-auto-power-on-control-of-external-rtc">
+<h3>5.10.4. Test auto power-on control of external RTC<a class="headerlink" href="#test-auto-power-on-control-of-external-rtc" title="Permalink to this headline">¶</a></h3>
+<p>Configure alarm2 registers to enable auto power-on control.
+For example: set alarm each hour:</p>
+<div class="highlight-python"><div class="highlight"><pre>i2cset -f -y 0 0x68 0xb 0x0 // alarm2 minutes
+i2cset -f -y 0 0x68 0xc 0x80 // alarm2 hours
+i2cset -f -y 0 0x68 0xd 0x80 // alarm2 day or date
+i2cset -f -y 0 0x68 0xf 0x0 // clear alarm status
+i2cset -f -y 0 0x68 0xe 0x6 // enable alarm2
+</pre></div>
+</div>
+<p>The register values <tt class="docutils literal"><span class="pre">0x80</span></tt> indicate &#8220;don&#8217;t care.&#8221; Only when minutes match
+(<tt class="docutils literal"><span class="pre">register</span> <span class="pre">value(0x1)</span> <span class="pre">==</span> <span class="pre">value(0xb)</span></tt>), alarm2 will set, A2F flag is at logic 1
+and the INTB pin goes low.</p>
+<p>After configuration, you will see the register values like below:</p>
+<div class="figure align-center" id="figure-rtc2">
+<img alt="RTC set for auto power-on" src="_images/rtc2.png" />
+<p class="caption">Figure 20: RTC set for auto power-on</p>
+</div>
+<p>If system time is 10:30 a.m., then the system will auto boot on 11:00 a.m.,
+12:00 p.m., 1:00 p.m. and so on.</p>
+<p>After auto power-on, you will see the register values like below:</p>
+<div class="figure align-center" id="figure-rtc3">
+<img alt="RTC register values after auto power-on" src="_images/rtc3.png" />
+<p class="caption">Figure 21: RTC register values after auto power-on</p>
+</div>
+</div>
+<div class="section" id="disable-alarm2-and-clear-alarm2-status-of-external-rtc">
+<h3>5.10.5. Disable alarm2 and clear alarm2 status of external RTC<a class="headerlink" href="#disable-alarm2-and-clear-alarm2-status-of-external-rtc" title="Permalink to this headline">¶</a></h3>
+<p>Please remember to disable alarm2 and clear alarm2 status after booting
+the system every time. If you don’t disable alarm2 and alarm2 status isn’t
+clear, the system will boot right away after shutdown. If alarm2 status is
+clear but you don&#8217;t disable alarm2, the system will still boot on schedule
+even the system is running.</p>
+<p>Disable alarm and clear alarm status:</p>
+<div class="highlight-python"><div class="highlight"><pre>i2cset -f -y 0 0x68 0xe 0x4 // disable alarm
+i2cset -f -y 0 0x68 0xf 0x0 // clear alarm status
+</pre></div>
+</div>
+<p>In order to boot on schedule, please remember to clear alarm2 status and
+enable alarm2 before shutdown.</p>
+<p>Clear alarm status and enable alarm2:</p>
+<div class="highlight-python"><div class="highlight"><pre>i2cset -f -y 0 0x68 0xf 0x0 // clear alarm status
+i2cset -f -y 0 0x68 0xe 0x6 // enable alarm2
+</pre></div>
+</div>
+<p>When alarm2 status is not clear, if you enable alarm2 first without clearing
+alarm2 status then the system will auto boot after 5 seconds. In order to
+avoid this situation, you need to clear alarm2 status first, then enable
+alarm2.</p>
+</div>
+</div>
+<div class="section" id="watchdog-control">
+<h2>5.11. WatchDog control<a class="headerlink" href="#watchdog-control" title="Permalink to this headline">¶</a></h2>
+<p>This section describes how to operate watch dog function. Please use
+watch dog utility (wdt_app) to access watch dog, which was pre-installed in
+the file system image. If you need to change kernel configurations, please
+refer to <tt class="docutils literal"><span class="pre">VAB-600_Linux_defconfig</span></tt> in <tt class="docutils literal"><span class="pre">BSP/Kernel_Source_Codes/</span></tt> to
+ensure the watch dog function.</p>
+<div class="section" id="enable-the-watchdog">
+<h3>5.11.1. Enable the WatchDog<a class="headerlink" href="#enable-the-watchdog" title="Permalink to this headline">¶</a></h3>
+<p>First of all, the watch dog must be enabled to carry out its tasks:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">wdt_app</span> <span class="o">-</span><span class="n">et</span>
+</pre></div>
+</div>
+<p>Without enabling WatchDog, the operations that are relative to WatchDog
+will not take any effect.</p>
+<div class="figure align-center" id="figure-watchdog1">
+<img alt="WatchDog enable" src="_images/watchdog1.png" />
+<p class="caption">Figure 22: WatchDog enable</p>
+</div>
+</div>
+<div class="section" id="set-the-watchdog-timer">
+<h3>5.11.2. Set the WatchDog timer<a class="headerlink" href="#set-the-watchdog-timer" title="Permalink to this headline">¶</a></h3>
+<p>Fill the value of the WatchDog timer in this step, decide when the watch
+dog can perform its function to restart the system:</p>
+<div class="highlight-python"><div class="highlight"><pre>wdt_app –t${second}
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">${second}</span></tt> means the period counting in seconds to reboot your machine,
+which should be within 0 to 256.</p>
+<p>For example, you want the system to restart automatically in 180 seconds,
+the command format should look like the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>wdt_app –t180
+</pre></div>
+</div>
+<div class="figure align-center" id="figure-watchdog2">
+<img alt="WatchDog timer" src="_images/watchdog2.png" />
+<p class="caption">Figure 23: WatchDog timer</p>
+</div>
+<p>After 180 seconds, the machine will reboot by itself.</p>
+</div>
+<div class="section" id="get-the-watchdog-timer">
+<h3>5.11.3. Get the WatchDog timer<a class="headerlink" href="#get-the-watchdog-timer" title="Permalink to this headline">¶</a></h3>
+<p>Once you set the WatchDog timer, you may observe the value of the watch
+dog timer by this order:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">wdt_app</span> <span class="o">-</span><span class="n">tg</span>
+</pre></div>
+</div>
+<p>Its return value will show the number counting down in your watch dog,
+which indicates the remaining time before the system restarts.</p>
+<p>For instance, in the last step you just set the watch dog timer to 180
+seconds, you will see the value of the watch dog timer decreases.</p>
+<p>Moreover, to print the return value, add <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">$?</span></tt> to the input command</p>
+<div class="figure align-center" id="figure-watchdog3">
+<img alt="Get the WatchDog timer value" src="_images/watchdog3.png" />
+<p class="caption">Figure 24: Get the WatchDog timer value</p>
+</div>
+<p>This figure means that there are still 150 seconds left before the machine
+reboots.</p>
+</div>
+<div class="section" id="disable-the-watch-dog">
+<h3>5.11.4. Disable the watch dog<a class="headerlink" href="#disable-the-watch-dog" title="Permalink to this headline">¶</a></h3>
+<p>To stop the function of watch dog, you can disable watch dog through this
+command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">wdt_app</span> <span class="o">-</span><span class="n">dt</span>
+</pre></div>
+</div>
+<p>Therefore, watch dog won&#8217;t be active unless you enable watch dog again.</p>
+<div class="figure align-center" id="figure-watchdog4">
+<img alt="Disable WatchDog" src="_images/watchdog4.png" />
+<p class="caption">Figure 25: Disable WatchDog</p>
+</div>
+<p>Since the WatchDog is disabled, nothing will happen even though the timer
+counts down to zero.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Functionality</a><ul>
+<li><a class="reference internal" href="#light-lvds-panel-tp070c01">5.1. Light LVDS panel (TP070C01)</a></li>
+<li><a class="reference internal" href="#light-ttl-panel-lw700at9901">5.2. Light TTL panel (LW700AT9901)</a></li>
+<li><a class="reference internal" href="#light-dual-channel-lvds-panel-auog220svn01-0">5.3. Light Dual Channel LVDS panel (AUOG220SVN01.0)</a></li>
+<li><a class="reference internal" href="#light-hdmi-monitor">5.4. Light HDMI monitor</a></li>
+<li><a class="reference internal" href="#switch-hdmi-mode-by-xrandr-tool">5.5. Switch HDMI mode by xrandr tool</a></li>
+<li><a class="reference internal" href="#change-color-depth-bpp">5.6. Change Color Depth/bpp.</a></li>
+<li><a class="reference internal" href="#multimedia-local-playback">5.7. Multimedia local playback</a></li>
+<li><a class="reference internal" href="#audio-adjustment">5.8. Audio adjustment</a></li>
+<li><a class="reference internal" href="#gpio-control">5.9. GPIO control</a><ul>
+<li><a class="reference internal" href="#gpio-hardware-design">5.9.1. GPIO hardware design</a></li>
+<li><a class="reference internal" href="#devmem2-utility">5.9.2. devmem2 utility</a><ul>
+<li><a class="reference internal" href="#devmem2-utility-read-and-write">5.9.2.1. devmem2 utility read and write</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-gpio-input-and-output">5.9.3. Test GPIO input and output</a><ul>
+<li><a class="reference internal" href="#test-gpio-connection">5.9.3.1. Test GPIO connection</a></li>
+<li><a class="reference internal" href="#set-gpio-20-23-to-change-gpio-24-27">5.9.3.2. Set GPIO 20-23 to change GPIO 24-27</a></li>
+<li><a class="reference internal" href="#set-gpio-24-27-to-change-gpio-20-23">5.9.3.3. Set GPIO 24-27 to change GPIO 20-23</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-rtc-control">5.10. External RTC control</a><ul>
+<li><a class="reference internal" href="#external-rtc-hardware-design">5.10.1. External RTC hardware design</a></li>
+<li><a class="reference internal" href="#display-external-rtc-timekeeper-registers">5.10.2. Display external RTC timekeeper registers</a></li>
+<li><a class="reference internal" href="#set-date-and-time-to-external-rtc">5.10.3. Set date and time to external RTC</a></li>
+<li><a class="reference internal" href="#test-auto-power-on-control-of-external-rtc">5.10.4. Test auto power-on control of external RTC</a></li>
+<li><a class="reference internal" href="#disable-alarm2-and-clear-alarm2-status-of-external-rtc">5.10.5. Disable alarm2 and clear alarm2 status of external RTC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#watchdog-control">5.11. WatchDog control</a><ul>
+<li><a class="reference internal" href="#enable-the-watchdog">5.11.1. Enable the WatchDog</a></li>
+<li><a class="reference internal" href="#set-the-watchdog-timer">5.11.2. Set the WatchDog timer</a></li>
+<li><a class="reference internal" href="#get-the-watchdog-timer">5.11.3. Get the WatchDog timer</a></li>
+<li><a class="reference internal" href="#disable-the-watch-dog">5.11.4. Disable the watch dog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bootmedia.html"
+                        title="previous chapter">4. Making System Booting Media</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="debug.html"
+                        title="next chapter">6. Debug Message</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/functionality.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="debug.html" title="6. Debug Message"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bootmedia.html" title="4. Making System Booting Media"
+             >previous</a> |</li>
+        <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2013 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

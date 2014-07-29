@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Introduction &mdash; VAB-600 Springboard Linux Development Guide 1.4 documentation</title>
+    <title>8. Appendix B. Limitations &mdash; VAB-600 Springboard Linux Development Guide 1.4 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="VAB-600 Springboard Linux Development Guide 1.4 documentation" href="index.html" />
-    <link rel="next" title="2. Setup Environment" href="setupenv.html" />
-    <link rel="prev" title="Welcome to VAB-600 Springboard Linux Development Guide’s documentation!" href="index.html" /> 
+    <link rel="next" title="9. Appendix C. GPIO registers" href="gpioregs.html" />
+    <link rel="prev" title="7. Appendix A. Q&amp;A" href="qa.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="setupenv.html" title="2. Setup Environment"
+          <a href="gpioregs.html" title="9. Appendix C. GPIO registers"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to VAB-600 Springboard Linux Development Guide’s documentation!"
+          <a href="qa.html" title="7. Appendix A. Q&amp;A"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
       </ul>
@@ -49,26 +49,38 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="introduction">
-<span id="id1"></span><h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>1.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This document describes how to run Debian 7.0 OS on VIA VAB-600
-platform, and evaluates thin client functions.</p>
+  <div class="section" id="appendix-b-limitations">
+<span id="limitations"></span><h1>8. Appendix B. Limitations<a class="headerlink" href="#appendix-b-limitations" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><p class="first">On some special monitors, some modes may cause screen garbage
+and other display issue. This is probably due to the timing passed by Xorg
+that cannot work well with the monitor. In this case, please delete the &#8220;#&#8221;
+before the corresponding Modeline in section &#8220;Monitor&#8221; of file &#8220;xorg.conf&#8221;.
+For example, for mode &#8220;1680x1050&#8221;, we can enable its modeline:</p>
+<div class="highlight-python"><div class="highlight"><pre>Modeline &quot;1680x1050&quot; 146.25 1680 1784 1960 2240 1050 1053 10591089 -hsync +vsync
+</pre></div>
 </div>
-<div class="section" id="package-content">
-<h2>1.2. Package content<a class="headerlink" href="#package-content" title="Permalink to this headline">¶</a></h2>
-<p>The evaluation package includes:</p>
-<ol class="arabic simple">
-<li>Kernel source: <tt class="docutils literal"><span class="pre">BSP/Kernel_Source_Codes/VAB-600_Linux_BSP_Kernel_Source_0.03.tar.gz</span></tt> and <tt class="docutils literal"><span class="pre">BSP/Frame_Buffer_Driver/ANDROID_3.0.8_VE</span></tt></li>
-<li>Toolchain: <tt class="docutils literal"><span class="pre">BSP/arm_201103_gcc4.5.2.tgz</span></tt></li>
-<li>Kernel image: <tt class="docutils literal"><span class="pre">EVK/Kernel_Image/uzImage.bin</span></tt></li>
-<li>Graphics driver package: locates in <tt class="docutils literal"><span class="pre">EVK/BSP/Graphics_Driver</span></tt> folder</li>
-<li>Multimedia package: locates in <tt class="docutils literal"><span class="pre">EVK/BSP/Multimedia</span></tt> folder</li>
-<li>Other file system patches located at <tt class="docutils literal"><span class="pre">EVK/BSP/Others</span></tt></li>
-<li>Uboot update package: <tt class="docutils literal"><span class="pre">EVK/Update_Package</span></tt></li>
+<p>then switch to this mode.</p>
+</li>
+<li><p class="first">Support smooth video playback of 720P on 1280x1024 display mode.</p>
+</li>
+<li><p class="first">If making action to the playing video or moving mouse over the video,
+this video will not sound and be blocked.</p>
+</li>
+<li><p class="first">XVID video will sometimes show garbage.</p>
+</li>
+<li><p class="first">Some VC1 video files may become static when seek or having audio
+playback abnormal issue, it can be reproduced on x86 platform with SW
+decoder (Totem). It is demuxer issue.</p>
+</li>
+<li><p class="first">If I frame is too long, some video files may pause for a few seconds
+after seek and resume, since demuxer could not locate I frame.</p>
+</li>
+<li><p class="first">It is slow when switching between window mode and fullscreen mode.</p>
+</li>
 </ol>
-</div>
+<p>8) There is no PWM frequency control. In other words, the backlight
+brightness can’t be modified.</p>
 </div>
 
 
@@ -77,24 +89,15 @@ platform, and evaluates thin client functions.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">1. Introduction</a><ul>
-<li><a class="reference internal" href="#overview">1.1. Overview</a></li>
-<li><a class="reference internal" href="#package-content">1.2. Package content</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to VAB-600 Springboard Linux Development Guide&#8217;s documentation!</a></p>
+  <p class="topless"><a href="qa.html"
+                        title="previous chapter">7. Appendix A. Q&amp;A</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="setupenv.html"
-                        title="next chapter">2. Setup Environment</a></p>
+  <p class="topless"><a href="gpioregs.html"
+                        title="next chapter">9. Appendix C. GPIO registers</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/introduction.txt"
+    <li><a href="_sources/limitations.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -121,10 +124,10 @@ platform, and evaluates thin client functions.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="setupenv.html" title="2. Setup Environment"
+          <a href="gpioregs.html" title="9. Appendix C. GPIO registers"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to VAB-600 Springboard Linux Development Guide’s documentation!"
+          <a href="qa.html" title="7. Appendix A. Q&amp;A"
              >previous</a> |</li>
         <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
       </ul>

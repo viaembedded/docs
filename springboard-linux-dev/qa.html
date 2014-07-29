@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Introduction &mdash; VAB-600 Springboard Linux Development Guide 1.4 documentation</title>
+    <title>7. Appendix A. Q&amp;A &mdash; VAB-600 Springboard Linux Development Guide 1.4 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="VAB-600 Springboard Linux Development Guide 1.4 documentation" href="index.html" />
-    <link rel="next" title="2. Setup Environment" href="setupenv.html" />
-    <link rel="prev" title="Welcome to VAB-600 Springboard Linux Development Guide’s documentation!" href="index.html" /> 
+    <link rel="next" title="8. Appendix B. Limitations" href="limitations.html" />
+    <link rel="prev" title="6. Debug Message" href="debug.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="setupenv.html" title="2. Setup Environment"
+          <a href="limitations.html" title="8. Appendix B. Limitations"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to VAB-600 Springboard Linux Development Guide’s documentation!"
+          <a href="debug.html" title="6. Debug Message"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
       </ul>
@@ -49,25 +49,16 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="introduction">
-<span id="id1"></span><h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>1.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This document describes how to run Debian 7.0 OS on VIA VAB-600
-platform, and evaluates thin client functions.</p>
-</div>
-<div class="section" id="package-content">
-<h2>1.2. Package content<a class="headerlink" href="#package-content" title="Permalink to this headline">¶</a></h2>
-<p>The evaluation package includes:</p>
-<ol class="arabic simple">
-<li>Kernel source: <tt class="docutils literal"><span class="pre">BSP/Kernel_Source_Codes/VAB-600_Linux_BSP_Kernel_Source_0.03.tar.gz</span></tt> and <tt class="docutils literal"><span class="pre">BSP/Frame_Buffer_Driver/ANDROID_3.0.8_VE</span></tt></li>
-<li>Toolchain: <tt class="docutils literal"><span class="pre">BSP/arm_201103_gcc4.5.2.tgz</span></tt></li>
-<li>Kernel image: <tt class="docutils literal"><span class="pre">EVK/Kernel_Image/uzImage.bin</span></tt></li>
-<li>Graphics driver package: locates in <tt class="docutils literal"><span class="pre">EVK/BSP/Graphics_Driver</span></tt> folder</li>
-<li>Multimedia package: locates in <tt class="docutils literal"><span class="pre">EVK/BSP/Multimedia</span></tt> folder</li>
-<li>Other file system patches located at <tt class="docutils literal"><span class="pre">EVK/BSP/Others</span></tt></li>
-<li>Uboot update package: <tt class="docutils literal"><span class="pre">EVK/Update_Package</span></tt></li>
-</ol>
+  <div class="section" id="appendix-a-q-a">
+<span id="qa"></span><h1>7. Appendix A. Q&amp;A<a class="headerlink" href="#appendix-a-q-a" title="Permalink to this headline">¶</a></h1>
+<p><strong>Q</strong>: When trying to setup static IP address in &#8220;Network Connections&#8221;, the IP
+setup does not take effect.</p>
+<p><strong>A</strong>: After setting &#8220;Network Connections&#8221;, user should open a console to shut
+down the Ethernet adapter and then turn on by following the command
+below, target Ethernet adapter is eth1:</p>
+<div class="highlight-python"><div class="highlight"><pre>ifconfig eth1 down
+ifconfig eth1 up
+</pre></div>
 </div>
 </div>
 
@@ -77,24 +68,15 @@ platform, and evaluates thin client functions.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">1. Introduction</a><ul>
-<li><a class="reference internal" href="#overview">1.1. Overview</a></li>
-<li><a class="reference internal" href="#package-content">1.2. Package content</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to VAB-600 Springboard Linux Development Guide&#8217;s documentation!</a></p>
+  <p class="topless"><a href="debug.html"
+                        title="previous chapter">6. Debug Message</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="setupenv.html"
-                        title="next chapter">2. Setup Environment</a></p>
+  <p class="topless"><a href="limitations.html"
+                        title="next chapter">8. Appendix B. Limitations</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/introduction.txt"
+    <li><a href="_sources/qa.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -121,10 +103,10 @@ platform, and evaluates thin client functions.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="setupenv.html" title="2. Setup Environment"
+          <a href="limitations.html" title="8. Appendix B. Limitations"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to VAB-600 Springboard Linux Development Guide’s documentation!"
+          <a href="debug.html" title="6. Debug Message"
              >previous</a> |</li>
         <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
       </ul>

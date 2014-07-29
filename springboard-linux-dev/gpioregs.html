@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9. Appendix C. GPIO registers &mdash; VAB-600 Springboard Linux Development Guide 1.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VAB-600 Springboard Linux Development Guide 1.4 documentation" href="index.html" />
+    <link rel="prev" title="8. Appendix B. Limitations" href="limitations.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="limitations.html" title="8. Appendix B. Limitations"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="appendix-c-gpio-registers">
+<span id="gpioregs"></span><h1>9. Appendix C. GPIO registers<a class="headerlink" href="#appendix-c-gpio-registers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gpio-input-enable-registers">
+<h2>9.1. GPIO Input Enable Registers<a class="headerlink" href="#gpio-input-enable-registers" title="Permalink to this headline">¶</a></h2>
+<p><strong>Address 0xd8110070</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="19%" />
+<col width="16%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[23:20] Enable Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>FFh</td>
+<td>GPIO[23:20] Enable Register</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Address 0xd8110071</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="19%" />
+<col width="16%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[27:24] Enable Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>0Fh</td>
+<td>GPIO[27:24] Enable Register</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-input-data-registers">
+<h2>9.2. GPIO Input Data Registers<a class="headerlink" href="#gpio-input-data-registers" title="Permalink to this headline">¶</a></h2>
+<p><strong>Address 0xd8110030 – 0xd8110031</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="19%" />
+<col width="16%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[27:20] Input Data Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>15:12</td>
+<td>RO</td>
+<td>4&#8217;h0</td>
+<td>Reserved</td>
+</tr>
+<tr class="row-even"><td>11</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>GPIO27 Signal GPIO Input Data</td>
+</tr>
+<tr class="row-odd"><td>10</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>GPIO26 Signal GPIO Input Data</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>GPIO25 Signal GPIO Input Data</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>GPIO24 Signal GPIO Input Data</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>GPIO23 Signal GPIO Input Data</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>GPIO22 Signal GPIO Input Data</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>GPIO21 Signal GPIO Input Data</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>GPIO20 Signal GPIO Input Data</td>
+</tr>
+<tr class="row-even"><td>3:0</td>
+<td>RO</td>
+<td>&nbsp;</td>
+<td>Reserved</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-output-enable-registers">
+<h2>9.3. GPIO Output Enable Registers<a class="headerlink" href="#gpio-output-enable-registers" title="Permalink to this headline">¶</a></h2>
+<p><strong>Address 0xd81100B0</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="18%" />
+<col width="15%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[23:20] Output Enable Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>00h</td>
+<td>GPIO[23:20] Output Enable Register</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Address 0xd81100B1</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="18%" />
+<col width="15%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[27:24] Output Enable Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>00h</td>
+<td>GPIO[27:24] Output Enable Register</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-output-data-registers">
+<h2>9.4. GPIO Output Data Registers<a class="headerlink" href="#gpio-output-data-registers" title="Permalink to this headline">¶</a></h2>
+<p><strong>Address 0xd81100F0</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="18%" />
+<col width="15%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[23:20] Output Data Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>00h</td>
+<td>GPIO[23:20] Output Data Register</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Address 0xd81100F1</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="18%" />
+<col width="15%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[27:24] Output Data Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>00h</td>
+<td>GPIO[27:24] Output Data Register</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-pull-up-pull-down-enable-registers">
+<h2>9.5. GPIO Pull-up/Pull-down Enable Registers<a class="headerlink" href="#gpio-pull-up-pull-down-enable-registers" title="Permalink to this headline">¶</a></h2>
+<p><strong>Address 0xd81104B0</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="12%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[23:20] Pull-up/Pull-down Enable Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>00h</td>
+<td>GPIO[23:20] Pull-up/Pull-down Enable Register</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Address 0xd81104B1</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="12%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[27:24] Pull-up/Pull-down Enable Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>0Fh</td>
+<td>GPIO[27:24] Pull-up/Pull-down Enable Register</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-pull-up-pull-down-control-registers">
+<h2>9.6. GPIO Pull-up/Pull-down Control Registers<a class="headerlink" href="#gpio-pull-up-pull-down-control-registers" title="Permalink to this headline">¶</a></h2>
+<p><strong>Address 0xd81104F0</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="12%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[23:20] Pull-up/Pull-down Control Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>00h</td>
+<td>GPIO[23:20] Pull-up/Pull-down Control Register</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Address 0xd81104F1</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="12%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO[27:24] Pull-up/Pull-down Control Register</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7:0</td>
+<td>RW</td>
+<td>00h</td>
+<td>GPIO[27:24] Pull-up/Pull-down Control Register</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-interrupt-request-status-registers">
+<h2>9.7. GPIO Interrupt Request Status Registers<a class="headerlink" href="#gpio-interrupt-request-status-registers" title="Permalink to this headline">¶</a></h2>
+<p><strong>Address 0xd8110362</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="16%" />
+<col width="13%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO Interrupt Request Status Register (GPIO[23:20])</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>7</td>
+<td>RW1C</td>
+<td>0</td>
+<td>GPIO23 Interrupt Status
+When this bit is inactive (a zero), it
+indicates that no interrupt
+has been configured and detected on
+the associated signal.
+When this bit is active (an one), it
+indicates that an interrupt
+request has been configured and
+detected on the associated
+signal. Once this bit is active (an one),
+software must write an
+one to this bit to clear it inactive (a
+zero), otherwise this bit and
+the associated GPIO Interrupt Request
+will remain active (a one).</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>RW1C</td>
+<td>0</td>
+<td>GPIO22 Interrupt Status</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>RW1C</td>
+<td>0</td>
+<td>GPIO21 Interrupt Status</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>RW1C</td>
+<td>0</td>
+<td>GPIO20 Interrupt Status</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Address 0xd8110363</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="16%" />
+<col width="13%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">GPIO Interrupt Request Status Register (GPIO[27:24])</th>
+</tr>
+<tr class="row-even"><th class="head">BIT</th>
+<th class="head">Attribute</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>3</td>
+<td>RW1C</td>
+<td>0</td>
+<td>GPIO27 Interrupt Status</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>RW1C</td>
+<td>0</td>
+<td>GPIO26 Interrupt Status</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>RW1C</td>
+<td>0</td>
+<td>GPIO25 Interrupt Status</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>RW1C</td>
+<td>0</td>
+<td>GPIO24 Interrupt Status</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Appendix C. GPIO registers</a><ul>
+<li><a class="reference internal" href="#gpio-input-enable-registers">9.1. GPIO Input Enable Registers</a></li>
+<li><a class="reference internal" href="#gpio-input-data-registers">9.2. GPIO Input Data Registers</a></li>
+<li><a class="reference internal" href="#gpio-output-enable-registers">9.3. GPIO Output Enable Registers</a></li>
+<li><a class="reference internal" href="#gpio-output-data-registers">9.4. GPIO Output Data Registers</a></li>
+<li><a class="reference internal" href="#gpio-pull-up-pull-down-enable-registers">9.5. GPIO Pull-up/Pull-down Enable Registers</a></li>
+<li><a class="reference internal" href="#gpio-pull-up-pull-down-control-registers">9.6. GPIO Pull-up/Pull-down Control Registers</a></li>
+<li><a class="reference internal" href="#gpio-interrupt-request-status-registers">9.7. GPIO Interrupt Request Status Registers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="limitations.html"
+                        title="previous chapter">8. Appendix B. Limitations</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/gpioregs.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="limitations.html" title="8. Appendix B. Limitations"
+             >previous</a> |</li>
+        <li><a href="index.html">VAB-600 Springboard Linux Development Guide 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2013 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
