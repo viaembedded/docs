@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. I/O Interface &mdash; EPIA-P910 User Manual 1.06 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.06',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="EPIA-P910 User Manual 1.06 documentation" href="index.html" />
+    <link rel="prev" title="1. Product Overview" href="overview.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="overview.html" title="1. Product Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">EPIA-P910 User Manual 1.06 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="i-o-interface">
+<span id="io-interface"></span><h1>2. I/O Interface<a class="headerlink" href="#i-o-interface" title="Permalink to this headline">¶</a></h1>
+<p>The VIA EPIA-P910 has a wide selection of interfaces. It includes a selection of
+frequently used ports as part of the external I/O coastline.</p>
+<div class="section" id="external-i-o-ports">
+<h2>2.1. External I/O Ports<a class="headerlink" href="#external-i-o-ports" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="figure-external-io">
+<img alt="External I/O ports" src="_images/external_io.svg" /><p class="caption">Figure 1: External I/O ports</p>
+</div>
+<p>Layout diagram description table of external I/O ports:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Item</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>RJ1: Gigabit LAN port</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>USB1: USB 3.0 ports</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>USB2: USB 3.0 ports</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>HDMI1: Mini HDMI® port</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>VGA1: VGA port</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="lan-port-gigabit-ethernet">
+<h3>2.1.1. LAN port: Gigabit Ethernet<a class="headerlink" href="#lan-port-gigabit-ethernet" title="Permalink to this headline">¶</a></h3>
+<p>The integrated 8-pin Gigabit Ethernet port is using an 8 Position 8 Contact
+(8P8C) receptacle connector (commonly referred to as RJ45). The Gigabit
+Ethernet ports are controlled by VIA Fast Ethernet controller. The pinout of
+the Gigabit Ethernet port is shown below:</p>
+<div class="figure align-center" id="figure-lan">
+<img alt="Gigabit Ethernet port pinout diagram" src="_images/lan.svg" /><p class="caption">Figure 2: Gigabit Ethernet port pinout diagram</p>
+</div>
+<p>Gigabit Ethernet port pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Signal pair 1+</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Signal pair 1-</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Signal pair 2+</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>Signal pair 3+</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Signal pair 3-</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Signal pair 2-</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>Signal pair 4+</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>Signal pair 4-</td>
+</tr>
+</tbody>
+</table>
+<p>The RJ-45 port has two individual LED indicators located on the front side to
+show its Active/Link status and Speed status.</p>
+<p>Gigabit Ethernet LED color definition:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="57%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Link LED (Left LED)</th>
+<th class="head">Active LED (Right LED)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Link Off</td>
+<td>Off</td>
+<td>Off</td>
+</tr>
+<tr class="row-odd"><td>Speed 10Mbit</td>
+<td>The LED is always On in either Green or Orange colors</td>
+<td>Flash in Yellow color</td>
+</tr>
+<tr class="row-even"><td>Speed 100Mbit</td>
+<td>The LED is always On in Green color</td>
+<td>Flash in Yellow color</td>
+</tr>
+<tr class="row-odd"><td>Speed 1000Mbit</td>
+<td>The LED is always On in Orange color</td>
+<td>Flash in Yellow color</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="usb-3-0-port">
+<h3>2.1.2. USB 3.0 Port<a class="headerlink" href="#usb-3-0-port" title="Permalink to this headline">¶</a></h3>
+<p>The EPIA-P910 mainboard provides two USB 3.0 ports, also known as
+SuperSpeed USB. The USB 3.0 port has a maximum data transfer rate up to 5
+Gbps and offers a backwards compatible with previous USB 2.0 specifications.
+The USB 3.0 ports are using the USB Type-A receptacle connector. The pinout
+of the typical USB 3.0 port is shown below.</p>
+<div class="figure align-center" id="figure-usb3">
+<img alt="USB 3 .0 port pinout diagram" src="_images/usb3.svg" /><p class="caption">Figure 3: USB 3 .0 port pinout diagram</p>
+</div>
+<p>USB 3.0 port pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+5V</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Data-</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Data+</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Rx-</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Rx+</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>Tx-</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>Tx+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mini-hdmi-port">
+<h3>2.1.3. Mini HDMI Port<a class="headerlink" href="#mini-hdmi-port" title="Permalink to this headline">¶</a></h3>
+<p>The integrated 19-pin HDMI® port uses an HDMI® Type C connector as
+defined in the HDMI® specification. The HDMI® port is for connecting to
+HDMI ® displays. The pinout of the Mini HDMI® port is shown below.</p>
+<div class="figure align-center" id="figure-hdmi">
+<img alt="Mini HDMI® port pinout diagram" src="_images/hdmi.png" />
+<p class="caption">Figure 4: Mini HDMI ® port pinout diagram</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="45%" />
+<col width="11%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>TMDS Data2 Shield</td>
+<td>2</td>
+<td>TMDS Data2+</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>TMDS Data2-</td>
+<td>4</td>
+<td>TMDS Data1 Shield</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>TMDS Data1+</td>
+<td>6</td>
+<td>TMDS Data1–</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>TMDS Data0 Shield</td>
+<td>8</td>
+<td>TMDS Data0+</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>TMDS Data0-</td>
+<td>10</td>
+<td>TMDS Clock Shield</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>TMDS Clock+</td>
+<td>12</td>
+<td>TMDS Clock-</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>DDC/CEC Ground</td>
+<td>14</td>
+<td>CEC</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>SCL</td>
+<td>16</td>
+<td>SDA</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>Reserved (N.C. on device)</td>
+<td>18</td>
+<td>+5V Power</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>Hot Plug Detect</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="vga-port">
+<h3>2.1.4. VGA Port<a class="headerlink" href="#vga-port" title="Permalink to this headline">¶</a></h3>
+<p>The 15-pin VGA port uses a female DE-15 connector. The VGA port is for
+connecting to analog displays. The pinout of the VGA port is shown below.</p>
+<div class="figure align-center" id="figure-vga">
+<img alt="VGA port pinout diagram" src="_images/vga.svg" /><p class="caption">Figure 5: VGA port pinout diagram</p>
+</div>
+<p>VGA port pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="36%" />
+<col width="14%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>VGA-R</td>
+<td>9</td>
+<td>+5VCRT</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>VGA-G</td>
+<td>10</td>
+<td>Ground</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>VGA-B</td>
+<td>11</td>
+<td>NC</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>NC</td>
+<td>12</td>
+<td>VGA-SPD</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Ground</td>
+<td>13</td>
+<td>VGA_HS</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Ground</td>
+<td>14</td>
+<td>VGA_VS</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>Ground</td>
+<td>15</td>
+<td>VGA-SPCLK</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>Ground</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. I/O Interface</a><ul>
+<li><a class="reference internal" href="#external-i-o-ports">2.1. External I/O Ports</a><ul>
+<li><a class="reference internal" href="#lan-port-gigabit-ethernet">2.1.1. LAN port: Gigabit Ethernet</a></li>
+<li><a class="reference internal" href="#usb-3-0-port">2.1.2. USB 3.0 Port</a></li>
+<li><a class="reference internal" href="#mini-hdmi-port">2.1.3. Mini HDMI Port</a></li>
+<li><a class="reference internal" href="#vga-port">2.1.4. VGA Port</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter">1. Product Overview</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/io_interface.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="overview.html" title="1. Product Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">EPIA-P910 User Manual 1.06 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2014 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
