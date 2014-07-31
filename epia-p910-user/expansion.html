@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4. Expansion Slots &mdash; EPIA-P910 User Manual 1.06 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.06',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="EPIA-P910 User Manual 1.06 documentation" href="index.html" />
+    <link rel="next" title="5. Hardware Installation" href="hardware.html" />
+    <link rel="prev" title="3. Jumpers" href="jumpers.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="hardware.html" title="5. Hardware Installation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="jumpers.html" title="3. Jumpers"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">EPIA-P910 User Manual 1.06 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="expansion-slots">
+<span id="expansion"></span><h1>4. Expansion Slots<a class="headerlink" href="#expansion-slots" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="high-speed-extension-slot">
+<h2>4.1. High Speed Extension Slot<a class="headerlink" href="#high-speed-extension-slot" title="Permalink to this headline">¶</a></h2>
+<p>The board-to-board slot labeled as &#8220;CN3&#8221; is a combination connector
+reserved for connecting to a customized expansion card. The connector pinout
+supports PCIe, LAN, USB 2.0, Audio, SDIO and SIM.</p>
+<div class="figure align-center" id="figure-high-speed-extension">
+<img alt="High Speed Extension tension Slot" src="_images/high_speed_extension.png" />
+<p class="caption">Figure 1: High Speed Extension tension Slot</p>
+</div>
+<p>High Speed Extension Slot pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="38%" />
+<col width="11%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+5VSUS</td>
+<td>2</td>
+<td>+5VSUS</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>+5VSUS</td>
+<td>4</td>
+<td>+5VSUS</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>+5VSUS</td>
+<td>6</td>
+<td>+5VSUS</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>+12V</td>
+<td>8</td>
+<td>+12V</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>GND</td>
+<td>10</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>GND</td>
+<td>12</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>GND</td>
+<td>14</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>TVCLKRIN</td>
+<td>16</td>
+<td>MICIN2_R</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>SPDIF_TX1</td>
+<td>18</td>
+<td>MICIN2_L</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>MCVREF02</td>
+<td>20</td>
+<td>LINE2_R</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>SENSE_B</td>
+<td>22</td>
+<td>LINE2_L</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>GND</td>
+<td>24</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>FANCTL2</td>
+<td>26</td>
+<td>SPEAK_BZ</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>FANIN2</td>
+<td>28</td>
+<td>GPIO37</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>-PCIRST</td>
+<td>30</td>
+<td>-RING</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>RST_SW</td>
+<td>32</td>
+<td>SD_CLK/MMC_CLK</td>
+</tr>
+<tr class="row-even"><td>33</td>
+<td>PW_BN1-</td>
+<td>34</td>
+<td>CR_CMD</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>-SUSC</td>
+<td>36</td>
+<td>CR_D7</td>
+</tr>
+<tr class="row-even"><td>37</td>
+<td>-SUSB</td>
+<td>38</td>
+<td>CR_D6</td>
+</tr>
+<tr class="row-odd"><td>39</td>
+<td>-CR_CD</td>
+<td>40</td>
+<td>CR_D5</td>
+</tr>
+<tr class="row-even"><td>41</td>
+<td>-CR_WPD</td>
+<td>42</td>
+<td>CR_D4</td>
+</tr>
+<tr class="row-odd"><td>43</td>
+<td>VCCCR</td>
+<td>44</td>
+<td>CR_D3</td>
+</tr>
+<tr class="row-even"><td>45</td>
+<td>CR_PWSELS</td>
+<td>46</td>
+<td>CR_D2</td>
+</tr>
+<tr class="row-odd"><td>47</td>
+<td>CR_PWSEL</td>
+<td>48</td>
+<td>CR_D1</td>
+</tr>
+<tr class="row-even"><td>49</td>
+<td>CR_PWOFF</td>
+<td>50</td>
+<td>CR_D0</td>
+</tr>
+<tr class="row-odd"><td>51</td>
+<td>GND</td>
+<td>52</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>53</td>
+<td>-HD_LED</td>
+<td>54</td>
+<td>VREFOUT_E</td>
+</tr>
+<tr class="row-odd"><td>55</td>
+<td>-PWR_LED</td>
+<td>56</td>
+<td>DVPCLKN</td>
+</tr>
+<tr class="row-even"><td>57</td>
+<td>LVDSPWM1</td>
+<td>58</td>
+<td>DVPCLKP</td>
+</tr>
+<tr class="row-odd"><td>59</td>
+<td>DVPSPCLK</td>
+<td>60</td>
+<td>DVP1DE</td>
+</tr>
+<tr class="row-even"><td>61</td>
+<td>DVPSPD</td>
+<td>62</td>
+<td>DVP1HS</td>
+</tr>
+<tr class="row-odd"><td>63</td>
+<td>SMBDT</td>
+<td>64</td>
+<td>DVP1VS</td>
+</tr>
+<tr class="row-even"><td>65</td>
+<td>SMBCK</td>
+<td>66</td>
+<td>DVP1D11</td>
+</tr>
+<tr class="row-odd"><td>67</td>
+<td>-PEREQ1</td>
+<td>68</td>
+<td>DVP1D10</td>
+</tr>
+<tr class="row-even"><td>69</td>
+<td>-PEXWAKE</td>
+<td>70</td>
+<td>DVP1D9</td>
+</tr>
+<tr class="row-odd"><td>71</td>
+<td>-PEX4RST</td>
+<td>72</td>
+<td>DVP1D8</td>
+</tr>
+<tr class="row-even"><td>73</td>
+<td>-PEX2RST</td>
+<td>74</td>
+<td>DVP1D7</td>
+</tr>
+<tr class="row-odd"><td>75</td>
+<td>-PEX1RST</td>
+<td>76</td>
+<td>DVP1D6</td>
+</tr>
+<tr class="row-even"><td>77</td>
+<td>GND</td>
+<td>78</td>
+<td>DVP1D5</td>
+</tr>
+<tr class="row-odd"><td>79</td>
+<td>USBHP3-</td>
+<td>80</td>
+<td>DVP1D4</td>
+</tr>
+<tr class="row-even"><td>81</td>
+<td>USBHP3+</td>
+<td>82</td>
+<td>DVP1D3</td>
+</tr>
+<tr class="row-odd"><td>83</td>
+<td>GND</td>
+<td>84</td>
+<td>DVP1D2</td>
+</tr>
+<tr class="row-even"><td>85</td>
+<td>PEXRX2+</td>
+<td>86</td>
+<td>DVP1D1</td>
+</tr>
+<tr class="row-odd"><td>87</td>
+<td>PEXRX2-</td>
+<td>88</td>
+<td>DVP1D0</td>
+</tr>
+<tr class="row-even"><td>89</td>
+<td>GND</td>
+<td>90</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>91</td>
+<td>PETN2</td>
+<td>92</td>
+<td>USBHP4-</td>
+</tr>
+<tr class="row-even"><td>93</td>
+<td>PETP2</td>
+<td>94</td>
+<td>USBHP4+</td>
+</tr>
+<tr class="row-odd"><td>95</td>
+<td>GND</td>
+<td>96</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>97</td>
+<td>PE6CLK-</td>
+<td>98</td>
+<td>USBHP2-</td>
+</tr>
+<tr class="row-odd"><td>99</td>
+<td>PE6CLK+</td>
+<td>100</td>
+<td>USBHP2+</td>
+</tr>
+<tr class="row-even"><td>101</td>
+<td>GND</td>
+<td>102</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>103</td>
+<td>PEXRX0-</td>
+<td>104</td>
+<td>PEXRX4-</td>
+</tr>
+<tr class="row-even"><td>105</td>
+<td>PEXRX0+</td>
+<td>106</td>
+<td>PEXRX4+</td>
+</tr>
+<tr class="row-odd"><td>107</td>
+<td>GND</td>
+<td>108</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>109</td>
+<td>PETN0</td>
+<td>110</td>
+<td>PETN4</td>
+</tr>
+<tr class="row-odd"><td>111</td>
+<td>PETP0</td>
+<td>112</td>
+<td>PETP4</td>
+</tr>
+<tr class="row-even"><td>113</td>
+<td>GND</td>
+<td>114</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>115</td>
+<td>PE1CLK-</td>
+<td>116</td>
+<td>PE3CLK-</td>
+</tr>
+<tr class="row-even"><td>117</td>
+<td>PE1CLK+</td>
+<td>118</td>
+<td>PE3CLK+</td>
+</tr>
+<tr class="row-odd"><td>119</td>
+<td>GND</td>
+<td>120</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ddr3-sodimm-memory-slot">
+<h2>4.2. DDR3 SODIMM Memory Slot<a class="headerlink" href="#ddr3-sodimm-memory-slot" title="Permalink to this headline">¶</a></h2>
+<p>The mainboard provides one 204-pin DDR3 SODIMM slot that supports non-
+ECC DDR3 1600/1333/1066 SODIMM memory modules. The memory slot can
+accommodate up to 8 GB of DDR3 1600/1333/1066 memory. The memory slot
+is labeled as &#8220;SODIMM1&#8221;. The location of the DDR3 memory slot is shown
+below.</p>
+<div class="figure align-center" id="figure-ddr">
+<img alt="DDR3 SODIMM memory slot" src="_images/ddr.png" />
+<p class="caption">Figure 2: DDR3 SODIMM memory slot</p>
+</div>
+<div class="section" id="installing-a-memory-module">
+<h3>4.2.1. Installing a Memory Module<a class="headerlink" href="#installing-a-memory-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Step 1</strong></p>
+<p>Align the notch on the SODIMM memory module with the protruding wedge
+on the SODIMM memory slot. Insert the SODIMM memory module at a 30
+degree angle relative to the SODIMM memory slot.</p>
+<div class="figure align-center" id="figure-ddr-install1">
+<img alt="Inserting the memory module" src="_images/ddr_install1.svg" /><p class="caption">Figure 3: Inserting the memory module</p>
+</div>
+<p><strong>Step 2</strong></p>
+<p>Insert the SODIMM memory module between the two rows of pins. Then push
+down until the locking clips lock the SODIMM memory module into place.
+There will be a slight tension as the SODIMM memory module is being locked.</p>
+<div class="figure align-center" id="figure-ddr-install2">
+<img alt="Locking the memory module" src="_images/ddr_install2.svg" /><p class="caption">Figure 4: Locking the memory module</p>
+</div>
+<p><strong>Step 3</strong></p>
+<p>Install the memory thermal pad on the top of the DRAM memory module.</p>
+<div class="figure align-center" id="figure-ddr-install3">
+<img alt="Installing memory thermal pad" src="_images/ddr_install3.svg" /><p class="caption">Figure 5: Installing memory thermal pad</p>
+</div>
+<p>The memory thermal pad is used for transferring the heat dissipation of
+memory to the thermal plate or bottom plate to attain memory cooling, and
+to ensure the operating temperature of the memory module should not
+exceed to 85°C. This helps to prevent damage of the memory module. The
+memory thermal pad to be used is requires a certain thickness in order to
+make contact with the memory thermal plate or bottom plate to excellently
+disperse the heat.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ol class="last arabic simple">
+<li>The customer/user should consider using the memory thermal pad and adding memory thermal
+plate or bottom plate on their chassis design.</li>
+<li>The memory thermal plate/bottom plate material to be used should have an excellent thermal
+conductivity. Avoid using plastic or rubber materials.</li>
+<li>The thickness of memory thermal pad should be based on customer’s design. However, the
+minimum value of thermal conductivity K (W/m.k) is 1.5 and the maximum of hardness is 5
+(Shore A).</li>
+</ol>
+</div>
+</div>
+<div class="section" id="removing-a-memory-module">
+<h3>4.2.2. Removing a Memory Module<a class="headerlink" href="#removing-a-memory-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Step 1</strong></p>
+<p>To disengage the locking clips, push the locking clips horizontally outward
+away from the SODIMM memory module.</p>
+<div class="figure align-center" id="figure-ddr-install4">
+<img alt="Disengaging the SODIMM locking clips" src="_images/ddr_install4.svg" /><p class="caption">Figure 6: Disengaging the SODIMM locking clips</p>
+</div>
+<p><strong>Step 2</strong></p>
+<p>When the locking clips have cleared, the SODIMM memory module will
+automatically pop up to the 30 degree angle. Remove the memory module.</p>
+<div class="figure align-center" id="figure-ddr-install5">
+<img alt="Removing the memory module" src="_images/ddr_install5.svg" /><p class="caption">Figure 7: Removing the memory module</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Expansion Slots</a><ul>
+<li><a class="reference internal" href="#high-speed-extension-slot">4.1. High Speed Extension Slot</a></li>
+<li><a class="reference internal" href="#ddr3-sodimm-memory-slot">4.2. DDR3 SODIMM Memory Slot</a><ul>
+<li><a class="reference internal" href="#installing-a-memory-module">4.2.1. Installing a Memory Module</a></li>
+<li><a class="reference internal" href="#removing-a-memory-module">4.2.2. Removing a Memory Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="jumpers.html"
+                        title="previous chapter">3. Jumpers</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="hardware.html"
+                        title="next chapter">5. Hardware Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/expansion.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="hardware.html" title="5. Hardware Installation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="jumpers.html" title="3. Jumpers"
+             >previous</a> |</li>
+        <li><a href="index.html">EPIA-P910 User Manual 1.06 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright CC-BY-4.0 2014 VIA.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

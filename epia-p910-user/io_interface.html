@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="EPIA-P910 User Manual 1.06 documentation" href="index.html" />
+    <link rel="next" title="3. Jumpers" href="jumpers.html" />
     <link rel="prev" title="1. Product Overview" href="overview.html" /> 
   </head>
   <body>
@@ -33,6 +34,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="jumpers.html" title="3. Jumpers"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="overview.html" title="1. Product Overview"
              accesskey="P">previous</a> |</li>
@@ -221,10 +225,10 @@ of the typical USB 3.0 port is shown below.</p>
 <h3>2.1.3. Mini HDMI Port<a class="headerlink" href="#mini-hdmi-port" title="Permalink to this headline">¶</a></h3>
 <p>The integrated 19-pin HDMI® port uses an HDMI® Type C connector as
 defined in the HDMI® specification. The HDMI® port is for connecting to
-HDMI ® displays. The pinout of the Mini HDMI® port is shown below.</p>
+HDMI® displays. The pinout of the Mini HDMI® port is shown below.</p>
 <div class="figure align-center" id="figure-hdmi">
 <img alt="Mini HDMI® port pinout diagram" src="_images/hdmi.png" />
-<p class="caption">Figure 4: Mini HDMI ® port pinout diagram</p>
+<p class="caption">Figure 4: Mini HDMI® port pinout diagram</p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
@@ -361,6 +365,561 @@ connecting to analog displays. The pinout of the VGA port is shown below.</p>
 </table>
 </div>
 </div>
+<div class="section" id="onboard-connectors">
+<h2>2.2. Onboard Connectors<a class="headerlink" href="#onboard-connectors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lvds-connector">
+<h3>2.2.1. LVDS Connector<a class="headerlink" href="#lvds-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has one 24-pin LVDS panel connector on the bottom side. The
+onboard LVDS panel connector allows to connect the panel’s LVDS cable to
+support the single-channel 18-bit/24-bit display. Backlight controls are
+integrated into the LVDS panel connector pinout. The LVDS panel connector
+is labeled as &#8220;LVDS1&#8221;. The pinout of the connector is shown below.</p>
+<div class="figure align-center" id="figure-lvds">
+<img alt="LVDS connector" src="_images/lvds.png" />
+<p class="caption">Figure 6: LVDS connector</p>
+</div>
+<p>LVDS connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="38%" />
+<col width="13%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>LVDSD0-</td>
+<td>2</td>
+<td>LVDSD1-</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>LVDSD0+</td>
+<td>4</td>
+<td>LVDSD1+</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>GND</td>
+<td>6</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>PVDD2</td>
+<td>8</td>
+<td>LVDSD2-</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>PVDD2</td>
+<td>10</td>
+<td>LVDSD2+</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>LCD1_DATA</td>
+<td>12</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>LCD1_CLK</td>
+<td>14</td>
+<td>LVDSCLK+</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>GND</td>
+<td>16</td>
+<td>LVDSCLK-</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>VDD_BL</td>
+<td>18</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>VDD_BL</td>
+<td>20</td>
+<td>LVDSD3-</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>BLEN_1</td>
+<td>22</td>
+<td>LVDSD3+</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>BAK_ADJ</td>
+<td>24</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">LVDS1 supports 18/24 bits EDID LCD, please ensure your LCD do support EDID. For any request of
+None-EDID LCD, please contact sales for customized BIOS support</p>
+</div>
+</div>
+<div class="section" id="sata-connectors">
+<h3>2.2.2. SATA Connectors<a class="headerlink" href="#sata-connectors" title="Permalink to this headline">¶</a></h3>
+<p>The two SATA connectors onboard can support up to 3 Gb/s transfer speeds.
+Both SATA connectors have a 7th pin 1 that can provide +5V power to a SATA
+Disk-on-Module (DOM). When a regular SATA hard drive is connected, the 7th
+pin will be a ground pin. The SATA connectors are labeled as &#8220;SATA1&#8221; and
+&#8220;SATA2&#8221;. The pinout of the SATA connectors are shown below.</p>
+<div class="figure align-center" id="figure-sata">
+<img alt="SATA connectors" src="_images/sata.png" />
+<p class="caption">Figure 7: SATA connectors</p>
+</div>
+<p>SATA connector pinouts:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="29%" />
+<col width="21%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SATA1 Pin</th>
+<th class="head">Signal</th>
+<th class="head">SATA2 Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>GND</td>
+<td>1</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>STXP_0</td>
+<td>2</td>
+<td>STXP_1</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>STXN_0</td>
+<td>3</td>
+<td>STXN_1</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>GND</td>
+<td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>SRXN_0</td>
+<td>5</td>
+<td>SRXN_1</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>SRXP_0</td>
+<td>6</td>
+<td>SRXP_1</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>GND/+5V</td>
+<td>7</td>
+<td>GND/+5V</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SATA connector pin 7 default setting is GND. The +5V supports is a factory option.</p>
+</div>
+</div>
+<div class="section" id="sata-power-connector">
+<h3>2.2.3. SATA Power Connector<a class="headerlink" href="#sata-power-connector" title="Permalink to this headline">¶</a></h3>
+<p>The onboard SATA power connector provides both +5V and +12V directly
+through the mainboard to the SATA drives. The SATA power connector is
+labeled as &#8220;PWR2&#8221;. The pinout of the SATA power connector is shown below.</p>
+<div class="figure align-center" id="figure-sata-power">
+<img alt="SATA power connector" src="_images/sata_power.png" />
+<p class="caption">Figure 8: SATA power connector</p>
+</div>
+<p>SATA power connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+5V/1A</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>+12V/1A</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="kb-ms-lpc-gpio-smbus-combination-pin-header">
+<h3>2.2.4. KB/MS/LPC/GPIO/SMBus Combination Pin Header<a class="headerlink" href="#kb-ms-lpc-gpio-smbus-combination-pin-header" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard includes one KB, MS, LPC, GPIO and SMBus combination pin
+header block labeled as &#8220;CN1&#8221;. The combination pin header is for connecting
+KB, MS, LPC, General Purpose Input and Output and SMBus devices. The
+pinout of the pin header is shown below.</p>
+<div class="figure align-center" id="figure-combination-pin1">
+<img alt="KB/MS/LPC/GPIO/ SMBus combination pin header" src="_images/combination_pin1.png" />
+<p class="caption">Figure 9: KB/MS/LPC/GPIO/ SMBus combination pin header</p>
+</div>
+<p>KB/MS/LPC/GPIO/SMBus combination pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="41%" />
+<col width="9%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>LAD3</td>
+<td>2</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>LAD2</td>
+<td>4</td>
+<td>SIO_CLK1</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>LAD1</td>
+<td>6</td>
+<td>PCICLK3</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>-LFRAME</td>
+<td>8</td>
+<td>-LDRQ0</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>LAD0</td>
+<td>10</td>
+<td>SERIRQ</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>-PCIRST</td>
+<td>12</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>SMBDT_+3.3V</td>
+<td>14</td>
+<td>SMBCK_+3.3V</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>+3.3V</td>
+<td>16</td>
+<td>+5V</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>-LID/GPI7</td>
+<td>18</td>
+<td>-INTB/GPIO8</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>-THRM/GPI9</td>
+<td>20</td>
+<td>-INTC/GPIO9</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>-EXTSMI/GPI5</td>
+<td>22</td>
+<td>GPIO12/GPIO12</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>-BATLOW/GPI4</td>
+<td>24</td>
+<td>GPIO32/GPIO32</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>GND</td>
+<td>26</td>
+<td>+5VSUS</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>KBDT</td>
+<td>28</td>
+<td>KBCK</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>MSDT</td>
+<td>30</td>
+<td>MSC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="audio-usb-2-0-front-panel-combination-pin-header">
+<h3>2.2.5. Audio + USB 2.0 + Front Panel Combination Pin Header<a class="headerlink" href="#audio-usb-2-0-front-panel-combination-pin-header" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard includes one USB 2.0, Front Panel and Audio combination pin
+header block labeled as &#8220;CN2&#8221;.The USB 2.0, front panel and audio
+combination pin header is used to enable up to three USB 2.0 ports and to
+connect the power switch, reset switch, power LED, suspend LED, HDD LED,
+case speaker, SPDIF out, Line-Out, Line-In and MIC-In jacks. The pinout of the
+pin header is shown below.</p>
+<div class="figure align-center" id="figure-combination-pin2">
+<img alt="Audio + USB + Front panel combination pin header" src="_images/combination_pin2.png" />
+<p class="caption">Figure 10: Audio + USB + Front panel combination pin header</p>
+</div>
+<p>Audio + USB + Front panel combination pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="38%" />
+<col width="13%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>GND</td>
+<td>2</td>
+<td>+5VSUSH1</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>USB_VD0-</td>
+<td>4</td>
+<td>USB_VD0+</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>USB_VD1-</td>
+<td>6</td>
+<td>USB_VD1+</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>USB_VD5-</td>
+<td>8</td>
+<td>USB_VD5+</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>GND</td>
+<td>10</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>+5V</td>
+<td>12</td>
+<td>+5VSUS</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>-HD_LED</td>
+<td>14</td>
+<td>-PWR_LED</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>PW_BN1-</td>
+<td>16</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>GND</td>
+<td>18</td>
+<td>SPEAK_BZ</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>RST_SW</td>
+<td>20</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>GND_AUD</td>
+<td>22</td>
+<td>LINER</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>MICIN_L</td>
+<td>24</td>
+<td>LINEL</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>MICIN_R</td>
+<td>26</td>
+<td>LINEOUT_R</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>SENSE_A</td>
+<td>28</td>
+<td>LINEOUT_L</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>SPDIF_TX0</td>
+<td>30</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="system-cpu-fan-connector">
+<h3>2.2.6. System/CPU Fan Connector<a class="headerlink" href="#system-cpu-fan-connector" title="Permalink to this headline">¶</a></h3>
+<p>The System/CPU fan connector onboard runs on +12V and maintain
+system/CPU cooling. The fan provides variable fan speeds controlled by the
+BIOS. The System/CPU fan connector is labeled as &#8220;FAN1&#8221;. The pinout of the
+system/fan connector is shown below.</p>
+<div class="figure align-center" id="figure-fan">
+<img alt="System/CPU fan connector" src="_images/fan.png" />
+<p class="caption">Figure 11: System/CPU fan connector</p>
+</div>
+<p>System/CPU fan an connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>FANIN1</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>+12V FAN</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dc-in-power-connector">
+<h3>2.2.7. DC-In Power Connector<a class="headerlink" href="#dc-in-power-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has an onboard DC-In 2-pin power connector to connect the
+DC-In power cable. The DC-In power connector is labeled as &#8220;PWR1&#8221;. The
+pinout of the DC-In power connector is shown below.</p>
+<div class="figure align-center" id="figure-dcin">
+<img alt="DC-In power connector" src="_images/dcin.png" />
+<p class="caption">Figure 12: DC-In power connector</p>
+</div>
+<p>DC-In power connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+12V</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cmos-battery-connector">
+<h3>2.2.8. CMOS Battery Connector<a class="headerlink" href="#cmos-battery-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard is equipped with onboard CMOS battery connector used for
+connecting the external cable battery that provides power to the CMOS RAM.
+If disconnected all configurations in the CMOS RAM will be reset to factory
+defaults. The CMOS battery connector is labeled as &#8220;BAT1&#8221;. The connector
+pinout is shown below.</p>
+<div class="figure align-center" id="figure-cmos">
+<img alt="CMOS battery connector" src="_images/cmos.png" />
+<p class="caption">Figure 13: CMOS battery connector</p>
+</div>
+<p>CMOS battery connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>RTC_BAT</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="spi-flash-connector">
+<h3>2.2.9. SPI Flash Connector<a class="headerlink" href="#spi-flash-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has one 8-pin SPI flash connector. The SPI (Serial Peripheral
+Interface) flash connector is used to connect to the SPI BIOS programming
+fixture for updating the SPI flash ROM. The connector is labeled as &#8220;J1&#8221;. The
+pinout of the connector is shown below.</p>
+<div class="figure align-center" id="figure-spiflash">
+<img alt="SPI connector" src="_images/spiflash.png" />
+<p class="caption">Figure 14: SPI connector</p>
+</div>
+<p>SPI connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>NC</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>NC</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>MSPIDO</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>MSPIDI</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>MSPICLK</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>MSPISSO</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>SPIVCC</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 
@@ -379,6 +938,18 @@ connecting to analog displays. The pinout of the VGA port is shown below.</p>
 <li><a class="reference internal" href="#vga-port">2.1.4. VGA Port</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#onboard-connectors">2.2. Onboard Connectors</a><ul>
+<li><a class="reference internal" href="#lvds-connector">2.2.1. LVDS Connector</a></li>
+<li><a class="reference internal" href="#sata-connectors">2.2.2. SATA Connectors</a></li>
+<li><a class="reference internal" href="#sata-power-connector">2.2.3. SATA Power Connector</a></li>
+<li><a class="reference internal" href="#kb-ms-lpc-gpio-smbus-combination-pin-header">2.2.4. KB/MS/LPC/GPIO/SMBus Combination Pin Header</a></li>
+<li><a class="reference internal" href="#audio-usb-2-0-front-panel-combination-pin-header">2.2.5. Audio + USB 2.0 + Front Panel Combination Pin Header</a></li>
+<li><a class="reference internal" href="#system-cpu-fan-connector">2.2.6. System/CPU Fan Connector</a></li>
+<li><a class="reference internal" href="#dc-in-power-connector">2.2.7. DC-In Power Connector</a></li>
+<li><a class="reference internal" href="#cmos-battery-connector">2.2.8. CMOS Battery Connector</a></li>
+<li><a class="reference internal" href="#spi-flash-connector">2.2.9. SPI Flash Connector</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -386,6 +957,9 @@ connecting to analog displays. The pinout of the VGA port is shown below.</p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="overview.html"
                         title="previous chapter">1. Product Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="jumpers.html"
+                        title="next chapter">3. Jumpers</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/io_interface.txt"
@@ -415,6 +989,9 @@ connecting to analog displays. The pinout of the VGA port is shown below.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="jumpers.html" title="3. Jumpers"
+             >next</a> |</li>
+        <li class="right" >
           <a href="overview.html" title="1. Product Overview"
              >previous</a> |</li>
         <li><a href="index.html">EPIA-P910 User Manual 1.06 documentation</a> &raquo;</li> 
@@ -431,6 +1008,8 @@ connecting to analog displays. The pinout of the VGA port is shown below.</p>
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-52261126-1', 'viaembedded.github.io');
+  ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
   ga('send', 'pageview');
 </script>
 

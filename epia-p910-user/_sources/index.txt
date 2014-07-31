@@ -101,6 +101,13 @@ Table of Contents
 
    overview.rst
    io_interface.rst
+   jumpers.rst
+   expansion.rst
+   hardware.rst
+   bios.rst
+   drivers.rst
+   powerconsumption.rst
+   vendors.rst
 
 Indices and tables
 ==================
