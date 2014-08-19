@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="VAB-820 User Manual 1.05 documentation" href="index.html" />
+    <link rel="next" title="3. Jumpers" href="jumpers.html" />
     <link rel="prev" title="1. Product Overview" href="overview.html" /> 
   </head>
   <body>
@@ -33,6 +34,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="jumpers.html" title="3. Jumpers"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="overview.html" title="1. Product Overview"
              accesskey="P">previous</a> |</li>
@@ -89,6 +93,1176 @@ frequently used ports as part of the external I/O coastline.</p>
 </tr>
 </tbody>
 </table>
+<div class="section" id="rj-45-lan-port-gigabit-ethernet">
+<h3>2.1.1. RJ-45 LAN port: Gigabit Ethernet<a class="headerlink" href="#rj-45-lan-port-gigabit-ethernet" title="Permalink to this headline">¶</a></h3>
+<p>The integrated 8-pin Gigabit Ethernet port is using an 8 Position 8 Contact
+(8P8C) receptacle connector (commonly referred to as RJ45). The pinout of
+the Gigabit Ethernet port is shown below.</p>
+<div class="figure align-center" id="figure-ethernet">
+<img alt="Gigabit Ethernet port pinout diagram" src="_images/ethernet.svg" /><p class="caption">Figure 3: Gigabit Ethernet port pinout diagram</p>
+</div>
+<p>Gigabit Ethernet port pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Signal pair 1+</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Signal pair 1-</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Signal pair 2+</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>Signal pair 3+</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Signal pair 3-</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Signal pair 2-</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>Signal pair 4+</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>Signal pair 4-</td>
+</tr>
+</tbody>
+</table>
+<p>The Gigabit Ethernet port (RJ45 port) has two individual LED indicators
+located on the front side to show its Active/Link status and Speed status.</p>
+<p>Gigabit Ethernet LED color definition:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="40%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Connection</th>
+<th class="head">Link LED (Left LED on RJ-45 connector)</th>
+<th class="head">Active LED (Right LED on RJ-45 connector)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Link Off</td>
+<td>Off</td>
+<td>Off</td>
+</tr>
+<tr class="row-odd"><td>Speed_10Mbit</td>
+<td>The LED is always On in Orange color</td>
+<td>Flash in Yellow color</td>
+</tr>
+<tr class="row-even"><td>Speed_100Mbit</td>
+<td>The LED is always On in Orange color</td>
+<td>Flash in Yellow color</td>
+</tr>
+<tr class="row-odd"><td>Speed_1000Mbit</td>
+<td>The LED is always On in Orange color</td>
+<td>Flash in Yellow color</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="usb-2-0-port">
+<h3>2.1.2. USB 2.0 Port<a class="headerlink" href="#usb-2-0-port" title="Permalink to this headline">¶</a></h3>
+<p>The VAB-820 mainboard provides two USB 2.0 ports, each USB port gives
+complete Plug and Play and hot swap capability for external devices. The USB
+interface complies with USB UHCI, Rev. 2.0. The pinout of the typical USB 2.0
+port is shown below.</p>
+<div class="figure align-center" id="figure-usbport">
+<img alt="USB 2.0 port diagram" src="_images/usbport.svg" /><p class="caption">Figure 4: USB 2.0 port diagram</p>
+</div>
+<p>USB 2.0 port pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="37%" />
+<col width="13%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">USB1</th>
+<th class="head" colspan="2">USB2</th>
+</tr>
+<tr class="row-even"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>1</td>
+<td>VCC</td>
+<td>1</td>
+<td>VCC</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>USB data -</td>
+<td>2</td>
+<td>USB data -</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>USB data +</td>
+<td>3</td>
+<td>USB data +</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>GND</td>
+<td>4</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hdmi-port">
+<h3>2.1.3. HDMI® Port<a class="headerlink" href="#hdmi-port" title="Permalink to this headline">¶</a></h3>
+<p>The integrated 19-pin HDMI® port uses an HDMI® Type A receptacle
+connector defined in HDMI specification. The HDMI® port is used to connect
+high definition video and digital audio using a single cable. It allows
+connecting the digital video devices which utilize a high definition video signal.
+The pinout of the HDMI® port is shown below.</p>
+<div class="figure align-center" id="figure-hdmi">
+<img alt="HDMI® port diagram" src="_images/hdmi.svg" /><p class="caption">Figure 5: HDMI® port diagram</p>
+</div>
+<p>HDMI® port pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="43%" />
+<col width="11%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>TMDS Data0+</td>
+<td>2</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>TMDS Data0–</td>
+<td>4</td>
+<td>TMDS Data1+</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>GND</td>
+<td>6</td>
+<td>TMDS Data1–</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>TMDS Data2+</td>
+<td>8</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>TMDS Data2–</td>
+<td>10</td>
+<td>TMDS Data3+</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>GND</td>
+<td>12</td>
+<td>TMDS Data3–</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>CEC</td>
+<td>14</td>
+<td>NC</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>HDMI Clock</td>
+<td>16</td>
+<td>HDMI Data</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>GND</td>
+<td>18</td>
+<td>HDMI Power</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>Hot Plug Detect</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="rca-jack">
+<h3>2.1.4. RCA Jack<a class="headerlink" href="#rca-jack" title="Permalink to this headline">¶</a></h3>
+<p>The RCA jack connects to external composite video input device.</p>
+<div class="figure align-center" id="figure-rca">
+<img alt="RCA jack diagram" src="_images/rca.png" />
+<p class="caption">Figure 6: RCA jack diagram</p>
+</div>
+<p>RCA Jack pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Description</th>
+<th class="head">RCA Jack</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Video Composite</td>
+<td>Video Input</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="micro-sd-card-slot">
+<h3>2.1.5. Micro SD Card slot<a class="headerlink" href="#micro-sd-card-slot" title="Permalink to this headline">¶</a></h3>
+<p>There is a Micro SD card slot located on the front I/O panel. The Micro SD
+card slot offers expandable storage.</p>
+<div class="figure align-center" id="figure-sdcard">
+<img alt="Micro SD card slot diagram" src="_images/sdcard.svg" /><p class="caption">Figure 7: Micro SD card slot diagram</p>
+</div>
+<p>Micro SD card slot pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>SD0DATA2</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>SD0DATA3</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>SD0CMD</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>VDD (3.3V)</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>SD0CLK</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>SD0DATA0</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>SD0DATA1</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>SD0_CD</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="onboard-connectors">
+<h2>2.2. Onboard Connectors<a class="headerlink" href="#onboard-connectors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="usb-usbotg-pin-header">
+<h3>2.2.1. USB, USBOTG Pin Header<a class="headerlink" href="#usb-usbotg-pin-header" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard includes one USB and USBOTG combination pin header block
+labeled as “J8”. The combination pin header is used for connecting USB and
+USBOTG devices. The pinout of the pin header is shown below.</p>
+<div class="figure align-center" id="figure-usbotg">
+<img alt="USB, USBOTG pin header diagram" src="_images/usbotg.svg" /><p class="caption">Figure 8: USB, USBOTG pin header diagram</p>
+</div>
+<p>USB, USBOTG pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="37%" />
+<col width="13%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>GND</td>
+<td>2</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>USB_OTG_ID</td>
+<td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>OTG_DP</td>
+<td>6</td>
+<td>USBD_T3+</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>OTG_DN</td>
+<td>8</td>
+<td>USBD_T3-</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>OTG_VBUS</td>
+<td>10</td>
+<td>USB_VBUS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="front-audio-pin-header">
+<h3>2.2.2. Front Audio Pin Header<a class="headerlink" href="#front-audio-pin-header" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has a pin header for Line-out, Line-in and MIC-in. This pin
+header is labeled as &#8220;AUDIO1&#8221;. The pinout of the pin header is shown below.</p>
+<div class="figure align-center" id="figure-audio">
+<img alt="Front Audio pin header diagram" src="_images/audio.svg" /><p class="caption">Figure 9: Front Audio pin header diagram</p>
+</div>
+<p>Front Audio pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="38%" />
+<col width="13%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>HEAD_RIGHT</td>
+<td>2</td>
+<td>HEAD_LEFT</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>LINE_IN_R</td>
+<td>4</td>
+<td>LINE_IN_L</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>MIC_IN</td>
+<td>6</td>
+<td>MIC_IN</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>&#8211;</td>
+<td>8</td>
+<td>NC</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>GND_ANALOG</td>
+<td>10</td>
+<td>GND_ANALOG</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dio-i2c-system-reset-p-led-and-wlan-led-pin-header">
+<h3>2.2.3. DIO, I²C, System reset, P_LED, and WLAN_LED Pin Header<a class="headerlink" href="#dio-i2c-system-reset-p-led-and-wlan-led-pin-header" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard includes one DIO, I²C, System reset, P_LED, and WLAN_LED
+combination pin header block labeled as “J7”. The combination pin header is
+used for connecting Digital I/O (GPIO), I²C devices and providing access to
+system reset switch, power LED and WLAN LED. The pinout of the pin header
+is shown below.</p>
+<div class="figure align-center" id="figure-gpio">
+<img alt="DIO, I²C, System reset, P_LED, and WLAN_LED combination pin header diagram" src="_images/gpio.svg" /><p class="caption">Figure 10: DIO, I²C, System reset, P_LED, and WLAN_LED combination pin header diagram</p>
+</div>
+<p>DIO, I²C, System reset, P_LED, and WLAN_LED pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="36%" />
+<col width="16%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>RESET_N</td>
+<td>2</td>
+<td>P_LED+</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>GND</td>
+<td>4</td>
+<td>P_LED-</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>I2C3_SCL</td>
+<td>6</td>
+<td>W_LED+</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>I2C3_SDA</td>
+<td>8</td>
+<td>W_LED-</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>5VIN</td>
+<td>10</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>GPIO_1</td>
+<td>12</td>
+<td>GPIO_7</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>GPIO_2</td>
+<td>14</td>
+<td>GPIO_8</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>GPIO_4</td>
+<td>16</td>
+<td>GPIO_9</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>GPIO_5</td>
+<td>18</td>
+<td>GPIO_16</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>GND</td>
+<td>20</td>
+<td>&#8211;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="spi-connector">
+<h3>2.2.4. SPI connector<a class="headerlink" href="#spi-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has one 7-pin SPI flash connector. The SPI (Serial Peripheral
+Interface) connector is used to communicate with external slave devices. The
+connector is labeled as &#8220;J10&#8221;. The pinout of the connector is shown below.</p>
+<div class="figure align-center" id="figure-spi">
+<img alt="SPI connector diagram" src="_images/spi.svg" /><p class="caption">Figure 11: SPI connector diagram</p>
+</div>
+<p>SPI connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>CSPI3_CLK</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>CSPI3_MOSI</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>CSPI3_MISO</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>3P3V</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>CSPI3_CS0</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>CSPI3_CS1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="poe-pin-header">
+<h3>2.2.5. PoE Pin Header<a class="headerlink" href="#poe-pin-header" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has two PoE pin headers. The PoE pin headers are used to
+connect to optional PD power board for implementation of Power Over
+Ethernet. The PoE input connector is labeled as &#8220;J13&#8221;. The PoE output
+connector is labeled as &#8220;J14&#8221;. The pinout of the connector is shown below.</p>
+<div class="figure align-center" id="figure-poe">
+<img alt="PoE Output/Input pin header diagram" src="_images/poe.svg" /><p class="caption">Figure 12: PoE Output/Input pin header diagram</p>
+</div>
+<p>PoE Output pin (J14) header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="33%" />
+<col width="17%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>POE_12V</td>
+<td>2</td>
+<td>POE_12V</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>NC</td>
+<td>4</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>GND</td>
+<td>6</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<p>PoE Input pin (J13) header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="30%" />
+<col width="17%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>WIRE1</td>
+<td>2</td>
+<td>WIRE2</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>NC</td>
+<td>4</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>WIRE3</td>
+<td>6</td>
+<td>WIRE4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="v-dc-in-connector">
+<h3>2.2.6. +12V DC-In Connector<a class="headerlink" href="#v-dc-in-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has a +12V DC-In power connector to provide additional
+power to the rest of the system. The 2-pin power connector is used to
+connect the DC-In power jack. The connector is labeled as &#8220;J9&#8221;. The pinout of
+the connector is shown below.</p>
+<div class="figure align-center" id="figure-dcin">
+<img alt="12V DC-In connector diagram" src="_images/dcin.svg" /><p class="caption">Figure 13: 12V DC-In connector diagram</p>
+</div>
+<p>12V DC-In connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+12V</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="s-video-input-pin-header">
+<h3>2.2.7. S-Video Input Pin Header<a class="headerlink" href="#s-video-input-pin-header" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard provides an S-Video Input pin header. The S-Video Input pin
+header is an analog video connector for connecting TV monitor or S-Video
+input devices. The pinout of the S-Video input pin header is shown below.</p>
+<div class="figure align-center" id="figure-svideo">
+<img alt="S-Video input pin header diagram" src="_images/svideo.svg" /><p class="caption">Figure 14: S-Video input pin header diagram</p>
+</div>
+<p>S-Video input pin header pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="28%" />
+<col width="16%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>C</td>
+<td>2</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>Y</td>
+<td>4</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>NC</td>
+<td>6</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cmos-battery-connector">
+<h3>2.2.8. CMOS Battery Connector<a class="headerlink" href="#cmos-battery-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard is equipped with an onboard CMOS battery connector used
+for connecting the external cable battery that provides power to the CMOS
+RAM. If disconnected all configurations in the CMOS RAM will be reset to
+factory defaults. The CMOS battery connector is labeled as &#8220;J1&#8221;. The
+connector pinout is shown below.</p>
+<div class="figure align-center" id="figure-battery">
+<img alt="CMOS battery connector diagram" src="_images/battery.svg" /><p class="caption">Figure 15: CMOS battery connector diagram</p>
+</div>
+<p>CMOS battery connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>+VBAT</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mini-pcie-slot">
+<h3>2.2.9. Mini-PCIe Slot<a class="headerlink" href="#mini-pcie-slot" title="Permalink to this headline">¶</a></h3>
+<p>The Mini-PCIe slot is compatible with all PCIe 2.0 Mini Cards: full-length and
+half-length. The location of the Mini-PCIe slot is shown below.</p>
+<div class="figure align-center" id="figure-minipcie">
+<img alt="Mini-PCIe slot diagram" src="_images/minipcie.svg" /><p class="caption">Figure 16: Mini-PCIe slot diagram</p>
+</div>
+<p>Mini-PCIe slot pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="38%" />
+<col width="11%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>PCIE_WAKE_B</td>
+<td>2</td>
+<td>MPCIE_3V3</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>GND</td>
+<td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>JTAG_TCK</td>
+<td>6</td>
+<td>VCC15</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>JTAG_TMS</td>
+<td>8</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>GND</td>
+<td>10</td>
+<td>NC</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>PCIe_CREFCLKM</td>
+<td>12</td>
+<td>NC</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>PCIe_CREFCLKP</td>
+<td>14</td>
+<td>NC</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>GND</td>
+<td>16</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>JTAG_TD1</td>
+<td>18</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>JTAG_TD0</td>
+<td>20</td>
+<td>PCIE_DIS_B</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>GND</td>
+<td>22</td>
+<td>PCIE_RST_B</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>PCIe_CRXM</td>
+<td>24</td>
+<td>MPCIE_3V3</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>PCIe_CRXP</td>
+<td>26</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>GND</td>
+<td>28</td>
+<td>VCC15</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>GND</td>
+<td>30</td>
+<td>PCIe_SMB_CLK</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>PCIe_CTXM</td>
+<td>32</td>
+<td>PCIe_SMB_DATA</td>
+</tr>
+<tr class="row-even"><td>33</td>
+<td>PCIe_CTXP</td>
+<td>34</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>GND</td>
+<td>36</td>
+<td>PCIE_USB_DM</td>
+</tr>
+<tr class="row-even"><td>37</td>
+<td>GND</td>
+<td>38</td>
+<td>PCIE_USB_DP</td>
+</tr>
+<tr class="row-odd"><td>39</td>
+<td>MPCIE_3V3</td>
+<td>40</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>41</td>
+<td>MPCIE_3V3</td>
+<td>42</td>
+<td>LED_WWAN_B</td>
+</tr>
+<tr class="row-odd"><td>43</td>
+<td>GND</td>
+<td>44</td>
+<td>LED_WLAN_B</td>
+</tr>
+<tr class="row-even"><td>45</td>
+<td>JTAG_nTRST</td>
+<td>46</td>
+<td>LED_WPAN_B</td>
+</tr>
+<tr class="row-odd"><td>47</td>
+<td>JTAG_nSRST</td>
+<td>48</td>
+<td>VCC15</td>
+</tr>
+<tr class="row-even"><td>49</td>
+<td>GND</td>
+<td>50</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>51</td>
+<td>NC</td>
+<td>52</td>
+<td>MPCIE_3V3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lvds1-connector">
+<h3>2.2.10. LVDS1 Connector<a class="headerlink" href="#lvds1-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has one 40-pin LVDS panel connector on the bottom side. The
+onboard LVDS panel connector allows to connect the panel&#8217;s LVDS cable to
+support the dual-channel 18-bit/24-bit display. Backlight controls are
+integrated into the LVDS panel connector pinout. The LVDS panel connector
+is labeled as &#8220;LVDS1&#8221;. The pinout of the connector is shown below.</p>
+<div class="figure align-center" id="figure-lvds">
+<img alt="LVDS1 connector diagram" src="_images/lvds.svg" /><p class="caption">Figure 17: LVDS1 connector diagram</p>
+</div>
+<p>LVDS1 connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="38%" />
+<col width="11%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>LVDS1_TX0_NC</td>
+<td>2</td>
+<td>PVDD</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>LVDS1_TX0_PC</td>
+<td>4</td>
+<td>PVDD</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>GND</td>
+<td>6</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>LVDS1_TX1_NC</td>
+<td>8</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>LVDS1_TX1_PC</td>
+<td>10</td>
+<td>LVDS0_TX0_NC</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>GND</td>
+<td>12</td>
+<td>LVDS0_TX0_PC</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>LVDS1_TX2_NC</td>
+<td>14</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>LVDS1_TX2_PC</td>
+<td>16</td>
+<td>LVDS0_TX1_NC</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>GND</td>
+<td>18</td>
+<td>LVDS0_TX1_PC</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>LVDS1_CLK_NC</td>
+<td>20</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>LVDS1_CLK_PC</td>
+<td>22</td>
+<td>LVDS0_TX2_NC</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>GND</td>
+<td>24</td>
+<td>LVDS0_TX2_PC</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>LVDS1_TX3_NC</td>
+<td>26</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>LVDS1_TX3_PC</td>
+<td>28</td>
+<td>LVDS0_CLK_NC</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>GND</td>
+<td>30</td>
+<td>LVDS0_CLK_PC</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>5VIN</td>
+<td>32</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>33</td>
+<td>3P3V</td>
+<td>34</td>
+<td>LVDS0_TX3_NC</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>NC</td>
+<td>36</td>
+<td>LVDS0_TX3_PC</td>
+</tr>
+<tr class="row-even"><td>37</td>
+<td>NC</td>
+<td>38</td>
+<td>LVDS0_EDID_SCL</td>
+</tr>
+<tr class="row-odd"><td>39</td>
+<td>NC</td>
+<td>40</td>
+<td>LVDS0_EDID_SDA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lvds-inverter-connector">
+<h3>2.2.11. LVDS Inverter Connector<a class="headerlink" href="#lvds-inverter-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard has one LVDS Inverter connector located on the bottom side
+of the board for supplying power to the backlight of the LCD panel. The
+connector is labeled as &#8220;INVERTER&#8221;. The pinout of the connector is shown
+below.</p>
+<div class="figure align-center" id="figure-lvds-inverter">
+<img alt="LVDS Inverter Connector diagram" src="_images/lvds_inverter.svg" /><p class="caption">Figure 18: LVDS Inverter Connector diagram</p>
+</div>
+<p>LVDS Inverter Connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>IVDD</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>IVDD</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>LVDS_EN</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>DISP0_CONTRAST</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>LVDS_EN</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>DISP0_CONTRAST</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mipi-csi-2-connector">
+<h3>2.2.12. MIPI CSI-2 Connector<a class="headerlink" href="#mipi-csi-2-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard includes one MIPI CSI-2 connector on the bottom side of the
+board. The MIPI CSI-2 connector is used to connect to a camera serial
+interface in order to support a wide range of imaging solutions. The connector
+is labeled as &#8220;J18&#8221;. The pinout of the connector is shown below.</p>
+<div class="figure align-center" id="figure-mipi">
+<img alt="MIPI CSI-2 connector diagram" src="_images/mipi.svg" /><p class="caption">Figure 19: MIPI CSI-2 connector diagram</p>
+</div>
+<p>MIPI CSI-2 connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>5VIN</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>I2C2_SCL</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>I2C2_SDA</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>CSI_CLK0P</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>CSI_CLK0M</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>CSI_D0P</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>CSI_D0M</td>
+</tr>
+<tr class="row-odd"><td>10</td>
+<td>GND</td>
+</tr>
+<tr class="row-even"><td>11</td>
+<td>CSI_D1M</td>
+</tr>
+<tr class="row-odd"><td>12</td>
+<td>CSI_D1P</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="com1-com2-can-connector">
+<h3>2.2.13. COM1/COM2/CAN Connector<a class="headerlink" href="#com1-com2-can-connector" title="Permalink to this headline">¶</a></h3>
+<p>The mainboard includes two onboard COM connectors on the bottom side of
+the board. The onboard COM1 connector labeled as &#8220;J4&#8221; is used to attach
+additional COM ports that support RS-232 standard with DTE (Data Terminal
+Equipment) type. The onboard COM2/CAN connector labeled as &#8220;J5&#8221; is
+primarily used to attach additional COM port for debug purpose. The CAN
+bus can also be supported through this connector. The pinout of the
+connector is shown below.</p>
+<div class="figure align-center" id="figure-com">
+<img alt="COM1/COM2/CAN connector diagram" src="_images/com.svg" /><p class="caption">Figure 20: COM1/COM2/CAN connector diagram</p>
+</div>
+<p>COM1/COM2/CAN connector pinout:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="35%" />
+<col width="15%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">COM1</th>
+<th class="head" colspan="2">COM2/CAN</th>
+</tr>
+<tr class="row-even"><th class="head">Pin</th>
+<th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>1</td>
+<td>5VIN</td>
+<td>1</td>
+<td>5VIN</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>COM_RXD1</td>
+<td>2</td>
+<td>COM2_RX</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>COM_TXD1</td>
+<td>3</td>
+<td>COM2_TX</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>COM_DCD1</td>
+<td>4</td>
+<td>NC</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>COM_RI1</td>
+<td>5</td>
+<td>NC</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>GND</td>
+<td>6</td>
+<td>GND</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>COM_DTR1</td>
+<td>7</td>
+<td>CAN_RX2</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>COM_CTS1</td>
+<td>8</td>
+<td>CAN_TX2</td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td>COM_RTS1</td>
+<td>9</td>
+<td>CAN_TX1</td>
+</tr>
+<tr class="row-even"><td>10</td>
+<td>COM_DSR1</td>
+<td>10</td>
+<td>CAN_RX1</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 
@@ -101,7 +1275,30 @@ frequently used ports as part of the external I/O coastline.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">2. I/O Interface</a><ul>
-<li><a class="reference internal" href="#external-i-o-ports">2.1. External I/O Ports</a></li>
+<li><a class="reference internal" href="#external-i-o-ports">2.1. External I/O Ports</a><ul>
+<li><a class="reference internal" href="#rj-45-lan-port-gigabit-ethernet">2.1.1. RJ-45 LAN port: Gigabit Ethernet</a></li>
+<li><a class="reference internal" href="#usb-2-0-port">2.1.2. USB 2.0 Port</a></li>
+<li><a class="reference internal" href="#hdmi-port">2.1.3. HDMI® Port</a></li>
+<li><a class="reference internal" href="#rca-jack">2.1.4. RCA Jack</a></li>
+<li><a class="reference internal" href="#micro-sd-card-slot">2.1.5. Micro SD Card slot</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#onboard-connectors">2.2. Onboard Connectors</a><ul>
+<li><a class="reference internal" href="#usb-usbotg-pin-header">2.2.1. USB, USBOTG Pin Header</a></li>
+<li><a class="reference internal" href="#front-audio-pin-header">2.2.2. Front Audio Pin Header</a></li>
+<li><a class="reference internal" href="#dio-i2c-system-reset-p-led-and-wlan-led-pin-header">2.2.3. DIO, I²C, System reset, P_LED, and WLAN_LED Pin Header</a></li>
+<li><a class="reference internal" href="#spi-connector">2.2.4. SPI connector</a></li>
+<li><a class="reference internal" href="#poe-pin-header">2.2.5. PoE Pin Header</a></li>
+<li><a class="reference internal" href="#v-dc-in-connector">2.2.6. +12V DC-In Connector</a></li>
+<li><a class="reference internal" href="#s-video-input-pin-header">2.2.7. S-Video Input Pin Header</a></li>
+<li><a class="reference internal" href="#cmos-battery-connector">2.2.8. CMOS Battery Connector</a></li>
+<li><a class="reference internal" href="#mini-pcie-slot">2.2.9. Mini-PCIe Slot</a></li>
+<li><a class="reference internal" href="#lvds1-connector">2.2.10. LVDS1 Connector</a></li>
+<li><a class="reference internal" href="#lvds-inverter-connector">2.2.11. LVDS Inverter Connector</a></li>
+<li><a class="reference internal" href="#mipi-csi-2-connector">2.2.12. MIPI CSI-2 Connector</a></li>
+<li><a class="reference internal" href="#com1-com2-can-connector">2.2.13. COM1/COM2/CAN Connector</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -109,6 +1306,9 @@ frequently used ports as part of the external I/O coastline.</p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="overview.html"
                         title="previous chapter">1. Product Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="jumpers.html"
+                        title="next chapter">3. Jumpers</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/io_interface.txt"
@@ -137,6 +1337,9 @@ frequently used ports as part of the external I/O coastline.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="jumpers.html" title="3. Jumpers"
+             >next</a> |</li>
         <li class="right" >
           <a href="overview.html" title="1. Product Overview"
              >previous</a> |</li>
