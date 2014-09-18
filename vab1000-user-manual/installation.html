@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="VIA VAB-1000 User Manual 1.04 documentation" href="index.html" />
+    <link rel="next" title="5. Software and Technical Supports" href="software.html" />
     <link rel="prev" title="3. Jumpers" href="jumpers.html" /> 
   </head>
   <body>
@@ -33,6 +34,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="software.html" title="5. Software and Technical Supports"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="jumpers.html" title="3. Jumpers"
              accesskey="P">previous</a> |</li>
@@ -66,6 +70,104 @@ panel_USB_COM board-to-board connectors of the VAB-1000-T companion
 card.</p>
 <p><strong>Step 3</strong></p>
 <p>Secure the VAB-1000-T to the chassis with two screws.</p>
+<div class="figure align-center" id="figure-companion-card-2">
+<img alt="Securing the VAB-1000-T companion card" src="_images/companion_card_2.svg" /><p class="caption">Figure 2: Securing the VAB-1000-T companion card</p>
+</div>
+</div>
+<div class="section" id="installing-the-vab-1000-l-optional">
+<h2>4.2. Installing the VAB-1000-L (optional)<a class="headerlink" href="#installing-the-vab-1000-l-optional" title="Permalink to this headline">¶</a></h2>
+<p><strong>Step 1</strong></p>
+<p>Insert one end of the board to board flex cable to the Board to Board connector on
+VAB-1000-L daughter board and the other end to LVDS connector on VAB-1000
+mainboard.</p>
+<p><strong>Step 2</strong></p>
+<p>Connect the 1-Channel backlight connector to the LVDS panel display.</p>
+<div class="figure align-center" id="figure-lvds-card-1">
+<img alt="Connect the 1-CH backlight connector to the LVDS panel" src="_images/lvds_card_1.svg" /><p class="caption">Figure 3: Connect the 1-CH backlight connector to the LVDS panel</p>
+</div>
+<p><strong>Step 3</strong></p>
+<p>Install the VAB-1000-L daughter board to a suitable surface and secure it with
+two screws.</p>
+<div class="figure align-center" id="figure-lvds-card-2">
+<img alt="Install the VAB-1000-L to a suitable surface" src="_images/lvds_card_2.svg" /><p class="caption">Figure 4: Install the VAB-1000-L to a suitable surface</p>
+</div>
+<p><strong>Step 4</strong></p>
+<p>Connect the 2-Channel LVDS connector &amp; 2-Channel Backlight connector to
+the 10.4&#8221; LVDS panel display.</p>
+<div class="figure align-center" id="figure-lvds-card-3">
+<img alt="Connect the 2-CH LVDS &amp; 2-CH Backlight connector to 10.4&quot; LVDS panel" src="_images/lvds_card_3.svg" /><p class="caption">Figure 5: Connect the 2-CH LVDS &amp; 2-CH Backlight connector to 10.4&#8221; LVDS panel</p>
+</div>
+<p><strong>Step 5</strong>
+Connect the DC-In power cable to the DC-In connector.</p>
+<div class="figure align-center" id="figure-lvds-card-4">
+<img alt="Connect the DC-In power cable" src="_images/lvds_card_4.svg" /><p class="caption">Figure 6: Connect the DC-In power cable</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Connect the 1-Channel LVDS connector to the LVDS panel display, if necessary.</p>
+</div>
+</div>
+<div class="section" id="installing-the-mini-pcie-module">
+<h2>4.3. Installing the Mini PCIe module<a class="headerlink" href="#installing-the-mini-pcie-module" title="Permalink to this headline">¶</a></h2>
+<p><strong>Step 1</strong></p>
+<p>Align the notch on the Mini PCIe module with the counterpart on the Mini
+PCIe slot then insert the module at 30° angle.</p>
+<div class="figure align-center" id="figure-pcie-card-1">
+<img alt="Inserting the mini PCIe module" src="_images/pcie_card_1.svg" /><p class="caption">Figure 7: Inserting the mini PCIe module</p>
+</div>
+<p><strong>Step 2</strong></p>
+<p>Once the module has been fully inserted, push down the module until the
+screw holes align with the mounting holes on the hex spacer screws. Secure
+the module with two screws (6 mm) to the standoffs.</p>
+<div class="figure align-center" id="figure-pcie-card-2">
+<img alt="Securing the mini PCIe module" src="_images/pcie_card_2.svg" /><p class="caption">Figure 8: Securing the mini PCIe module</p>
+</div>
+</div>
+<div class="section" id="installing-into-a-chassis">
+<h2>4.4. Installing into a Chassis<a class="headerlink" href="#installing-into-a-chassis" title="Permalink to this headline">¶</a></h2>
+<p>The VAB-1000 can be fitted into any chassis that has the mounting holes for
+compatible with the standard Pico-ITX mounting hole locations. Additionally,
+the chassis must meet the minimum height requirements for specified areas of
+the board. If the companion card VAB-1000-T is being used, the chassis will
+need to accommodate the additional space requirements.</p>
+<div class="section" id="suggested-minimum-chassis-dimensions">
+<h3>4.4.1. Suggested minimum chassis dimensions<a class="headerlink" href="#suggested-minimum-chassis-dimensions" title="Permalink to this headline">¶</a></h3>
+<p>The figure below shows the suggested minimum space requirements that a
+chassis should have in order to work well with the VAB-1000.</p>
+<div class="figure align-center" id="figure-minimum-chassis-1">
+<img alt="Suggested minimum chassis dimensions" src="_images/minimum_chassis_1.svg" /><p class="caption">Figure 9: Suggested minimum chassis dimensions</p>
+</div>
+<p>Each side of the board should have a buffer zone from the internal wall of the
+chassis. The side of the board that accommodates the I/O coastline should
+have a buffer of 1.5 mm. The side on the opposite end of the I/O coastline that
+has SATA connector and board-to-board pin headers should have a buffer of
+at least 12 mm, or 27 mm if the VAB-1000-T companion card will be used.
+The two sides adjacent to the I/O coastline should have at least a 2 mm buffer.</p>
+</div>
+<div class="section" id="suggested-minimum-chassis-height">
+<h3>4.4.2. Suggested minimum chassis height<a class="headerlink" href="#suggested-minimum-chassis-height" title="Permalink to this headline">¶</a></h3>
+<p>The figure below shows the suggested minimum height requirements for the
+internal space of the chassis. It is not necessary for the internal ceiling to be
+evenly flat. What is required is that the internal ceiling height must be strictly
+observed for each section that is highlighted.</p>
+<div class="figure align-center" id="figure-minimum-chassis-2">
+<img alt="Suggested minimum internal chassis ceiling height" src="_images/minimum_chassis_2.svg" /><p class="caption">Figure 10: Suggested minimum internal chassis ceiling height</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In getting the minimum height requirements for internal space of the chassis, it is required to consider
+the heights of the connectors (such as JTAG connector and Mini PCIe slot) on the bottom side of the
+VAB-1000 board.</p>
+</div>
+</div>
+<div class="section" id="suggested-keep-out-areas">
+<h3>4.4.3. Suggested keep out areas<a class="headerlink" href="#suggested-keep-out-areas" title="Permalink to this headline">¶</a></h3>
+<p>The figure below shows the areas of the mainboard that is highly suggested to
+leave unobstructed.</p>
+<div class="figure align-center" id="figure-keep-out-areas">
+<img alt="Suggested keep out areas" src="_images/keep_out_areas.svg" /><p class="caption">Figure 11: Suggested keep out areas</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -79,6 +181,14 @@ card.</p>
   <ul>
 <li><a class="reference internal" href="#">4. Hardware Installation</a><ul>
 <li><a class="reference internal" href="#installing-the-vab-1000-t">4.1. Installing the VAB-1000-T</a></li>
+<li><a class="reference internal" href="#installing-the-vab-1000-l-optional">4.2. Installing the VAB-1000-L (optional)</a></li>
+<li><a class="reference internal" href="#installing-the-mini-pcie-module">4.3. Installing the Mini PCIe module</a></li>
+<li><a class="reference internal" href="#installing-into-a-chassis">4.4. Installing into a Chassis</a><ul>
+<li><a class="reference internal" href="#suggested-minimum-chassis-dimensions">4.4.1. Suggested minimum chassis dimensions</a></li>
+<li><a class="reference internal" href="#suggested-minimum-chassis-height">4.4.2. Suggested minimum chassis height</a></li>
+<li><a class="reference internal" href="#suggested-keep-out-areas">4.4.3. Suggested keep out areas</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -86,6 +196,9 @@ card.</p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="jumpers.html"
                         title="previous chapter">3. Jumpers</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="software.html"
+                        title="next chapter">5. Software and Technical Supports</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/installation.txt"
@@ -114,6 +227,9 @@ card.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="software.html" title="5. Software and Technical Supports"
+             >next</a> |</li>
         <li class="right" >
           <a href="jumpers.html" title="3. Jumpers"
              >previous</a> |</li>
