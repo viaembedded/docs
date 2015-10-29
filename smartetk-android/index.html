@@ -1,0 +1,2217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Smart ETK Android API 0.0.19 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.19',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="None" href="index.html#document-index" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html#document-index">Smart ETK Android API 0.0.19 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-the-smart-etk-android-api-documentation">
+<span id="document-index"></span><h1>Welcome to the Smart ETK Android API documentation!<a class="headerlink" href="#welcome-to-the-smart-etk-android-api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<span id="document-overview"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="smart-etk-api-general-notes"></span><h2>1. Smart ETK API General Notes<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<p>VIA Smart ETK SDK supports the hardware controlling API for GPIO, Watch
+Dog, and UART (RS-232) modules.</p>
+<p>Smart ETK is programmed with the socket IO as the communication between
+JAVA and C language to control the hardware modules. We implemented the
+board support service such as <code class="docutils literal"><span class="pre">bss_vab820</span></code> to meet the request from Smart ETK
+API.</p>
+<div class="section" id="compatibility">
+<h3>1.1. Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Model</th>
+<th class="head">GPIO</th>
+<th class="head">WDT</th>
+<th class="head">RTC</th>
+<th class="head">WOL</th>
+<th class="head">RES</th>
+<th class="head">UART</th>
+<th class="head">SUS</th>
+<th class="head">CEC</th>
+<th class="head">I2C</th>
+<th class="head">CAN</th>
+<th class="head">UPC</th>
+<th class="head">DPMS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="http://www.viatech.com/en/boards/pico-itx/vab-820/">VAB-820</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.viatech.com/en/boards/pico-itx/vab-1000/">VAB-1000</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>×</td>
+<td>✓</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.viatech.com/en/systems/android-signage-players/alta-ds-2/">ALTA DS 2</a></td>
+<td>×</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>×</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.viatech.com/en/systems/industrial-fanless-pcs/amos-820/">AMOS-820</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.viatech.com/en/systems/small-form-factor-pcs/artigo-a900/">ARTiGO A900</a></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>×</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.viatech.com/en/systems/ruggedized-tablets/viega/">Viega</a></td>
+<td>×</td>
+<td>✓</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>✓</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend</strong>: <code class="docutils literal"><span class="pre">GPIO</span></code>: <a class="reference internal" href="index.html#gpio"><span>GPIO</span></a> support, <code class="docutils literal"><span class="pre">WDT</span></code>: <a class="reference internal" href="index.html#watchdog"><span>WatchDog</span></a> timer,
+<code class="docutils literal"><span class="pre">RTC</span></code> is <a class="reference internal" href="index.html#rtc"><span>Real-Time Clock Wake-up</span></a>, <code class="docutils literal"><span class="pre">WOL</span></code>: <a class="reference internal" href="index.html#network"><span>Wake-on-LAN</span></a>, <code class="docutils literal"><span class="pre">RES</span></code>: <a class="reference internal" href="index.html#com.viaembedded.smartetk.SystemETK.reboot()" title="com.viaembedded.smartetk.SystemETK.reboot()"><code class="xref java java-ref docutils literal"><span class="pre">Restart</span></code></a> support,
+<code class="docutils literal"><span class="pre">UART</span></code>: <a class="reference internal" href="index.html#uart"><span>UART</span></a> support, <code class="docutils literal"><span class="pre">SUS</span></code>: <a class="reference internal" href="index.html#com.viaembedded.smartetk.SystemETK.suspend()" title="com.viaembedded.smartetk.SystemETK.suspend()"><code class="xref java java-ref docutils literal"><span class="pre">Suspend</span></code></a> support,
+<code class="docutils literal"><span class="pre">CEC</span></code>: HDMI CEC support, <code class="docutils literal"><span class="pre">CAN</span></code>: <a class="reference internal" href="index.html#can"><span>CAN</span></a> support, <code class="docutils literal"><span class="pre">I2C</span></code>: <a class="reference internal" href="index.html#i2c"><span>I2C</span></a> support,
+<code class="docutils literal"><span class="pre">UPC</span></code>: x, <code class="docutils literal"><span class="pre">DPMS</span></code>: <a class="reference internal" href="index.html#dpms"><span>DPMS</span></a> support</p>
+</div>
+<div class="section" id="installation">
+<h3>1.2. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>Open Eclipse IDE and create an Android project. In project properties, import
+SmartETK.jar by pressing the button &#8220;Add External JARs...&#8221;.</p>
+<img alt="_images/Eclipse01.jpg" src="_images/Eclipse01.jpg" />
+<p>Select &#8220;Order and Export&#8221; tab, move <code class="docutils literal"><span class="pre">SmartETK.jar</span></code> to the top and choose it.</p>
+<img alt="_images/Eclipse02.jpg" src="_images/Eclipse02.jpg" />
+</div>
+<div class="section" id="permissions">
+<h3>1.3. Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h3>
+<p>Smart ETK is programmed with the socket IO as the communication between
+JAVA and C language to control the hardware modules, therefore you need to
+make sure that you have android.permission.INTERNET in AndroidManifest.xml:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<span id="document-smartetk"></span><div class="section" id="smartetk-class">
+<span id="smartetk"></span><h2>2. SmartETK class<a class="headerlink" href="#smartetk-class" title="Permalink to this headline">¶</a></h2>
+<p>This class contains general parts used by the rest of the package, such as function return values, and some
+helper classes.</p>
+<span class="target" id="package-com.viaembedded.smartetk"></span><dl class="type">
+<dt id="com.viaembedded.smartetk.SmartETK">
+ class <code class="descname">SmartETK</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK" title="Permalink to this definition">¶</a></dt>
+<dd><p id="helper">Helper classes:</p>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.SmartETK.Timeout">
+ class <code class="descname">Timeout</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.Timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timeout configuration, used by <a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.getTimeout(Timeout)" title="com.viaembedded.smartetk.Can.getTimeout(Timeout)"><code class="xref java java-ref docutils literal"><span class="pre">Can.getTimeout</span></code></a> and <a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.getTimeout(Timeout)" title="com.viaembedded.smartetk.Uart.getTimeout(Timeout)"><code class="xref java java-ref docutils literal"><span class="pre">Uart.getTimeout</span></code></a>.</p>
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.Timeout.Enable">
+ boolean <code class="descname">Enable</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.Timeout.Enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable timeout function</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.Timeout.Timeout">
+ int <code class="descname">Timeout</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.Timeout.Timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>timeout value in multiples of 0.1 seconds, accepted range is 0 – 255 (0 - 25.5 seconds)</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="package-com.viaembedded.smartetk.SmartETK">
+<span id="function-return-values"></span><span id="return"></span><h3>2.1. Function Return Values<a class="headerlink" href="#package-com.viaembedded.smartetk.SmartETK" title="Permalink to this headline">¶</a></h3>
+<p>The return values and error codes used by the methods in Smart ETK.</p>
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.S_OK">
+static int <code class="descname">S_OK</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.S_OK" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the S_OK value, it indicates that the function has successfully completed.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_FAIL">
+static int <code class="descname">E_FAIL</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_FAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_FAIL value, it indicates that the function has failed to complete.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_VERSION_NOT_SUPPORT">
+static int <code class="descname">E_VERSION_NOT_SUPPORT</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_VERSION_NOT_SUPPORT" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_VERSION_NOT_SUPPORT value, it indicates
+that the versions of <code class="docutils literal"><span class="pre">SmartETK.jar</span></code> and bsservice are not compatible.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_INVALID_ARG">
+static int <code class="descname">E_INVALID_ARG</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_INVALID_ARG" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_INVALID_ARG value, it indicates that the
+arguments are invalid.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_FUNC_NOT_SUPPORT">
+static int <code class="descname">E_FUNC_NOT_SUPPORT</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_FUNC_NOT_SUPPORT" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_FUNC_NOT_SUPPORT value, it indicates that
+the function is not supported by this board.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_CONNECTION_FAIL">
+static int <code class="descname">E_CONNECTION_FAIL</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_CONNECTION_FAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_CONNECTION_FAIL value, it indicates that the
+<code class="docutils literal"><span class="pre">bsservice</span></code> doesn&#8217;t respond the request. Please make sure bsservice is running
+successfully.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_NOT_RESPOND_YET">
+static int <code class="descname">E_NOT_RESPOND_YET</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_NOT_RESPOND_YET" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_NOT_RESPOND_YET value, it indicates that the
+<code class="docutils literal"><span class="pre">bsservice</span></code> function is still running and has not finished yet.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_TIMEOUT">
+static int <code class="descname">E_TIMEOUT</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_TIMEOUT value, it indicates that no corresponding
+data has been received within the period.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_UART_OPENFAIL">
+static int <code class="descname">E_UART_OPENFAIL</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_UART_OPENFAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>When <a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.open(String)" title="com.viaembedded.smartetk.Uart.open(String)"><code class="xref java java-ref docutils literal"><span class="pre">Uart.open</span></code></a> returns the E_UART_OPENFAIL value, it indicates that the
+UART device can&#8217;t be opened successfully. Please make sure the name of the
+tty device exists.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_UART_NOT_OPEN">
+static int <code class="descname">E_UART_NOT_OPEN</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_UART_NOT_OPEN" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_UART_NOT_OPEN value, it indicates that uart
+object cannot be operated normally. The reason might be that the application
+doesn&#8217;t open uart device before calling other operating function; or it was
+reset by other uart object.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_UART_ALREADY_OPENED">
+static int <code class="descname">E_UART_ALREADY_OPENED</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_UART_ALREADY_OPENED" title="Permalink to this definition">¶</a></dt>
+<dd><p>When <a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.open(String)" title="com.viaembedded.smartetk.Uart.open(String)"><code class="xref java java-ref docutils literal"><span class="pre">Uart.open</span></code></a> returns the E_UART_ALREADY_OPENED value, it indicates
+that the uart object has been opened. If you need to open other uart device,
+please call close function to close the current device, then open the other
+UART again.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_UART_TTY_BEEN_USED">
+static int <code class="descname">E_UART_TTY_BEEN_USED</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_UART_TTY_BEEN_USED" title="Permalink to this definition">¶</a></dt>
+<dd><p>When <a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.open(String)" title="com.viaembedded.smartetk.Uart.open(String)"><code class="xref java java-ref docutils literal"><span class="pre">Uart.open</span></code></a> returns the E_UART_TTY_BEEN_USED value, it indicates
+that the tty device has been used by other uart object. If you want to use it,
+you can call reset function to release the resource and open it again.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_UART_BAUDRATE_NOT_SUPPORT">
+static int <code class="descname">E_UART_BAUDRATE_NOT_SUPPORT</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_UART_BAUDRATE_NOT_SUPPORT" title="Permalink to this definition">¶</a></dt>
+<dd><p>When <a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.setConfig(int, byte, byte, byte, byte)" title="com.viaembedded.smartetk.Uart.setConfig(int, byte, byte, byte, byte)"><code class="xref java java-ref docutils literal"><span class="pre">Uart.setConfig</span></code></a> returns the E_UART_BAUDRATE_NOT_SUPPORT value,
+it indicates that baud rate is not supported.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_CAN_OPENFAIL">
+static int <code class="descname">E_CAN_OPENFAIL</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_CAN_OPENFAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>When <a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.open(String)" title="com.viaembedded.smartetk.Can.open(String)"><code class="xref java java-ref docutils literal"><span class="pre">Can.open</span></code></a> returns the E_CAN_OPENFAIL value, it indicates that the
+CAN device can&#8217;t be opened successfully. Please make sure the name of the
+CAN device exists.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_CAN_NOT_OPEN">
+static int <code class="descname">E_CAN_NOT_OPEN</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_CAN_NOT_OPEN" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a function returns the E_CAN_NOT_OPEN value, it indicates that can
+object cannot be operated normally. The reason might be that the application
+doesn&#8217;t open can device before calling other operating function.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_CAN_ALREADY_OPENED">
+static int <code class="descname">E_CAN_ALREADY_OPENED</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_CAN_ALREADY_OPENED" title="Permalink to this definition">¶</a></dt>
+<dd><p>When <a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.open(String)" title="com.viaembedded.smartetk.Can.open(String)"><code class="xref java java-ref docutils literal"><span class="pre">Can.open</span></code></a> returns the E_CAN_ALREADY_OPENED value, it indicates
+that the can object has been opened. If you need to open other can device,
+please call close function to close the current device, then open the other can
+again.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.SmartETK.E_CAN_BAUDRATE_NOT_SUPPORT">
+static int <code class="descname">E_CAN_BAUDRATE_NOT_SUPPORT</code><a class="headerlink" href="#com.viaembedded.smartetk.SmartETK.E_CAN_BAUDRATE_NOT_SUPPORT" title="Permalink to this definition">¶</a></dt>
+<dd><p>When <a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.setBitrate(int)" title="com.viaembedded.smartetk.Can.setBitrate(int)"><code class="xref java java-ref docutils literal"><span class="pre">Can.setBitrate</span></code></a> returns the E_CAN_BAUDRATE_NOT_SUPPORT value,
+it indicates that bit rate is not supported.</p>
+</dd></dl>
+
+</div>
+</div>
+<span id="document-network"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="network-class"></span><span id="network"></span><h2>3. Network Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.Network">
+ class <code class="descname">Network</code><a class="headerlink" href="#com.viaembedded.smartetk.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Network object.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Network</span> <span class="n">m_network</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Network</span><span class="o">();</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Network.setWakeOnLan(boolean)">
+ int <code class="descname">setWakeOnLan</code><span class="sig-paren">(</span>boolean<em> enable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Network.setWakeOnLan(boolean)" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Enable or disable Network Wake-on-LAN function from suspend mode.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>enable</strong> (<em>boolean</em>) &#8211; enable or disable functionality</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Network.getWakeOnLan(boolean[])">
+ int <code class="descname">getWakeOnLan</code><span class="sig-paren">(</span>boolean[]<em> enable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Network.getWakeOnLan(boolean[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the status if Network Wake-on-LAN function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>enable</strong> (<em>boolean[]</em>) &#8211; variable to update with <code class="docutils literal"><span class="pre">true</span></code> for enabled, <code class="docutils literal"><span class="pre">false</span></code> for disabled</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="network-code-examples">
+<h3>3.1. Network Code Examples<a class="headerlink" href="#network-code-examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="set-wake-on-lan-from-suspend-mode">
+<h4>3.1.1. Set Wake-on-LAN From Suspend Mode<a class="headerlink" href="#set-wake-on-lan-from-suspend-mode" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">boolean</span> <span class="n">bSetEnable</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_network</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_network</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Network</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_network</span><span class="o">.</span><span class="na">setWakeOnLan</span><span class="o">(</span><span class="n">bSetEnable</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-wake-on-lan-from-suspend-mode-status">
+<h4>3.1.2. Get Wake-on-LAN From Suspend Mode Status<a class="headerlink" href="#get-wake-on-lan-from-suspend-mode-status" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_network</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_network</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Network</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="kt">boolean</span><span class="o">[]</span> <span class="n">bGetEnable</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_network</span><span class="o">.</span><span class="na">getWakeOnLan</span><span class="o">(</span><span class="n">bGetEnable</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">bGetEnable</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-gpio"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="gpio-class"></span><span id="gpio"></span><h2>4. GPIO Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.GPIO">
+ class <code class="descname">GPIO</code><a class="headerlink" href="#com.viaembedded.smartetk.GPIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new GPIO object with specified pin ID. Ex: 1, 2, 4, 5, 7, 8, 9, 16.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>int pinID</strong> &#8211; GPIO&#8217;s pin ID.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">GPIO</span> <span class="n">gpio5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GPIO</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="com.viaembedded.smartetk.GPIO.setEnable(boolean)">
+ int <code class="descname">setEnable</code><span class="sig-paren">(</span>boolean<em> enable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.GPIO.setEnable(boolean)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable the specific GPIO pin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>enable</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">true</span></code> for enable, <code class="docutils literal"><span class="pre">false</span></code> for disable</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.GPIO.GM_GPI">
+static int <code class="descname">GM_GPI</code><a class="headerlink" href="#com.viaembedded.smartetk.GPIO.GM_GPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates &#8220;input&#8221; direction for GPIO pin.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.GPIO.GM_GPO">
+static int <code class="descname">GM_GPO</code><a class="headerlink" href="#com.viaembedded.smartetk.GPIO.GM_GPO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates &#8220;output&#8221; direction for GPIO pin.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.GPIO.setDirection(int)">
+ int <code class="descname">setDirection</code><span class="sig-paren">(</span>int<em> direction</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.GPIO.setDirection(int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set input/output direction for the specific GPIO pin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>direction</strong> (<em>int</em>) &#8211; <a class="reference internal" href="#com.viaembedded.smartetk.GPIO.GM_GPI" title="com.viaembedded.smartetk.GPIO.GM_GPI"><code class="xref java java-ref docutils literal"><span class="pre">GM_GPI</span></code></a> for input direction, <a class="reference internal" href="#com.viaembedded.smartetk.GPIO.GM_GPO" title="com.viaembedded.smartetk.GPIO.GM_GPO"><code class="xref java java-ref docutils literal"><span class="pre">GM_GPO</span></code></a> for output direction.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.GPIO.getDirection(int[])">
+ int <code class="descname">getDirection</code><span class="sig-paren">(</span>int[]<em> direction</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.GPIO.getDirection(int[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get direction state of the specific GPIO Pin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>direction</strong> (<em>int[]</em>) &#8211; parameter to set to <a class="reference internal" href="#com.viaembedded.smartetk.GPIO.GM_GPI" title="com.viaembedded.smartetk.GPIO.GM_GPI"><code class="xref java java-ref docutils literal"><span class="pre">GM_GPI</span></code></a> for input, or <a class="reference internal" href="#com.viaembedded.smartetk.GPIO.GM_GPO" title="com.viaembedded.smartetk.GPIO.GM_GPO"><code class="xref java java-ref docutils literal"><span class="pre">GM_GPO</span></code></a> for output depending on the pin&#8217;s direction</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.GPIO.setValue(int)">
+ int <code class="descname">setValue</code><span class="sig-paren">(</span>int<em> value</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.GPIO.setValue(int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set output signal for the specific GPIO Pin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<em>int</em>) &#8211; GPIO signal, <cite>0</cite> for logic low, <cite>1</cite> for logic high.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.GPIO.getValue(int[])">
+ int <code class="descname">getValue</code><span class="sig-paren">(</span>int[]<em> value</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.GPIO.getValue(int[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get input signal of the specific GPIO Pin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<em>int[]</em>) &#8211; GPIO signal, return <cite>0</cite> for logic low, return <cite>1</cite> for logic high.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="gpio-code-examples">
+<h3>4.1. GPIO Code Examples<a class="headerlink" href="#gpio-code-examples" title="Permalink to this headline">¶</a></h3>
+<p>GPIO1, GPIO2, GPIO4, GPIO5, GPIO7, GPIO8, GPIO9 and GPIO203 are the external GPIO pins
+for user’s own design. An example of setting GPIO1 as input pin and getting its value is shown here.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/* Declare variables to get GPIO5 values */</span>
+<span class="kt">boolean</span><span class="o">[]</span> <span class="n">bEnable</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nDirection</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nValue</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+
+<span class="n">GPIO</span> <span class="n">gpio5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GPIO</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// Create GPIO1 object</span>
+
+<span class="n">gpio5</span><span class="o">.</span><span class="na">setEnable</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Enable GPIO1</span>
+<span class="n">gpio5</span><span class="o">.</span><span class="na">setDirection</span><span class="o">(</span><span class="n">GPIO</span><span class="o">.</span><span class="na">GM_GPI</span><span class="o">);</span> <span class="c1">// Set GPIO1 as input direction</span>
+<span class="n">gpio5</span><span class="o">.</span><span class="na">getEnable</span><span class="o">(</span><span class="n">bEnable</span><span class="o">);</span> <span class="c1">// Get GPIO1&#39;s enable status</span>
+<span class="n">gpio5</span><span class="o">.</span><span class="na">getDirection</span><span class="o">(</span><span class="n">nDirection</span><span class="o">);</span> <span class="c1">// Get GPIO1&#39;s input/outputdirection</span>
+<span class="n">gpio5</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="n">nValue</span><span class="o">);</span> <span class="c1">// Get GPIO1&#39;s input value</span>
+</pre></div>
+</div>
+<p>An example of setting GPIO5 as output pin and changing its value is shown here.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/* Declare variables to get GPIO6 values */</span>
+<span class="kt">boolean</span><span class="o">[]</span> <span class="n">bEnable</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nDirection</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nValue</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+<span class="n">GPIO</span> <span class="n">gpio6</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GPIO</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span> <span class="c1">// Create GPIO5 object</span>
+
+<span class="n">gpio6</span><span class="o">.</span><span class="na">setEnable</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Enable GPIO5</span>
+<span class="n">gpio6</span><span class="o">.</span><span class="na">setDirection</span><span class="o">(</span><span class="n">GPIO</span><span class="o">.</span><span class="na">GM_GPO</span><span class="o">);</span> <span class="c1">// Set GPIO5 as output direction</span>
+<span class="n">gpio6</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// Set GPIO5&#39;s output to high</span>
+<span class="n">gpio6</span><span class="o">.</span><span class="na">getEnable</span><span class="o">(</span><span class="n">bEnable</span><span class="o">);</span> <span class="c1">// Get GPIO5&#39;s enable status</span>
+<span class="n">gpio6</span><span class="o">.</span><span class="na">getDirection</span><span class="o">(</span><span class="n">nDirection</span><span class="o">);</span> <span class="c1">// Get GPIO5&#39;s input/output direction</span>
+<span class="n">gpio6</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="n">nValue</span><span class="o">);</span> <span class="c1">// Get GPIO5&#39;s output value</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Create GPIO203 by following method:</p>
+<div class="last highlight-java"><div class="highlight"><pre><span class="n">GPIO</span> <span class="n">gpio203</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GPIO</span><span class="o">(</span><span class="mi">16</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-rtc"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="rtc-class"></span><span id="rtc"></span><h2>5. RTC Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.RTC">
+ class <code class="descname">RTC</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new RTC (real-time clock) object.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">RTC</span> <span class="n">m_rtc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RTC</span><span class="o">();</span>
+</pre></div>
+</div>
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_DAY">
+static byte <code class="descname">ARG_RTC_MODE_DAY</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_DAY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waking up every day.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_WEEK">
+static byte <code class="descname">ARG_RTC_MODE_WEEK</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_WEEK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waking up every week.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_MONTH">
+static byte <code class="descname">ARG_RTC_MODE_MONTH</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_MONTH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waking up every month.</p>
+</dd></dl>
+
+<dl class="type">
+<dt id="com.viaembedded.smartetk.RTC.RTCStatus">
+ class <code class="descname">RTCStatus</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.RTCStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>RTC wake up time object</p>
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.RTCStatus.Mode">
+ byte <code class="descname">Mode</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.RTCStatus.Mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>wake up mode, one of <a class="reference internal" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_DAY" title="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_DAY"><code class="xref java java-ref docutils literal"><span class="pre">ARG_RTC_MODE_DAY</span></code></a>, <a class="reference internal" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_WEEK" title="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_WEEK"><code class="xref java java-ref docutils literal"><span class="pre">ARG_RTC_MODE_WEEK</span></code></a>, or <a class="reference internal" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_MONTH" title="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_MONTH"><code class="xref java java-ref docutils literal"><span class="pre">ARG_RTC_MODE_MONTH</span></code></a>.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.RTCStatus.Year">
+ int <code class="descname">Year</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.RTCStatus.Year" title="Permalink to this definition">¶</a></dt>
+<dd><p>year of wake up time, counted from 1900, for example 2015 is <cite>iYear = 115</cite></p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.RTCStatus.Month">
+ byte <code class="descname">Month</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.RTCStatus.Month" title="Permalink to this definition">¶</a></dt>
+<dd><p>month of wake up time, between 1 and 12 accepted</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.RTCStatus.Day">
+ byte <code class="descname">Day</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.RTCStatus.Day" title="Permalink to this definition">¶</a></dt>
+<dd><p>day of the month for wake up time, between 1 and 31</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.RTCStatus.Hour">
+ byte <code class="descname">Hour</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.RTCStatus.Hour" title="Permalink to this definition">¶</a></dt>
+<dd><p>hours for wake up time (24h clock), between 0 and 23</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.RTCStatus.Min">
+ byte <code class="descname">Min</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.RTCStatus.Min" title="Permalink to this definition">¶</a></dt>
+<dd><p>minutes for wake up time, between 0 and 59</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.RTC.RTCStatus.Sec">
+ byte <code class="descname">Sec</code><a class="headerlink" href="#com.viaembedded.smartetk.RTC.RTCStatus.Sec" title="Permalink to this definition">¶</a></dt>
+<dd><p>seconds for wake up time, between 0 and 59</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.RTC.setWakeUpTime(byte, int, byte, byte, byte, byte, byte)">
+ int <code class="descname">setWakeUpTime</code><span class="sig-paren">(</span>byte<em> Mode</em>, int<em> Year</em>, byte<em> Month</em>, byte<em> Day</em>, byte<em> Hour</em>, byte<em> Min</em>, byte<em> Sec</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.RTC.setWakeUpTime(byte, int, byte, byte, byte, byte, byte)" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Set the wake up time and mode in RTC. The behavior of wake up from
+suspend mode will start at the wake up time, and it must loop according to
+the wake up mode.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Mode</strong> (<em>byte</em>) &#8211; wake up mode, one of <a class="reference internal" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_DAY" title="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_DAY"><code class="xref java java-ref docutils literal"><span class="pre">ARG_RTC_MODE_DAY</span></code></a>, <a class="reference internal" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_WEEK" title="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_WEEK"><code class="xref java java-ref docutils literal"><span class="pre">ARG_RTC_MODE_WEEK</span></code></a>, or <a class="reference internal" href="#com.viaembedded.smartetk.RTC.ARG_RTC_MODE_MONTH" title="com.viaembedded.smartetk.RTC.ARG_RTC_MODE_MONTH"><code class="xref java java-ref docutils literal"><span class="pre">ARG_RTC_MODE_MONTH</span></code></a>.</li>
+<li><strong>Year</strong> (<em>int</em>) &#8211; year of wake up time, counted since 1900 for wake up, for example 2015 is <cite>iYear = 115</cite> (???)</li>
+<li><strong>Month</strong> (<em>byte</em>) &#8211; month of wake up time, between 1 and 12</li>
+<li><strong>Day</strong> (<em>byte</em>) &#8211; day of the month for wake up time, between 1 and 31</li>
+<li><strong>Hour</strong> (<em>byte</em>) &#8211; hours for wake up time (24h clock), between 0 and 23</li>
+<li><strong>Min</strong> (<em>byte</em>) &#8211; minutes for wake up time, between 0 and 59</li>
+<li><strong>Sec</strong> (<em>byte</em>) &#8211; seconds for wake up time, between 0 and 59</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.RTC.getWakeUpTime(RTCStatus)">
+ int <code class="descname">getWakeUpTime</code><span class="sig-paren">(</span><a class="reference internal" href="index.html#com.viaembedded.smartetk.RTC.RTCStatus" title="com.viaembedded.smartetk.RTC.RTCStatus">RTCStatus</a><em> RS</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.RTC.getWakeUpTime(RTCStatus)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the wake up time and mode set in RTC.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>RS</strong> (<a class="reference internal" href="index.html#com.viaembedded.smartetk.RTC.RTCStatus" title="com.viaembedded.smartetk.RTC.RTCStatus"><em>RTCStatus</em></a>) &#8211; parameter to return the current wake up time and mode</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.RTC.setEnable(boolean)">
+ int <code class="descname">setEnable</code><span class="sig-paren">(</span>boolean<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.RTC.setEnable(boolean)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable RTC wake up function from suspend mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">true</span></code> to enable, <code class="docutils literal"><span class="pre">false</span></code> to disable RTC wake up function from suspend mode</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.RTC.getEnable(boolean[])">
+ int <code class="descname">getEnable</code><span class="sig-paren">(</span>boolean[]<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.RTC.getEnable(boolean[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the status if wake up function from suspend mode is enabled or disabled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean[]</em>) &#8211; parameter to return <code class="docutils literal"><span class="pre">true</span></code> for enabled, <code class="docutils literal"><span class="pre">false</span></code> for disabled</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="rtc-code-examples">
+<h3>5.1. RTC Code Examples<a class="headerlink" href="#rtc-code-examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="set-rtc-wake-up-from-suspend-mode">
+<h4>5.1.1. Set RTC Wake Up From Suspend mode<a class="headerlink" href="#set-rtc-wake-up-from-suspend-mode" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">boolean</span> <span class="n">bSetEnable</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_rtc</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_rtc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RTC</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_rtc</span><span class="o">.</span><span class="na">setEnable</span><span class="o">(</span><span class="n">bSetEnable</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-rtc-wake-up-status">
+<h4>5.1.2. Get RTC Wake Up Status<a class="headerlink" href="#get-rtc-wake-up-status" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_rtc</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_rtc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RTC</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="kt">boolean</span><span class="o">[]</span> <span class="n">bGetEnable</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_rtc</span><span class="o">.</span><span class="na">getEnable</span><span class="o">(</span><span class="n">bGetEnable</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-rtc-wake-up-time">
+<h4>5.1.3. Set RTC Wake Up Time<a class="headerlink" href="#set-rtc-wake-up-time" title="Permalink to this headline">¶</a></h4>
+<p>The folloing code sets the wake up behaviour to wake up from suspend starting from 2015/5/1, every day at 12:00.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">byte</span> <span class="n">Mode</span> <span class="o">=</span> <span class="n">RTC</span><span class="o">.</span><span class="na">ARG_RTC_MODE_DAY</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">Year</span> <span class="o">=</span> <span class="mi">2015</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">Month</span> <span class="o">=</span> <span class="n">IntToByte</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+<span class="kt">byte</span> <span class="n">Day</span> <span class="o">=</span> <span class="n">IntToByte</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+<span class="kt">byte</span> <span class="n">Hour</span> <span class="o">=</span> <span class="n">IntToByte</span><span class="o">(</span><span class="mi">12</span><span class="o">);</span>
+<span class="kt">byte</span> <span class="n">Min</span> <span class="o">=</span> <span class="n">IntToByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+<span class="kt">byte</span> <span class="n">Sec</span> <span class="o">=</span> <span class="n">IntToByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+<span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_rtc</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_rtc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RTC</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_rtc</span><span class="o">.</span><span class="na">setWakeUpTime</span><span class="o">(</span><span class="n">Mode</span><span class="o">,</span> <span class="n">Year</span><span class="o">,</span> <span class="n">Month</span><span class="o">,</span> <span class="n">Day</span><span class="o">,</span> <span class="n">Hour</span><span class="o">,</span> <span class="n">Min</span><span class="o">,</span> <span class="n">Sec</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-rtc-wake-up-time">
+<h4>5.1.4. Get RTC Wake Up Time<a class="headerlink" href="#get-rtc-wake-up-time" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_rtc</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_rtc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RTC</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="n">m_RS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RTCStatus</span><span class="o">();</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_rtc</span><span class="o">.</span><span class="na">getWakeUpTime</span><span class="o">(</span><span class="n">m_RS</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-i2c"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="i2c-class"></span><span id="i2c"></span><h2>6. I2C Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.I2C">
+ class <code class="descname">I2C</code><a class="headerlink" href="#com.viaembedded.smartetk.I2C" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new I2C object with specified bus number, slave address and the
+length of the offset address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>int I2CBusNum</strong> &#8211; I2C bus number, for example: <code class="docutils literal"><span class="pre">0</span></code> is for <code class="docutils literal"><span class="pre">i2c-0</span></code> bus</li>
+<li><strong>byte I2CAddress</strong> &#8211; I2C slave address, support 7 bits slave addresses</li>
+<li><strong>int OffsetLen</strong> &#8211; the length of the registers&#8217; offset in number of bytes, accepted values are 0 to 4, <code class="docutils literal"><span class="pre">0</span></code>: no registers, <code class="docutils literal"><span class="pre">1</span></code>: 1 byte = 8 bit registers, <code class="docutils literal"><span class="pre">2</span></code>: 2 bytes = 16 bit registers, <code class="docutils literal"><span class="pre">3</span></code>: 3 bytes = 24 bit registers, <code class="docutils literal"><span class="pre">4</span></code>: 4 bytes = 32 bit registers</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For example, create an I2C object in I2C bus 1 and I2C slave address 10, and the offset length is 0</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">I2C</span> <span class="n">m_i2c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">I2C</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Another example, create an I2C object in I2C bus 1 and I2C slave address 52, and the offset length is 2 (16 bit registers).</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">I2C</span> <span class="n">m_i2c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">I2C</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">52</span><span class="o">,</span><span class="mi">2</span><span class="o">);</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="com.viaembedded.smartetk.I2C.read(byte[], int, int)">
+ int <code class="descname">read</code><span class="sig-paren">(</span>byte[]<em> Buf</em>, int<em> Offset</em>, int<em> ReadLen</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.I2C.read(byte[], int, int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from specified offset with a given length, and store the data in buffer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Buf</strong> (<em>byte[]</em>) &#8211; buffer to store the read data</li>
+<li><strong>Offset</strong> (<em>int</em>) &#8211; the registers&#8217; offset to read from a specified I2C bus number and slave address, accepted values are from 0 to 0x7FFFFFFF</li>
+<li><strong>ReadLen</strong> (<em>int</em>) &#8211; number of bytes to read, maximum 255 bytes per transfer.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.I2C.write(byte[], int, int)">
+ int <code class="descname">write</code><span class="sig-paren">(</span>byte[]<em> byBuf</em>, int<em> iOffset</em>, int<em> iWriteLen</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.I2C.write(byte[], int, int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data to a specified offset with a given length.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Buf</strong> (<em>byte</em>) &#8211; the write buffer</li>
+<li><strong>Offset</strong> (<em>int</em>) &#8211; the registers&#8217; offset of writing to a specified I2C bus number and slave address, accepted values are from 0 to 7FFFFFFF</li>
+<li><strong>WriteLen</strong> (<em>int</em>) &#8211; the written data length, maximum 255 bytes per transfer</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="i2c-code-examples">
+<h3>6.1. I2C Code Examples<a class="headerlink" href="#i2c-code-examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="initializate-i2c">
+<h4>6.1.1. Initializate I2C<a class="headerlink" href="#initializate-i2c" title="Permalink to this headline">¶</a></h4>
+<p>Create an I2C object in I2C bus 1 and I2C slave address 52, and the offset length is 2.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">int</span> <span class="n">iBusNum</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">byAddress</span> <span class="o">=</span> <span class="n">IntToByte</span><span class="o">(</span><span class="mi">52</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">iOffsetLen</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">iBusNum</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">byAddress</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">iOffsetLen</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="n">m_i2c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">I2C</span><span class="o">(</span><span class="n">iBusNum</span><span class="o">,</span> <span class="n">byAddress</span><span class="o">,</span> <span class="n">iOffsetLen</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-i2c-data">
+<h4>6.1.2. Read I2C Data<a class="headerlink" href="#read-i2c-data" title="Permalink to this headline">¶</a></h4>
+<p>Read data from offset “0” with length “2” bytes, and store data in byRead byte array buffer.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">byte</span><span class="o">[]</span> <span class="n">byRead</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">255</span><span class="o">]</span>
+<span class="kt">int</span> <span class="n">iOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">iReadLen</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+<span class="n">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">byRead</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_i2c</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">byRead</span><span class="o">,</span> <span class="n">iOffset</span><span class="o">,</span> <span class="n">iReadLen</span><span class="o">)</span> <span class="o">||</span> <span class="kc">null</span> <span class="o">==</span> <span class="n">byRead</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-i2c-data">
+<h4>6.1.3. Write I2C Data<a class="headerlink" href="#write-i2c-data" title="Permalink to this headline">¶</a></h4>
+<p>Write data to offset 0 with length 2 bytes and data value 0x0101. The written data is stored in byWrite byte array buffer.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">byte</span><span class="o">[]</span> <span class="n">byWrite</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>
+<span class="n">byWrite</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mh">0x01</span><span class="o">;</span>
+<span class="n">byWrite</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mh">0x01</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">iOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">iWriteLen</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_i2c</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">byWrite</span><span class="o">,</span> <span class="n">iOffset</span><span class="o">,</span> <span class="n">iWriteLen</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-watchdog"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="watchdog-class"></span><span id="watchdog"></span><h2>7. WatchDog Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.WatchDog">
+ class <code class="descname">WatchDog</code><a class="headerlink" href="#com.viaembedded.smartetk.WatchDog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new WatchDog object.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">WatchDog</span> <span class="n">m_watchdog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WatchDog</span><span class="o">();</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="com.viaembedded.smartetk.WatchDog.setEnable(boolean)">
+ int <code class="descname">setEnable</code><span class="sig-paren">(</span>boolean<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.WatchDog.setEnable(boolean)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable watch dog function. SmartETK service will feed the watch
+dog within a period automatically. Once watch dog function is enabled, <a class="reference internal" href="#com.viaembedded.smartetk.WatchDog.keepAlive()" title="com.viaembedded.smartetk.WatchDog.keepAlive()"><code class="xref java java-ref docutils literal"><span class="pre">keepAlive</span></code></a>
+needs to be called within the timeout period set by <a class="reference internal" href="#com.viaembedded.smartetk.WatchDog.setTimeout(int)" title="com.viaembedded.smartetk.WatchDog.setTimeout(int)"><code class="xref java java-ref docutils literal"><span class="pre">setTimeout</span></code></a>,
+otherwise the system will reboot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>enable</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">true</span></code> for enable, <code class="docutils literal"><span class="pre">false</span></code> for disable</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.WatchDog.getEnable(boolean[])">
+ int <code class="descname">getEnable</code><span class="sig-paren">(</span>boolean[]<em> enable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.WatchDog.getEnable(boolean[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get enable state of the watch dog function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>enable</strong> (<em>boolean[]</em>) &#8211; parameter to put the return value of the watchdog status, <code class="docutils literal"><span class="pre">true</span></code> for enabled, <code class="docutils literal"><span class="pre">false</span></code> for disabled</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.WatchDog.keepAlive()">
+ int <code class="descname">keepAlive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.WatchDog.keepAlive()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep watch dog alive to avoid rebooting the system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.WatchDog.setTimeout(int)">
+ int <code class="descname">setTimeout</code><span class="sig-paren">(</span>int<em> iTimeout</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.WatchDog.setTimeout(int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set watch dog timeout value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>iTimeout</strong> (<em>int</em>) &#8211; timeout in seconds, accepted values are between <code class="docutils literal"><span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">128</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.WatchDog.getTimeout(int[])">
+ int <code class="descname">getTimeout</code><span class="sig-paren">(</span>int[]<em> iTimeout</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.WatchDog.getTimeout(int[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get watchdog timeout value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>iTimeout</strong> (<em>int[]</em>) &#8211; parameter to put the return value of the watchdog timeout in seconds</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="watchdog-code-examples">
+<h3>7.1. WatchDog Code Examples<a class="headerlink" href="#watchdog-code-examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="enable-watchdog">
+<h4>7.1.1. Enable WatchDog<a class="headerlink" href="#enable-watchdog" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_watchdog</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_watchdog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WatchDog</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_watchdog</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="kc">true</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-watchdog-status">
+<h4>7.1.2. Get WatchDog status<a class="headerlink" href="#get-watchdog-status" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_watchdog</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_watchdog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WatchDog</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kt">boolean</span><span class="o">[]</span> <span class="n">bGetEnable</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_watchdog</span><span class="o">.</span><span class="na">getEnable</span><span class="o">(</span><span class="n">bGetEnable</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">bGetEnable</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="keep-watchdog-alive">
+<h4>7.1.3. Keep WatchDog alive<a class="headerlink" href="#keep-watchdog-alive" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_watchdog</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_watchdog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WatchDog</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_watchdog</span><span class="o">.</span> <span class="nf">keepAlive</span><span class="o">()){</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-uart"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="uart-class"></span><span id="uart"></span><h2>8. UART Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.Uart">
+ class <code class="descname">Uart</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new UART object.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Uart</span> <span class="n">m_uart</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Uart</span><span class="o">();</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.open(String)">
+ int <code class="descname">open</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> sDev</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.open(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the specified UART device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sDev</strong> (<a class="reference external" href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html" title="java.lang.String"><em>String</em></a>) &#8211; UART device name, for example <code class="docutils literal"><span class="pre">ttyUSB0</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.E_UART_OPENFAIL" title="com.viaembedded.smartetk.SmartETK.E_UART_OPENFAIL"><code class="xref java java-ref docutils literal"><span class="pre">E_UART_OPENFAIL</span></code></a> if failed to open the device</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.E_UART_ALREADY_OPENED" title="com.viaembedded.smartetk.SmartETK.E_UART_ALREADY_OPENED"><code class="xref java java-ref docutils literal"><span class="pre">E_UART_ALREADY_OPENED</span></code></a> if the device has already has been opened</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.E_UART_TTY_BEEN_USED" title="com.viaembedded.smartetk.SmartETK.E_UART_TTY_BEEN_USED"><code class="xref java java-ref docutils literal"><span class="pre">E_UART_TTY_BEEN_USED</span></code></a> if  the device has been used by other object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.close()">
+ int <code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.close()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the UART device that is currently opened.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="type">
+<dt id="com.viaembedded.smartetk.Uart.UartConfig">
+ class <code class="descname">UartConfig</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.UartConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to contain the Uart configuration values for <code class="docutils literal"><span class="pre">getConfig</span></code>.</p>
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Uart.UartConfig.BaudRate">
+ int <code class="descname">BaudRate</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.UartConfig.BaudRate" title="Permalink to this definition">¶</a></dt>
+<dd><p>baud rate, for example <code class="docutils literal"><span class="pre">115200</span></code></p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Uart.UartConfig.DataBits">
+ byte <code class="descname">DataBits</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.UartConfig.DataBits" title="Permalink to this definition">¶</a></dt>
+<dd><p>data bits, <code class="docutils literal"><span class="pre">7</span></code> for 7 data bits, <code class="docutils literal"><span class="pre">8</span></code> for 8 data bits</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Uart.UartConfig.StopBits">
+ byte <code class="descname">StopBits</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.UartConfig.StopBits" title="Permalink to this definition">¶</a></dt>
+<dd><p>stop bits, <code class="docutils literal"><span class="pre">1</span></code> for 1 stop bit, <code class="docutils literal"><span class="pre">2</span></code> for 2 stop bits</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Uart.UartConfig.Parity">
+ byte <code class="descname">Parity</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.UartConfig.Parity" title="Permalink to this definition">¶</a></dt>
+<dd><p>parity, <code class="docutils literal"><span class="pre">0</span></code> for none, <code class="docutils literal"><span class="pre">1</span></code> for odd, <code class="docutils literal"><span class="pre">2</span></code> even parity</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Uart.UartConfig.FlowControl">
+ byte <code class="descname">FlowControl</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.UartConfig.FlowControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>flow control, <code class="docutils literal"><span class="pre">0</span></code> for none, <code class="docutils literal"><span class="pre">1</span></code> for CTS/RTS flow control</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.setConfig(int, byte, byte, byte, byte)">
+ int <code class="descname">setConfig</code><span class="sig-paren">(</span>int<em> iBaudRate</em>, byte<em> byDataBIts</em>, byte<em> byStopBits</em>, byte<em> byParity</em>, byte<em> byFlowCtrl</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.setConfig(int, byte, byte, byte, byte)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure an already opened UART device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>iBaudRate</strong> (<em>int</em>) &#8211; baud rate, e.g. <code class="docutils literal"><span class="pre">115200</span></code></li>
+<li><strong>byDataBits</strong> (<em>byte</em>) &#8211; data bits,  <cite>7</cite> for 7-bit data bits, <code class="docutils literal"><span class="pre">8</span></code> for 8-bit data bits</li>
+<li><strong>byStopBits</strong> (<em>byte</em>) &#8211; stop bits, <code class="docutils literal"><span class="pre">1</span></code> for 1 stop bit, <code class="docutils literal"><span class="pre">2</span></code>: 2 stop bits</li>
+<li><strong>byParity</strong> (<em>byte</em>) &#8211; parity, <code class="docutils literal"><span class="pre">0</span></code> for none, <code class="docutils literal"><span class="pre">1</span></code> for odd, <code class="docutils literal"><span class="pre">2</span></code> for even parity</li>
+<li><strong>byFlowControl</strong> (<em>byte</em>) &#8211; flow control, <code class="docutils literal"><span class="pre">0</span></code> for none, <code class="docutils literal"><span class="pre">1</span></code> for CTS/RTS flow control</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.getConfig(UartConfig)">
+ int <code class="descname">getConfig</code><span class="sig-paren">(</span><a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.UartConfig" title="com.viaembedded.smartetk.Uart.UartConfig">UartConfig</a><em> UC</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.getConfig(UartConfig)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the configurations of the opened Uart device and store them in passed UartConfig Class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>UC</strong> (<a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.UartConfig" title="com.viaembedded.smartetk.Uart.UartConfig"><em>UartConfig</em></a>) &#8211; Uart Configuration</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">UartConfig</span> <span class="n">UC</span> <span class="o">=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">new</span> <span class="nf">UartConfig</span><span class="o">();</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">getConfig</span><span class="o">(</span><span class="n">UC</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.setTimeout(boolean, int)">
+ int <code class="descname">setTimeout</code><span class="sig-paren">(</span>boolean<em> bEnable</em>, int<em> iTimeout</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.setTimeout(boolean, int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the timeout of the opened UART device.</p>
+<p>If <code class="docutils literal"><span class="pre">bEnable</span></code> is set to <code class="docutils literal"><span class="pre">true</span></code>, the UART read method depends on the <code class="docutils literal"><span class="pre">iTimeout</span></code> value.
+If timeout is set to <code class="docutils literal"><span class="pre">0</span></code> then polling read is used, if <code class="docutils literal"><span class="pre">1-255</span></code> then the data is read with the corresponding timeout.</p>
+<p>If <code class="docutils literal"><span class="pre">bEnable</span></code> is set to <code class="docutils literal"><span class="pre">false</span></code> then blocking read is performed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">true</span></code> if enable the timeout function, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</li>
+<li><strong>iTimeout</strong> (<em>int</em>) &#8211; timeout value in multiples of 0.1 seconds, accepted range is 0 – 255 (0 - 25.5 seconds)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.getTimeout(Timeout)">
+ int <code class="descname">getTimeout</code><span class="sig-paren">(</span><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.Timeout" title="com.viaembedded.smartetk.SmartETK.Timeout">Timeout</a><em> T</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.getTimeout(Timeout)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the timeout configuration of the opened Uart device and store them in passed Timeout Class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.Timeout" title="com.viaembedded.smartetk.SmartETK.Timeout"><em>Timeout</em></a>) &#8211; timeout configuration</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Timeout</span> <span class="n">T</span> <span class="o">=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">new</span> <span class="nf">Timeout</span><span class="o">();</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">getTimeout</span><span class="o">(</span><span class="n">T</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="type">
+<dt id="com.viaembedded.smartetk.Uart.ReturnChar">
+ class <code class="descname">ReturnChar</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.ReturnChar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used by <a class="reference internal" href="#com.viaembedded.smartetk.Uart.getReturnChar(ReturnChar)" title="com.viaembedded.smartetk.Uart.getReturnChar(ReturnChar)"><code class="xref java java-ref docutils literal"><span class="pre">getReturnChar</span></code></a>.</p>
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Uart.ReturnChar.enabled">
+ boolean <code class="descname">enabled</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.ReturnChar.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the terlmination character function is enabled.</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Uart.ReturnChar.returnChar">
+ byte <code class="descname">returnChar</code><a class="headerlink" href="#com.viaembedded.smartetk.Uart.ReturnChar.returnChar" title="Permalink to this definition">¶</a></dt>
+<dd><p>The termination character</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.setReturnChar(boolean, byte)">
+ int <code class="descname">setReturnChar</code><span class="sig-paren">(</span>boolean<em> bEnable</em>, byte<em> byReturnChar</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.setReturnChar(boolean, byte)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the termination character of the opened UART device.</p>
+<p>If <code class="docutils literal"><span class="pre">bEnable</span></code> is <code class="docutils literal"><span class="pre">true</span></code>, then read will block until a character equal to``byReturnChar`` is received,
+or read buffer is full. If <code class="docutils literal"><span class="pre">bEnable</span></code> is <code class="docutils literal"><span class="pre">false</span></code> then read will ignore byReturnChar checking when reading data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean</em>) &#8211; enable or disable the termination character function.</li>
+<li><strong>byReturnChar</strong> (<em>byte</em>) &#8211; the termination character</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.getReturnChar(ReturnChar)">
+ int <code class="descname">getReturnChar</code><span class="sig-paren">(</span><a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.ReturnChar" title="com.viaembedded.smartetk.Uart.ReturnChar">ReturnChar</a><em> RC</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.getReturnChar(ReturnChar)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the termination character configuration of the opened Uart device and store them in passed ReturnChar Class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>RC</strong> (<a class="reference internal" href="index.html#com.viaembedded.smartetk.Uart.ReturnChar" title="com.viaembedded.smartetk.Uart.ReturnChar"><em>ReturnChar</em></a>) &#8211; termination character configuration</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">ReturnChar</span> <span class="n">RC</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ReturnChar</span><span class="o">();</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">getReturnChar</span><span class="o">(</span><span class="n">RC</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.readData(int, byte[], int[])">
+ int <code class="descname">readData</code><span class="sig-paren">(</span>int<em> iReadLen</em>, byte[]<em> byRead</em>, int[]<em> iActualLen</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.readData(int, byte[], int[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive data from the opened UART device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>iReadLen</strong> (<em>int</em>) &#8211; number of bytes to read, maximum 1024 bytes per transfer.</li>
+<li><strong>byRead</strong> (<em>byte[]</em>) &#8211; pointer to the buffer pointer.</li>
+<li><strong>iActualLen</strong> (<em>int[]</em>) &#8211; the actual number of bytes received</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.writeData(int, byte[])">
+ int <code class="descname">writeData</code><span class="sig-paren">(</span>int<em> iWriteLen</em>, byte[]<em> byWrite</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.writeData(int, byte[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the data to the opened UART device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>iWriteLen</strong> (<em>int</em>) &#8211; number of bytes to transmit, maximum 1024 bytes per transfer.</li>
+<li><strong>byWrite</strong> (<em>byte[]</em>) &#8211; pointer to data buffer.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Uart.reset()">
+ int <code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Uart.reset()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the opened or failed to open UART device. If the uart device has been used by other object,
+<a class="reference internal" href="#com.viaembedded.smartetk.Uart.open(String)" title="com.viaembedded.smartetk.Uart.open(String)"><code class="xref java java-ref docutils literal"><span class="pre">Uart.open</span></code></a> will return an <a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.E_UART_ALREADY_OPENED" title="com.viaembedded.smartetk.SmartETK.E_UART_ALREADY_OPENED"><code class="xref java java-ref docutils literal"><span class="pre">E_UART_ALREADY_OPENED</span></code></a>. The object could call this reset function to
+release the UART resource and try to open the device again by calling <a class="reference internal" href="#com.viaembedded.smartetk.Uart.open(String)" title="com.viaembedded.smartetk.Uart.open(String)"><code class="xref java java-ref docutils literal"><span class="pre">Uart.open</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="uart-code-examples">
+<h3>8.1. UART Code Examples<a class="headerlink" href="#uart-code-examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="uart-initialization">
+<h4>8.1.1. UART Initialization<a class="headerlink" href="#uart-initialization" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the sample code below, <code class="docutils literal"><span class="pre">mETBaudRate</span></code> refers to an <code class="docutils literal"><span class="pre">EditText</span></code> widget.</p>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">private</span> <span class="n">Uart</span> <span class="n">m_uart</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="n">m_uart</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Uart</span><span class="o">();</span>
+<span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_uart</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">open</span><span class="o">((</span><span class="n">m_sDev</span> <span class="o">=</span> <span class="n">mETDev</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">())))</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">setConfig</span><span class="o">((</span><span class="n">m_iBaudRate</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">mETBaudRate</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">())),</span>
+                                     <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">8</span><span class="o">,</span>
+                                     <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">1</span><span class="o">,</span>
+                                     <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">0</span><span class="o">,</span>
+                                     <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-uart-data">
+<h4>8.1.2. Write UART Data<a class="headerlink" href="#write-uart-data" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the sample code below, <code class="docutils literal"><span class="pre">mETWrite</span></code> is an <code class="docutils literal"><span class="pre">EditText</span></code> widget.</p>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">writeData</span><span class="o">(</span><span class="n">mETWrite</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span><span class="o">,</span>
+                                     <span class="n">mETWrite</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">getBytes</span><span class="o">()))</span> <span class="o">{</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-uart-data">
+<h4>8.1.3. Read UART Data<a class="headerlink" href="#read-uart-data" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">int</span> <span class="n">iReadLen</span> <span class="o">=</span> <span class="n">LENGTH</span><span class="o">;</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">byRead</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">LENGTH</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">iActualLen</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+
+<span class="k">while</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">==</span> <span class="n">m_mainThreadUart</span><span class="o">.</span><span class="na">readData</span><span class="o">(</span><span class="n">iReadLen</span><span class="o">,</span>
+                                                 <span class="n">byRead</span><span class="o">,</span>
+                                                 <span class="n">iActualLen</span><span class="o">))</span> <span class="o">{</span>
+  <span class="k">if</span><span class="o">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">iActualLen</span><span class="o">[</span><span class="mi">0</span><span class="o">])</span> <span class="o">{</span>
+     <span class="k">continue</span><span class="o">;</span>
+  <span class="o">}</span>
+ <span class="cm">/* Process received byRead byte array ... */</span>
+ <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">byRead</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+   <span class="n">byRead</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+ <span class="o">}</span>
+ <span class="n">iActualLen</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-can"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="can-class"></span><span id="can"></span><h2>9. CAN Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.Can">
+ class <code class="descname">Can</code><a class="headerlink" href="#com.viaembedded.smartetk.Can" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new CAN object.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Can</span> <span class="n">m_can</span> <span class="o">=</span> <span class="n">newCan</span><span class="o">();</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.open(String)">
+ int <code class="descname">open</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> sName</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.open(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the specified CAN device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sname</strong> (<a class="reference external" href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html" title="java.lang.String"><em>String</em></a>) &#8211; CAN device name, for exammple <code class="docutils literal"><span class="pre">can0</span></code>, <code class="docutils literal"><span class="pre">can1</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.E_CAN_OPENFAIL" title="com.viaembedded.smartetk.SmartETK.E_CAN_OPENFAIL"><code class="xref java java-ref docutils literal"><span class="pre">E_CAN_OPENFAIL</span></code></a> if opening device has failed</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.E_CAN_ALREADY_OPENED" title="com.viaembedded.smartetk.SmartETK.E_CAN_ALREADY_OPENED"><code class="xref java java-ref docutils literal"><span class="pre">E_CAN_ALREADY_OPENED</span></code></a> if the object is already open</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.close()">
+ int <code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.close()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the CAN device that is currently opened.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.setBitrate(int)">
+ int <code class="descname">setBitrate</code><span class="sig-paren">(</span>int<em> iBitrate</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.setBitrate(int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the bitrate of the opened CAN device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>iBitrate</strong> (<em>int</em>) &#8211; bit rate, e.g. <code class="docutils literal"><span class="pre">125000</span></code>. The default rate is <code class="docutils literal"><span class="pre">500000</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.E_CAN_BAUDRATE_NOT_SUPPORT" title="com.viaembedded.smartetk.SmartETK.E_CAN_BAUDRATE_NOT_SUPPORT"><code class="xref java java-ref docutils literal"><span class="pre">E_CAN_BAUDRATE_NOT_SUPPORT</span></code></a> if the given bitrate is not supported.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.getBitrate(int[])">
+ int <code class="descname">getBitrate</code><span class="sig-paren">(</span>int[]<em> iBitrate</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.getBitrate(int[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the bitrate of the opened CAN device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>iBitrate</strong> (<em>int</em>) &#8211; store the return bit rate</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.setTimeout(boolean, int)">
+ int <code class="descname">setTimeout</code><span class="sig-paren">(</span>boolean<em> bEnable</em>, int<em> iTimeout</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.setTimeout(boolean, int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal"><span class="pre">bEnable</span></code> is set to <code class="docutils literal"><span class="pre">true</span></code>, the UART read method depends on the <code class="docutils literal"><span class="pre">iTimeout</span></code> value.
+If timeout is set to <code class="docutils literal"><span class="pre">0</span></code> then polling read is used, if <code class="docutils literal"><span class="pre">1-255</span></code> then the data is read with the corresponding timeout.</p>
+<p>If <code class="docutils literal"><span class="pre">bEnable</span></code> is set to <code class="docutils literal"><span class="pre">false</span></code> then blocking read is performed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">true</span></code> if enable the timeout function, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</li>
+<li><strong>iTimeout</strong> (<em>int</em>) &#8211; timeout value in multiples of 0.1 seconds, accepted range is 0 – 255 (0 - 25.5 seconds)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.getTimeout(Timeout)">
+ int <code class="descname">getTimeout</code><span class="sig-paren">(</span><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.Timeout" title="com.viaembedded.smartetk.SmartETK.Timeout">Timeout</a><em> timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.getTimeout(Timeout)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the timeout configuration of the opened CAN device and store them in passed Timeout Class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.Timeout" title="com.viaembedded.smartetk.SmartETK.Timeout"><em>Timeout</em></a>) &#8211; timeout configuration</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Import</span> <span class="n">com</span><span class="o">.</span><span class="na">viaembedded</span><span class="o">.</span><span class="na">smartetk</span><span class="o">.</span><span class="na">SmartETK</span><span class="o">.</span><span class="na">Timeout</span><span class="o">;</span>
+
+<span class="n">Can</span> <span class="n">m_can</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Can</span><span class="o">();</span>
+<span class="n">Timeout</span> <span class="n">timeout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timeout</span><span class="o">();</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_can</span><span class="o">.</span><span class="na">getTimeout</span><span class="o">(</span><span class="n">timeout</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.setLoopback(boolean)">
+ int <code class="descname">setLoopback</code><span class="sig-paren">(</span>boolean<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.setLoopback(boolean)" title="Permalink to this definition">¶</a></dt>
+<dd><p>The loopback functionality is enabled by default to reflect standard
+networking behavior for CAN applications. A local loopback functionality is
+similar to the local echo e.g. of tty devices.</p>
+<p><code class="docutils literal"><span class="pre">bEnable</span> <span class="pre">=</span> <span class="pre">true</span></code> (if setRecvOwnMsgs() also set to true, it will receive its own msgs after transmit)</p>
+<p><code class="docutils literal"><span class="pre">bEnable</span> <span class="pre">=</span> <span class="pre">false</span></code> (no matter setRecvOwnMsgs() set to true or false, it won’t receive its onw msgs after transmit)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">true</span></code> to enable loopback, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.getLoopback(boolean[])">
+ int <code class="descname">getLoopback</code><span class="sig-paren">(</span>boolean[]<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.getLoopback(boolean[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get loopback state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean[]</em>) &#8211; to variable to place the loopback state, <code class="docutils literal"><span class="pre">true</span></code> for enabled, <code class="docutils literal"><span class="pre">false</span></code> for disabled</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">boolean</span><span class="o">[]</span> <span class="n">bEnable_getlbk</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">getLoopback</span><span class="o">(</span><span class="n">bEnable_getlbk</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.setRecvOwnMsgs(boolean)">
+ int <code class="descname">setRecvOwnMsgs</code><span class="sig-paren">(</span>boolean<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.setRecvOwnMsgs(boolean)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set <code class="docutils literal"><span class="pre">CAN_RAW_RECV_OWN_MSGS</span></code> flag to decide whether the socket
+receives frames its own sent or not. As the local loopback is enabled, the
+reception of the CAN frames on the same socket that was sending the CAN
+frame is assumed to be unwanted and therefore disabled by default.</p>
+<p><code class="docutils literal"><span class="pre">bEnable</span> <span class="pre">=</span> <span class="pre">true</span></code> (if <a class="reference internal" href="#com.viaembedded.smartetk.Can.setLoopback(boolean)" title="com.viaembedded.smartetk.Can.setLoopback(boolean)"><code class="xref java java-ref docutils literal"><span class="pre">setLoopback</span></code></a> set to false, it won’t receive its own msgs
+after sending Can frame)</p>
+<p><code class="docutils literal"><span class="pre">bEnable</span> <span class="pre">=</span> <span class="pre">false</span></code> (default)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">true</span></code> if receiving own frames, <code class="docutils literal"><span class="pre">false</span></code> otherwise</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.getRecvOwnMsgs(Boolean[])">
+ int <code class="descname">getRecvOwnMsgs</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/6/docs/api/java/lang/Boolean.html" title="java.lang.Boolean">Boolean</a>[]<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.getRecvOwnMsgs(Boolean[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the state of receiving its own sent frames or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean[]</em>) &#8211; variable to put results, <code class="docutils literal"><span class="pre">true</span></code> if function is enabled, <code class="docutils literal"><span class="pre">false</span></code> if not.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">boolean</span><span class="o">[]</span> <span class="n">bEnable_recvOwn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_uart</span><span class="o">.</span><span class="na">getRecvOwnMsgs</span><span class="o">(</span><span class="n">bEnable_recvOwn</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">cleanStatus</span><span class="o">();</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="type">
+<dt id="com.viaembedded.smartetk.Can.CanFilter">
+ class <code class="descname">CanFilter</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>CAN filter object</p>
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Can.CanFilter.PAYLOAD_SIZE">
+static final int <code class="descname">PAYLOAD_SIZE</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFilter.PAYLOAD_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">8</span></code>, payload data size</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Can.CanFilter.CAN_INV_FILTER">
+static final int <code class="descname">CAN_INV_FILTER</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFilter.CAN_INV_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">0x20000000</span></code>, the filter can be inverted (<code class="docutils literal"><span class="pre">CAN_INV_FILTER</span></code> bit is set in can_id)</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Can.CanFilter.iCanID">
+ int <code class="descname">iCanID</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFilter.iCanID" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CAN ID</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Can.CanFilter.iCanMask">
+ int <code class="descname">iCanMask</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFilter.iCanMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valid bits in CAN ID for frame formats</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.setFilter(CanFilter[], int)">
+ int <code class="descname">setFilter</code><span class="sig-paren">(</span><a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.CanFilter" title="com.viaembedded.smartetk.Can.CanFilter">CanFilter</a>[]<em> canFilter</em>, int<em> iLength</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.setFilter(CanFilter[], int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reception of CAN frames can be controlled by defining 0 .. n filters with
+the <a class="reference internal" href="#com.viaembedded.smartetk.Can.CanFilter" title="com.viaembedded.smartetk.Can.CanFilter"><code class="xref java java-ref docutils literal"><span class="pre">CanFilter</span></code></a> object array buffer. A filter matches, when:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="o">[</span><span class="n">received_can_id</span><span class="o">]</span> <span class="o">&amp;</span> <span class="n">CanFilter</span><span class="o">.</span><span class="na">iCanMask</span> <span class="o">==</span> <span class="n">CanFilter</span><span class="o">.</span><span class="na">iCanID</span> <span class="o">&amp;</span> <span class="n">CanFilter</span><span class="o">.</span><span class="na">iCanMask</span>
+</pre></div>
+</div>
+<p>To disable the reception of CAN frames:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">setFilter</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>canFilter</strong> (<em>CanFilter[]</em>) &#8211; <a class="reference internal" href="#com.viaembedded.smartetk.Can.CanFilter" title="com.viaembedded.smartetk.Can.CanFilter"><code class="xref java java-ref docutils literal"><span class="pre">CanFilter</span></code></a> object array</li>
+<li><strong>iLength</strong> &#8211; number of <a class="reference internal" href="#com.viaembedded.smartetk.Can.CanFilter" title="com.viaembedded.smartetk.Can.CanFilter"><code class="xref java java-ref docutils literal"><span class="pre">CanFilter</span></code></a> objects to set, <code class="docutils literal"><span class="pre">0</span></code> represents to disable the reception of CAN frames.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="type">
+<dt id="com.viaembedded.smartetk.Can.CanFrame">
+ class <code class="descname">CanFrame</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>CAN frame objec</p>
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Can.CanFrame.PAYLOAD_SIZE">
+static final int <code class="descname">PAYLOAD_SIZE</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFrame.PAYLOAD_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">16</span></code>, Payload data size</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Can.CanFrame.iCanID">
+ int <code class="descname">iCanID</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFrame.iCanID" title="Permalink to this definition">¶</a></dt>
+<dd><p>32 bit CAN_ID + EFF/RTR flags</p>
+</dd></dl>
+
+<dl class="field">
+<dt id="com.viaembedded.smartetk.Can.CanFrame.byData">
+final byte[] <code class="descname">byData</code><a class="headerlink" href="#com.viaembedded.smartetk.Can.CanFrame.byData" title="Permalink to this definition">¶</a></dt>
+<dd><p>8-byte (<code class="docutils literal"><span class="pre">byte[8]</span></code>) frame payload data. The object had been created by byte[8] array buffer. Users can modify data byte array, but cannot modify the object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.readFrame(CanFrame)">
+ int <code class="descname">readFrame</code><span class="sig-paren">(</span><a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.CanFrame" title="com.viaembedded.smartetk.Can.CanFrame">CanFrame</a><em> canFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.readFrame(CanFrame)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reading CAN frame from the opened CAN device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>canFrame</strong> (<a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.CanFrame" title="com.viaembedded.smartetk.Can.CanFrame"><em>CanFrame</em></a>) &#8211; CAN frame object to read</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Can.writeFrame(CanFrame)">
+ int <code class="descname">writeFrame</code><span class="sig-paren">(</span><a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.CanFrame" title="com.viaembedded.smartetk.Can.CanFrame">CanFrame</a><em> canFrame</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Can.writeFrame(CanFrame)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a CAN frame to the opened CAN device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>canFrame</strong> (<a class="reference internal" href="index.html#com.viaembedded.smartetk.Can.CanFrame" title="com.viaembedded.smartetk.Can.CanFrame"><em>CanFrame</em></a>) &#8211; CAN frame object to write</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span id="document-systemetk"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="systemetk-class"></span><span id="systemetk"></span><h2>10. SystemETK Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.SystemETK">
+ class <code class="descname">SystemETK</code><a class="headerlink" href="#com.viaembedded.smartetk.SystemETK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new SystemETK object.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">SystemETK</span> <span class="n">m_system</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SystemETK</span><span class="o">();</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="com.viaembedded.smartetk.SystemETK.reboot()">
+ int <code class="descname">reboot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.SystemETK.reboot()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reboot the machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.SystemETK.suspend()">
+ int <code class="descname">suspend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.SystemETK.suspend()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suspend the machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="systemetk-code-examples">
+<h3>10.1. SystemETK Code Examples<a class="headerlink" href="#systemetk-code-examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="reboot-the-machine">
+<h4>10.1.1. Reboot the Machine<a class="headerlink" href="#reboot-the-machine" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">private</span> <span class="n">SystemETK</span> <span class="n">m_system</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_system</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_system</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SystemETK</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_system</span><span class="o">.</span><span class="na">reboot</span><span class="o">())</span> <span class="o">{</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="suspend-the-machine">
+<h4>10.1.2. Suspend the Machine<a class="headerlink" href="#suspend-the-machine" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">private</span> <span class="n">SystemETK</span> <span class="n">m_system</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">m_system</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">m_system</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SystemETK</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">SmartETK</span><span class="o">.</span><span class="na">S_OK</span> <span class="o">!=</span> <span class="n">m_system</span><span class="o">.</span><span class="na">suspend</span><span class="o">())</span> <span class="o">{</span>
+  <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-dpms"></span><div class="section" id="package-com.viaembedded.smartetk">
+<span id="dpms-class"></span><span id="dpms"></span><h2>11. DPMS Class<a class="headerlink" href="#package-com.viaembedded.smartetk" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="com.viaembedded.smartetk.Dpms">
+ class <code class="descname">Dpms</code><a class="headerlink" href="#com.viaembedded.smartetk.Dpms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new DPMS object.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">m_dpms</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dpms</span><span class="o">();</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Dpms.setDpms(boolean)">
+ int <code class="descname">setDpms</code><span class="sig-paren">(</span>boolean<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Dpms.setDpms(boolean)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable the DPMS mode of the HDMI output</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean</em>) &#8211; <code class="docutils literal"><span class="pre">true</span></code> to enable the DPMS mode, <code class="docutils literal"><span class="pre">false</span></code> to disable</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="com.viaembedded.smartetk.Dpms.getDpms(boolean[])">
+ int <code class="descname">getDpms</code><span class="sig-paren">(</span>boolean[]<em> bEnable</em><span class="sig-paren">)</span><a class="headerlink" href="#com.viaembedded.smartetk.Dpms.getDpms(boolean[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the status if DPMS function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bEnable</strong> (<em>boolean[]</em>) &#8211; parameter to contain the return value, <code class="docutils literal"><span class="pre">true</span></code> for enabled, <code class="docutils literal"><span class="pre">false</span></code> for disabled</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="index.html#com.viaembedded.smartetk.SmartETK.S_OK" title="com.viaembedded.smartetk.SmartETK.S_OK"><code class="xref java java-ref docutils literal"><span class="pre">S_OK</span></code></a> if function succeeds</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">E_*</span></code> otherwise, see <a class="reference internal" href="index.html#return"><span>Function Return Values</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html#document-index">
+              <img class="logo" src="_static/VIA_Logo.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html#document-index">Table Of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-overview">1. Smart ETK API General Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#compatibility">1.1. Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#installation">1.2. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#permissions">1.3. Permissions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-smartetk">2. SmartETK class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#package-com.viaembedded.smartetk.SmartETK">2.1. Function Return Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-network">3. Network Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#network-code-examples">3.1. Network Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-gpio">4. GPIO Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#gpio-code-examples">4.1. GPIO Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-rtc">5. RTC Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#rtc-code-examples">5.1. RTC Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-i2c">6. I2C Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#i2c-code-examples">6.1. I2C Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-watchdog">7. WatchDog Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#watchdog-code-examples">7.1. WatchDog Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-uart">8. UART Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#uart-code-examples">8.1. UART Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-can">9. CAN Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-systemetk">10. SystemETK Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#systemetk-code-examples">10.1. SystemETK Code Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-dpms">11. DPMS Class</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html#document-index">Smart ETK Android API 0.0.19 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, VIA Technologies, Inc.
+      Last updated on Oct 29, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52261126-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
